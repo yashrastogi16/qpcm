@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>E-Club Membership Management System</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="{{STATIC_URL}}css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{STATIC_URL}}font-awesome/css/font-awesome.min.css">
+  </head>
+
+  <body>
+
+    <div id="wrapper" style="background-color: rgb(231, 231, 231);
+">
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">E-Club Membership Management System</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <!-- <li><a href="/index/"> Dashboard</a></li> -->
+            <li><a href="/members/"> Members</a></li>
+      <li class="active"><a href="/membershipform/">Add Membership</a></li>
+            <!-- <li><a href="/reports/"> Reporting</a></li> -->
+            <!--<li><a href="/users/"> Users</a></li>
+      <li><a href="/userform/">Add User</a></li>
+      <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file"></i> Forms <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                
+                
+                <li><a href="#">Third Item</a></li>
+                <li><a href="#">Last Item</a></li>     
+              </ul>
+            </li>-->
+            <li><a href="/settings/"> Settings</a></li>
+            <li><a href="/logout/">Logout</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+      <div id="page-wrapper">
+        <div class="row">
+          <div class="col-lg-9">
+            
+            <div class="bs-example">
+              <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                <li class="active"><a href="#home" data-toggle="tab">View Users</a></li>
+                <li><a href="#create-new-user" data-toggle="tab">Create New User</a></li>
+                <li><a href="#user-role" data-toggle="tab">User Role</a></li>
+                <li><a href="#profile" data-toggle="tab">Access Rights</a></li>
+                <li><a href="#profile" data-toggle="tab">Others</a></li>
+                                
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane fade active in">
+                 <div class="row">
+                    <div class="col-lg-9">                  
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped tablesorter" style="cursor:pointer">
+                          <thead>
+                            <tr>
+                              <th>Name <i class="fa fa-sort"></i></th>
+                              <th>UserId <i class="fa fa-sort"></i></th>
+                              <th>Status<i class="fa fa-sort"></i></th>                    
+                              <th>Role<i class="fa fa-sort"></i></th>                    
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              {%for r in users %}
+                              <td align="left">{{ r.name}}</td>
+                              <td>{{ r.userid}}</td>                    
+                              <td align="left">{{ r.status}}</td>                    
+                              <td align="right">{{ r.role}}</td>                    
+                              </tr>
+                              {%endfor%}                     
+                          </tbody>
+                        </table>
+                      </div>                  
+                    </div>
+                </div><!-- /.row -->  
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="create-new-user">
+                  <form action="{{url}}" method="post"> <br/>
+                  {%csrf_token%}
+						<p><label for="id_subject">Name:</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.name}}</p>
+						<p><label for="id_subject">UserId</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.userid}}</p>
+						<p><label for="id_subject">Password</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.password}}</p>
+						<p><label for="id_subject">Residence</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.residencelocation}}</p>
+						<p><label for="id_subject">Status</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.status}}</p>
+						<!-- <p><label for="id_subject">Mobile No</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.mobileno}}</p> -->
+						<p><label for="id_subject">Role</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.role}}</p>
+						<!-- <p><label for="id_subject">Clubs Allowed</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.clubsallowed}}</p>
+						<br/> -->
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit" class="btn btn-default"/>
+					</form>
+					
+                </div>
+
+
+
+
+            <div class="tab-pane fade">
+                  <form action="{{url}}" method="post">
+                  {%csrf_token%} <br/>
+            <p><label for="id_subject">Role Name:</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form1.rolename}}</p>
+            <p><label for="id_subject">Status</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form1.status}}</p>
+            <!-- <p><label for="id_subject">Mobile No</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.mobileno}}</p> -->
+           <!--  <p><label for="id_subject">Role</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.role}}</p> -->
+            <!-- <p><label for="id_subject">Clubs Allowed</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{form.clubsallowed}}</p>
+            <br/> -->
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit" class="btn btn-default"/>
+          </form>
+          
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </div><!-- /.row -->
+        </div><!-- /.row -->
+    </div><!-- /#wrapper -->
+    <!-- JavaScript -->
+    <script src="{{STATIC_URL}}js/jquery-1.10.2.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap.js"></script>
+    <script src="{{STATIC_URL}}js/rc.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.html">
+    <title>E-Club Membership Management System  </title>
+    <!--Core CSS -->
+    <link href="../static/bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/assets/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="../static/css/bootstrap-reset.css" rel="stylesheet">
+    <link href="../static/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../static/assets/jvector-map/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <link href="../static/css/clndr.css" rel="stylesheet">
+    <!--clock css-->
+    <link href="../static/assets/css3clock/css/style.css" rel="stylesheet">
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="../static/assets/morris-chart/morris.css">
+    <!-- Custom styles for this template -->
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="../static/css/style-responsive.css" rel="stylesheet"/>
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/dhtmlxcalendar.css"/> -->
+    
+    <link rel="stylesheet" type="text/css" href="../static/css/jquery.datetimepicker.css"/>
+
+<script type="text/javascript"> 
+    function some_popup_post(form) {
+    window.open('', '/qpaddmember/', 'width=600,height=500,resizeable,scrollbars');
+    form.target = '/qpaddmember/';
+}
+    </script>
+<script>
+        var myCalendar;
+        function doOnLoad() {
+        //     myCalendar = new dhtmlXCalendarObject(["id_date_of_expiry","id_date_of_joining",'id_cont_expiry_date','id_extract_run_date','id_dob']);
+        }
+</script>
+
+</head>
+
+<body onLoad = "doOnLoad();">
+    <section id="main-content" >
+        <section class="wrapper">
+
+            <div class="col-lg-12">
+            <!--tab nav start-->
+            <section class="panel">
+                <header class="panel-heading tab-bg-dark-navy-blue ">
+                    <ul class="nav nav-tabs">
+                    {%if mid%}
+                        <li class="active">
+                            <a data-toggle="tab" href="#home"><h4>Edit QP Member</h4></a>
+                        </li>
+                    {%else%}
+                        <li class="active">
+                            <a data-toggle="tab" href="#home"><h4>Add QP Member</h4></a>
+                        </li>
+                    {%endif%}                      
+                    </ul>
+                </header>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane active"><br><br>
+                            <div class="row">
+                                <div class="col-lg-1"> 
+                                </div>
+
+                    <div class="col-lg-8">                  
+                      <div class="table-responsive">
+                      <form action="/qpaddmember/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table class="table table-striped">
+            <tr><td>Family Name</td><td>:</td><td>{{form.name}}&nbsp;&nbsp;<span id="Err1"></span></td></tr>
+            <tr><td>First Name 1</td><td>:</td><td>{{form.first_name_1}}&nbsp;&nbsp;<span id="Err2"></span></td></tr>
+            <tr><td>First Name 2</td><td>:</td><td>{{form.first_name_2}}&nbsp;&nbsp;<span id="Err1"></span></td></tr>
+            <tr><td>First Name 3</td><td>:</td><td>{{form.first_name_3}}&nbsp;&nbsp;<span id="Err1"></span></td></tr>
+            <tr><td>Initial</td><td>:</td><td>{{form.initials}}&nbsp;&nbsp;<span id="Err1"></span></td></tr>
+            <tr style="display:none;"><td>Member ID</td><td>:</td><td>{{form.member_uid}}&nbsp;&nbsp;<span id="Err2"></span></td></tr>
+            <tr><td>Nationality</td><td>:</td><td>{{form.nationality}}&nbsp;&nbsp;<span id="Err3"></span></td></tr>
+            <tr><td>Marital Status</td><td>:</td><td>{{form.maritalstatus}}&nbsp;&nbsp;<span id="Errm"></span></td></tr>
+            <tr><td>Date of Birth</td><td>:</td><td>{{form.dob}}&nbsp;&nbsp;<span id="Err5"></span></td></tr>
+            <tr><td>Mobile</td><td>:</td><td>{{form.mobileno}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr>
+            <td>Photo</td>
+            <td>:</td>
+            <td><img src="{{IMAGE_URL}}{{photo}}" height="100px" width="100px"><input type="file" name="Imagefile" src="{{IMAGE_URL}}{{photo}}"/></td>
+            </tr>
+            <tr><td>Office Fax No</td><td>:</td><td>{{form.office_fax_no}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr><td>Cont Type</td><td>:</td><td>{{form.cont_type}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr><td>Cont Term Reason</td><td>:</td><td>{{form.cont_term_reason}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr><td>Cont Expiry Date</td><td>:</td><td>{{form.cont_expiry_date}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr><td>No Of Dependents</td><td>:</td><td>{{form.No_of_dependents}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr><td>Gender</td><td>:</td><td>{{form.gender}}&nbsp;&nbsp;<span id="Errg"></span></td></tr>
+            <tr><td>Extract_run_date</td><td>:</td><td>{{form.extract_run_date}}&nbsp;&nbsp;<span id="Err7"></span></td></tr>
+            <tr><td>Position Desc</td><td>:</td><td>{{form.pos_desc}}&nbsp;&nbsp;<span id="Err7"></span></td></tr>
+            <tr><td>Work Location</td><td>:</td><td>{{form.worklocation}}&nbsp;&nbsp;<span id="Err7"></span></td></tr>
+            <tr><td>Residence Location</td><td>:</td><td>{{form.residencelocation}}&nbsp;&nbsp;<span id="Err8"></span></td></tr>
+            <tr><td>Date of Joining</td><td>:</td><td>{{form.date_of_joining}}&nbsp;&nbsp;<span id="Err9"></span></td></tr>
+            <tr style="display:none;"><td>Membership Expire On</td><td>:</td><td>{{form.date_of_expiry}}&nbsp;&nbsp;<span id="Err10"></span></td></tr>
+            <tr><td>Email id</td><td>:</td><td>{{form.emailid}}&nbsp;&nbsp;<span id="Errem"></span></td></tr>
+            <tr><td>Access Card No.</td><td>:</td><td>{{form.rfidcardno}}&nbsp;&nbsp;<span id="Err11"></span></td></tr>
+            <tr style="display:none;"><td>Clubs Allowed</td><td>:</td><td>{{form.clubsallowed}}&nbsp;&nbsp;<span id="Err13"></span></td></tr>
+             <tr><td>Membership Category</td><td>:</td><td>{{form.membership_category}}&nbsp;&nbsp;<span id="Err14"></span></td></tr>
+            <tr style="display:none;"><td>Status</td><td>:</td><td>{{form.status}}</td></tr>
+            <tr style="display:none;"><td>Associated Company</td><td>:</td><td>{{form.associatecompany}}&nbsp;&nbsp;<span id="Err15"></span></td></tr>
+            <tr><td>Department</td><td>:</td><td>{{form.department}}&nbsp;&nbsp;<span id="Err16"></span></td></tr>
+            <tr style="display:none;"><td>Organization</td><td>:</td><td>{{form.organization}}<a href="#" onclick="return popitup('/organizationform/')" style="margin-left: 22px;"><img src="../static/images/addlink.gif" style = ""></img></a>&nbsp;&nbsp;<span id="Err18"></span></td></tr>
+            <tr><td>Membership Grade</td><td>:</td><td>{{form.membership_grade}}&nbsp;&nbsp;<span id="Err17"></span></td></tr>
+          <!--  <tr><td>Employment</td><td>:</td><td>{{form.employment}}<a href="#" onclick="return popitup('/employmentform/')" style="margin-left: 22px;"><img src="../static/images/addlink.gif" style = ""></img></a>&nbsp;&nbsp;<span id="Err19"></span></tr></td> -->
+            <tr style="display:none;"><td>User</td><td>:</td><td>{{form.qpuser}}</span></td>
+            <tr style="display:none;"><td>Datetime</td><td>:</td><td>{{form.datetime}}</td>    
+            </tr>
+        </table>
+                
+            <button type="submit" class="btn btn-primary" onclick="return executiveValidate()"style="margin-left: 200px;">Submit</button>
+
+            <input type="button" value="Cancel" style="margin-top: -35px;margin-left: 122px;
+padding: 11px;
+background: #1F54B5;
+border: #1fb5ad;
+border-radius: 9px 9px 9px;
+color: white;
+cursor: pointer;" onclick="window.close()">
+            <input type="hidden" name="mid" value="{{mid}}" />
+            <input type="hidden" name="photo" value="{{photo}}"/>
+                    </form>
+                      </div>                  
+                    </div>
+                    <div class="col-lg-3"> 
+                                </div>
+                </div>
+                        </div>
+                        
+                    <div id="about" class="tab-pane"><br><br>
+                    <div class="row">
+                            <div class="col-lg-3"> 
+                                </div>
+                            <div class="col-lg-6"> 
+                                <br/><br/>
+                                <h3>{{err_msg}}</h3>
+                                <form action="/familyform/" method="post" name="fam-upload">
+                                {% csrf_token %}
+                                <table class="table table-striped">
+                                    <tr><td>Family ID</td><td><input class="form-control" style="width : 50%" name="famid" required></td> </tr>
+                                </table>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                            </div>
+                            <div class="col-lg-3"> 
+                                </div>
+                        </div>
+                        </div>
+                    
+                    
+                    </div>  
+                        
+                    
+                       
+                    </div>
+                    
+                </div>
+            </section>
+                        </div>
+
+            </div>
+
+
+        </section>
+    </section>
+    <!--main content end-->
+<!--right sidebar start-->
+
+<!--right sidebar end-->
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="../static/js/lib/jquery.js"></script>
+<script src="../static/js/lib/jquery-1.8.3.min.js"></script>
+<script src="../static/js/jquery.datetimepicker.js"></script>
+<script src="../static/assets/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="../static/bs3/js/bootstrap.min.js"></script>
+<script src="../static/js/accordion-menu/jquery.dcjqaccordion.2.7.js"></script>
+<script src="../static/js/scrollTo/jquery.scrollTo.min.js"></script>
+<script src="../static/js/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script src="../static/assets/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+<script src="../static/assets/skycons/skycons.js"></script>
+<script src="../static/assets/jquery.scrollTo/jquery.scrollTo.js"></script>
+
+<script src="../static/assets/sparkline/jquery.sparkline.js"></script>
+<!--Morris Chart-->
+<script src="../static/assets/morris-chart/morris.js"></script>
+
+<!--Core js-->
+
+
+
+<script src="../static/js/scrollTo/jquery.scrollTo.min.js"></script>
+<script src="../static/js/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
+<script type="text/javascript" src="../static/assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+
+<script type="text/javascript" src="../static/assets/jquery-multi-select/js/jquery.quicksearch.js"></script>
+
+<script type="text/javascript" src="../static/assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+
+<script src="../static/assets/jquery-tags-input/jquery.tagsinput.js"></script>
+
+<script>
+$(function(){
+
+ $('#id_dob').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+
+ $('#id_cont_expiry_date').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+
+ $('#id_extract_run_date').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+ $('#id_date_of_joining').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+});
+</script>
+
+<script type="text/javascript">
+$("#location").change(function()
+{ 
+    var category = $("#location").val();
+
+    // alert(category);
+    if(category == 'dukhan' )
+    {
+        $("#id_clubsallowed_0").show();
+        $("#id_clubsallowed_1").show();
+        $("#id_clubsallowed_2").show();
+        $("#id_clubsallowed_3").show();
+        $("#id_clubsallowed_4").show();
+        $('label[for="id_clubsallowed_0"]').css('display', 'block');
+        $('label[for="id_clubsallowed_1"]').css('display', 'block');
+        $('label[for="id_clubsallowed_2"]').css('display', 'block');
+        $('label[for="id_clubsallowed_3"]').css('display', 'block');
+        $('label[for="id_clubsallowed_4"]').css('display', 'block');
+    }
+    else
+    {
+        $("#id_clubsallowed_0").hide();
+        $("#id_clubsallowed_1").hide();
+        $("#id_clubsallowed_2").hide();
+        $("#id_clubsallowed_3").hide();
+        $("#id_clubsallowed_4").hide();
+        $('label[for="id_clubsallowed_0"]').css('display', 'none');
+        $('label[for="id_clubsallowed_1"]').css('display', 'none');
+        $('label[for="id_clubsallowed_2"]').css('display', 'none');
+        $('label[for="id_clubsallowed_3"]').css('display', 'none');
+        $('label[for="id_clubsallowed_4"]').css('display', 'none');
+    
+    }
+
+
+    if(category == 'maiseed' )
+    {
+        $("#id_clubsallowed_5").show();
+        $("#id_clubsallowed_6").show();
+        $('label[for="id_clubsallowed_5"]').css('display', 'block');
+        $('label[for="id_clubsallowed_6"]').css('display', 'block');
+    }
+    else
+    {
+        $("#id_clubsallowed_5").hide();
+        $("#id_clubsallowed_6").hide();
+        $('label[for="id_clubsallowed_5"]').css('display', 'none');
+        $('label[for="id_clubsallowed_6"]').css('display', 'none');
+    }
+
+    if(category == 'doha' )
+    {
+        $("#id_clubsallowed_7").show();
+        $("#id_clubsallowed_8").show();
+        $('label[for="id_clubsallowed_7"]').css('display', 'block');
+        $('label[for="id_clubsallowed_8"]').css('display', 'block');
+    }
+    else
+    {
+        $("#id_clubsallowed_7").hide();
+        $("#id_clubsallowed_8").hide();
+        $('label[for="id_clubsallowed_7"]').css('display', 'none');
+        $('label[for="id_clubsallowed_8"]').css('display', 'none');
+    }
+
+    if (category=='none')
+    {
+        $("#id_clubsallowed_0").show();
+        $("#id_clubsallowed_1").show();
+        $("#id_clubsallowed_2").show();
+        $("#id_clubsallowed_3").show();
+        $("#id_clubsallowed_4").show();
+        $("#id_clubsallowed_5").show();
+        $("#id_clubsallowed_6").show();
+        $("#id_clubsallowed_7").show();
+        $("#id_clubsallowed_8").show();
+
+        $("#id_clubsallowed_0").css('display', 'block');
+        $("#id_clubsallowed_1").css('display', 'block');
+        $("#id_clubsallowed_2").css('display', 'block');
+        $("#id_clubsallowed_3").css('display', 'block');
+        $("#id_clubsallowed_4").css('display', 'block');
+        $("#id_clubsallowed_5").css('display', 'block');
+        $("#id_clubsallowed_6").css('display', 'block');
+        $("#id_clubsallowed_7").css('display', 'block');
+        $("#id_clubsallowed_8").css('display', 'block');
+    }
+
+});
+
+ function executiveValidate()
+{
+ var a = $("#id_name").val();
+ var b = $("#id_first_name_1").val();
+ var c = $("#id_nationality").val();
+ var d = $("#id_relationship").val();
+ var e = $("#id_dob").val();
+ var f = $("#id_contact_no").val();
+ var g = $("#id_gender").val();
+ var h = $("#id_residencelocation").val();
+ var i = $("#id_date_of_joining").val();
+ var j = $("#id_date_of_expiry").val();
+ var k = $("#id_rfidcardno").val();
+ var l = $("#id_emailid").val();
+ var m = $("#id_clubsallowed").val();
+
+ var o = $("#id_member").val();
+ var p = $("#id_organization").val();
+ var q = $("#id_age").val();
+ var r = $("#id_maritalstatus").val();
+ 
+ is_error=false; 
+if(a == "")
+     {
+       errmsg = "Please Enter Family Name";
+       is_error = true;  
+       document.getElementById("Err1").style.color="red";
+       $("#Err1").html(errmsg);
+       $("#id_name").focus();
+
+     }
+
+if(b == "")
+     {
+      errmsg = "Please Enter First Name";
+      is_error = true;  
+       document.getElementById("Err2").style.color="red";
+       $("#Err2").html(errmsg);
+      $("#id_first_name_1").focus();
+     }
+if(c == "")
+     {
+       errmsg = "Please Enter Nationality";
+       is_error = true;  
+       document.getElementById("Err3").style.color="red";
+       $("#Err3").html(errmsg);
+       $("#id_nationality").focus();
+     }  
+// if(d == "")
+//      {
+//        errmsg = "Please Enter Relationship";
+//        is_error = true;  
+//        document.getElementById("ErrR").style.color="red";
+//        $("#ErrR").html(errmsg);
+//        $("#id_relationship").focus();
+//      }      
+// if(e == "")
+//      {
+//        errmsg = "Please Enter Date Of Birth";
+//        is_error = true;  
+//        document.getElementById("Errd").style.color="red";
+//        $("#Errd").html(errmsg);
+//        $("#id_dob").focus();
+       
+//      }  
+// if(f == "")
+//      {
+//        errmsg = "Please Enter Contact No";
+//        is_error = true;  
+//        document.getElementById("Errc").style.color="red";
+//        $("#Errc").html(errmsg);
+//        $("#id_contact_no").focus()
+//        };
+if(g == "")
+     {
+       errmsg = "Please Enter Gender";
+       is_error = true;  
+       document.getElementById("Errg").style.color="red";
+       $("#Errg").html(errmsg);
+       $("#id_gender").focus()
+       };
+// if(i == "")
+//      {
+//        errmsg = "Please Enter Date Of Joining";
+//        is_error = true;  
+//        document.getElementById("Errdj").style.color="red";
+//        $("#Errdj").html(errmsg);
+//        $("#id_date_of_joining").focus()
+//        };   
+// if(j == "")
+//      {
+//        errmsg = "Please Enter Date Of Expiry";
+//        is_error = true;  
+//        document.getElementById("Errde").style.color="red";
+//        $("#Errde").html(errmsg);
+//        $("#id_date_of_expiry").focus()
+//        };          
+if(k == "")
+     {
+       errmsg = "Please Enter Access Card No.";
+       is_error = true;  
+       document.getElementById("Err11").style.color="red";
+       $("#Err11").html(errmsg);
+       $("#id_rfidcardno").focus()
+       }
+if(l == "")
+     {
+       errmsg = "Please Enter Email Id";
+       is_error = true;  
+       document.getElementById("Errem").style.color="red";
+       $("#Errem").html(errmsg);
+       $("#id_email_id").focus()
+       }
+// if(m =="")
+//      {
+//        errmsg = "Please Enter Clubs Allowed";
+//        is_error = true;  
+//        document.getElementById("Errca").style.color="red";
+//        $("#Errca").html(errmsg);
+//        $("#id_clubsallowed").focus()
+//        }
+
+if(r == "")
+     {
+       errmsg = "Please Enter Marital Status";
+       is_error = true;  
+       document.getElementById("Errm").style.color="red";
+       $("#Errm").html(errmsg);
+       $("#id_maritalstatus").focus()
+       }
+// if(p == "")
+//      {
+//        errmsg = "Please Enter Organization";
+//        is_error = true;  
+//        document.getElementById("Erro").style.color="red";
+//        $("#Erro").html(errmsg);
+//        $("#id_organization").focus()
+//        }       
+if(is_error)
+    {
+      return false;
+    }
+    else
+    {
+     return true;
+    }
+}
+</script>
+</body>
+</html>

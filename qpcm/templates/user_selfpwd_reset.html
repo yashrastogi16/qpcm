@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.html">
+
+    <title>E-Club Lock Screen</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{STATIC_URL}}bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/bootstrap-reset.css" rel="stylesheet">
+    <!--external css-->
+    <link href="{{STATIC_URL}}assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div style="margin-left:20%; margin-right:25%; margin-top:10%">
+<div class="round-rect" style="width:400px">
+<form class="form-horizontal" action="reset_self_pwd" method="post">
+{% csrf_token %}
+<p align="center" id="error">{{errmsg}}</p>
+<legend style="font-size:16px; color:#FF6600">Change Password</legend>
+<table width="100%" border="0" cellspacing="1" cellpadding="3">
+  <tr>
+    <td>Existing Password </td>
+    <td><input name="currentpassword" type="password" class="form-control" id="currentPassword" placeholder="Current password" required></td>
+  </tr>
+  <tr>
+    <td>New Password </td>
+    <td><input name="newpassword" type="password" class="form-control" id="newPassword" placeholder=" New Password" required></td>
+  </tr>
+  <tr>
+    <td>Confirm Password </td>
+    <td>
+      <input name="confirmpassword" type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+      </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><button type="submit" class="btn btn-success"  onClick="return checkPassword()">Save</button></td><td><input type="button" value="Cancel" style="
+padding: 8px;
+background: #1F54B5;
+border: #1fb5ad;
+border-radius: 9px 9px 9px;
+color: white;
+margin-left: -130px;
+cursor: pointer;" onclick="window.close()"></td>
+  </tr>
+  
+</table>
+</form>
+</div>
+</div>
+<script>
+function checkPassword()
+{
+ var x = $("#currentPassword").val();
+ var y = $("#newPassword").val();
+ var z = $("#confirmPassword").val();
+if(x=="")
+ {
+   $("#error").html("Please Enter current password");
+   $("#currentPassword").focus()
+   document.getElementById("error").style.color="red";
+   return false;
+ }
+else if(y=="")
+ {
+   $("#error").html("Please Enter new Password");
+   $("#newPassword").focus()
+   document.getElementById("error").style.color="red";
+   return false;
+ }
+ else if(z=="")
+ {
+   $("#error").html("Please Enter confirm Password");
+   $("#confirmPassword").focus()
+   document.getElementById("error").style.color="red";
+   return false;
+ }
+ else
+ {
+ return true;
+ }
+}
+</script>
+
+</body>
+</html>

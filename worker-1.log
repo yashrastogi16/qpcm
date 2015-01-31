@@ -1,0 +1,546 @@
+[2015-01-23 13:36:57,745: WARNING/Worker-1] im here now
+[2015-01-23 13:36:57,808: WARNING/Worker-1] []
+[2015-01-23 13:36:57,853: WARNING/Worker-2] test mail
+[2015-01-23 13:36:57,875: ERROR/MainProcess] Task qpcmms.crons.test[f887604e-c4c9-4a1d-813a-38ac5aeab9f8] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 13:36:57,922: WARNING/Worker-1] im also being calling
+[2015-01-23 13:37:27,934: WARNING/Worker-2] im also being calling
+[2015-01-23 13:37:37,675: WARNING/Worker-1] im here now
+[2015-01-23 13:37:37,683: WARNING/Worker-1] []
+[2015-01-23 13:37:37,860: WARNING/Worker-2] test mail
+[2015-01-23 13:37:37,864: ERROR/MainProcess] Task qpcmms.crons.test[9fb706d6-b10a-4060-aeb1-8ccc57239b0a] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 13:37:45,732: WARNING/Worker-1] im here now
+[2015-01-23 13:37:45,736: WARNING/Worker-1] []
+[2015-01-23 13:37:45,822: WARNING/Worker-2] test mail
+[2015-01-23 13:37:45,824: ERROR/MainProcess] Task qpcmms.crons.test[f04662c6-9f96-405d-82ca-4051ed010f3b] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 13:37:45,881: WARNING/Worker-1] im also being calling
+[2015-01-23 13:37:57,056: WARNING/Worker-2] im also being calling
+[2015-01-23 13:38:17,010: WARNING/Worker-1] test mail
+[2015-01-23 13:38:17,017: ERROR/MainProcess] Task qpcmms.crons.test[3794d774-3418-40ed-86fb-dfce9f7a7e88] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 13:38:17,018: WARNING/Worker-2] im here now
+[2015-01-23 13:38:17,021: WARNING/Worker-2] []
+[2015-01-23 13:38:27,068: WARNING/Worker-1] im also being calling
+[2015-01-23 13:38:57,020: WARNING/Worker-2] im here now
+[2015-01-23 13:38:57,024: WARNING/Worker-2] []
+[2015-01-23 13:39:27,167: WARNING/Worker-1] im also being calling
+[2015-01-23 13:39:37,022: WARNING/Worker-2] im here now
+[2015-01-23 13:39:37,025: WARNING/Worker-2] []
+[2015-01-23 13:39:57,142: WARNING/Worker-1] im also being calling
+[2015-01-23 13:40:17,012: WARNING/Worker-2] test mail
+[2015-01-23 13:40:17,014: ERROR/MainProcess] Task qpcmms.crons.test[5604ee29-bc1f-4833-8b17-3e6105f7efcc] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 13:40:27,148: WARNING/Worker-1] im also being calling
+[2015-01-23 13:40:57,136: WARNING/Worker-2] im also being calling
+[2015-01-23 13:41:27,150: WARNING/Worker-1] im also being calling
+[2015-01-23 13:41:37,187: WARNING/Worker-2] im here now
+[2015-01-23 13:41:37,190: WARNING/Worker-2] []
+[2015-01-23 13:42:17,018: WARNING/Worker-1] test mail
+[2015-01-23 13:42:17,019: ERROR/MainProcess] Task qpcmms.crons.test[c570cd46-d418-4d96-bb76-e96b7741123f] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 13:42:17,187: WARNING/Worker-2] im here now
+[2015-01-23 13:42:18,401: WARNING/Worker-2] []
+[2015-01-23 14:42:50,198: WARNING/Worker-1] test mail
+[2015-01-23 14:42:50,200: ERROR/MainProcess] Task qpcmms.crons.test[efe0de34-cb18-43c3-a429-530938cf614f] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:42:50,202: WARNING/Worker-2] im here now
+[2015-01-23 14:42:50,206: WARNING/Worker-2] []
+[2015-01-23 14:42:50,348: WARNING/Worker-1] im also being calling
+[2015-01-23 14:43:20,285: WARNING/Worker-2] im also being calling
+[2015-01-23 14:43:30,200: WARNING/Worker-1] test mail
+[2015-01-23 14:43:30,202: ERROR/MainProcess] Task qpcmms.crons.test[0a3e81bf-ba1c-4dc8-a750-4c129fe10310] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:43:30,204: WARNING/Worker-2] im here now
+[2015-01-23 14:43:30,207: WARNING/Worker-2] []
+[2015-01-23 14:43:50,276: WARNING/Worker-1] im also being calling
+[2015-01-23 14:44:10,211: WARNING/Worker-2] test mail
+[2015-01-23 14:44:10,213: ERROR/MainProcess] Task qpcmms.crons.test[c88262f9-aca6-47da-b3a0-1aed684e2f9e] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:44:20,268: WARNING/Worker-1] im also being calling
+[2015-01-23 14:44:50,205: WARNING/Worker-2] test mail
+[2015-01-23 14:44:50,206: ERROR/MainProcess] Task qpcmms.crons.test[cbf48f97-aa04-43d6-86b5-901413add3c4] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:44:50,226: WARNING/Worker-1] im here now
+[2015-01-23 14:44:50,230: WARNING/Worker-1] []
+[2015-01-23 14:45:30,212: WARNING/Worker-2] test mail
+[2015-01-23 14:45:30,214: ERROR/MainProcess] Task qpcmms.crons.test[ba5f4452-55c5-4e6a-8729-d0331ce7b69a] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:46:10,213: WARNING/Worker-1] test mail
+[2015-01-23 14:46:10,215: ERROR/MainProcess] Task qpcmms.crons.test[4b4a3f8c-5894-4481-92a1-7326d51913c4] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:46:50,212: WARNING/Worker-2] test mail
+[2015-01-23 14:46:50,214: ERROR/MainProcess] Task qpcmms.crons.test[955e2559-ea0d-4553-84e7-edace168ab18] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:47:30,214: WARNING/Worker-2] test mail
+[2015-01-23 14:47:30,216: ERROR/MainProcess] Task qpcmms.crons.test[f9752c22-5930-4bb3-8c9d-a67902872397] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:47:50,291: WARNING/Worker-1] im also being calling
+[2015-01-23 14:48:10,233: WARNING/Worker-2] im here now
+[2015-01-23 14:48:10,237: WARNING/Worker-2] []
+[2015-01-23 14:48:50,220: WARNING/Worker-1] test mail
+[2015-01-23 14:48:50,222: ERROR/MainProcess] Task qpcmms.crons.test[8885bcf8-f1b8-4773-822b-0a9ac61bb93e] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:48:50,298: WARNING/Worker-2] im also being calling
+[2015-01-23 14:49:30,229: WARNING/Worker-1] test mail
+[2015-01-23 14:49:30,233: ERROR/MainProcess] Task qpcmms.crons.test[af1129d1-a8f0-4261-916c-902651063a8b] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:49:50,314: WARNING/Worker-2] im also being calling
+[2015-01-23 14:50:10,233: WARNING/Worker-1] im here now
+[2015-01-23 14:50:10,237: WARNING/Worker-1] []
+[2015-01-23 14:50:50,228: WARNING/Worker-2] test mail
+[2015-01-23 14:50:50,255: ERROR/MainProcess] Task qpcmms.crons.test[aea2cc2e-a695-48b6-8873-dd93cbd4d5ed] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:50:50,693: WARNING/Worker-1] im also being calling
+[2015-01-23 14:51:30,288: WARNING/Worker-2] test mail
+[2015-01-23 14:51:30,291: ERROR/MainProcess] Task qpcmms.crons.test[d2682807-2306-4ef0-995e-c941ede97d3d] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:51:50,670: WARNING/Worker-1] im also being calling
+[2015-01-23 14:52:10,579: WARNING/Worker-2] im here now
+[2015-01-23 14:52:10,617: WARNING/Worker-2] []
+[2015-01-23 14:52:50,241: WARNING/Worker-1] test mail
+[2015-01-23 14:52:50,299: ERROR/MainProcess] Task qpcmms.crons.test[10782f7f-e261-41d6-8ec7-93ebe3881467] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:52:50,685: WARNING/Worker-2] im also being calling
+[2015-01-23 14:53:30,244: WARNING/Worker-1] test mail
+[2015-01-23 14:53:30,247: ERROR/MainProcess] Task qpcmms.crons.test[537bc1c2-77b2-49ae-bfe6-0bd9e04b7ccb] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:53:50,686: WARNING/Worker-2] im also being calling
+[2015-01-23 14:54:10,584: WARNING/Worker-1] im here now
+[2015-01-23 14:54:10,592: WARNING/Worker-1] []
+[2015-01-23 14:54:50,296: WARNING/Worker-2] test mail
+[2015-01-23 14:54:50,373: ERROR/MainProcess] Task qpcmms.crons.test[88c9ea0f-ab49-4187-a8da-178c32be1457] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:54:50,687: WARNING/Worker-1] im also being calling
+[2015-01-23 14:55:30,255: WARNING/Worker-2] test mail
+[2015-01-23 14:55:30,258: ERROR/MainProcess] Task qpcmms.crons.test[99652154-a0da-4ca1-b392-481ec04c548a] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:55:51,146: WARNING/Worker-1] im also being calling
+[2015-01-23 14:56:10,588: WARNING/Worker-2] im here now
+[2015-01-23 14:56:10,591: WARNING/Worker-2] []
+[2015-01-23 14:56:50,262: WARNING/Worker-1] test mail
+[2015-01-23 14:56:50,265: ERROR/MainProcess] Task qpcmms.crons.test[40603cbd-28a8-4a44-8ba0-6fc6c725d206] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:56:50,711: WARNING/Worker-2] im also being calling
+[2015-01-23 14:57:30,327: WARNING/Worker-1] test mail
+[2015-01-23 14:57:30,328: ERROR/MainProcess] Task qpcmms.crons.test[0088692e-7f7e-4954-8bca-c786a2a96381] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:57:50,694: WARNING/Worker-2] im also being calling
+[2015-01-23 14:58:10,594: WARNING/Worker-1] im here now
+[2015-01-23 14:58:10,597: WARNING/Worker-1] []
+[2015-01-23 14:58:50,271: WARNING/Worker-2] test mail
+[2015-01-23 14:58:50,274: ERROR/MainProcess] Task qpcmms.crons.test[5d915752-f5a7-471e-8c10-c185df650a63] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:58:50,683: WARNING/Worker-1] im also being calling
+[2015-01-23 14:59:30,273: WARNING/Worker-2] test mail
+[2015-01-23 14:59:30,276: ERROR/MainProcess] Task qpcmms.crons.test[4d7819b1-5981-43a3-9182-dca631d70b9d] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 14:59:50,691: WARNING/Worker-1] im also being calling
+[2015-01-23 15:00:10,606: WARNING/Worker-2] im here now
+[2015-01-23 15:00:10,659: WARNING/Worker-2] []
+[2015-01-23 15:00:50,281: WARNING/Worker-1] test mail
+[2015-01-23 15:00:50,286: ERROR/MainProcess] Task qpcmms.crons.test[2704799c-9351-4e1d-a36d-1e7149706827] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 15:00:50,701: WARNING/Worker-2] im also being calling
+[2015-01-23 15:01:30,276: WARNING/Worker-1] test mail
+[2015-01-23 15:01:30,278: ERROR/MainProcess] Task qpcmms.crons.test[dd4fe677-2527-4fe5-b187-d14bc364f18d] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 15:01:50,995: WARNING/Worker-2] im also being calling
+[2015-01-23 15:02:10,610: WARNING/Worker-1] im here now
+[2015-01-23 15:02:10,615: WARNING/Worker-1] []
+[2015-01-23 15:02:50,287: WARNING/Worker-2] test mail
+[2015-01-23 15:02:50,290: ERROR/MainProcess] Task qpcmms.crons.test[0be42854-b49c-4870-a125-eb09d20a5308] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 15:02:50,686: WARNING/Worker-1] im also being calling
+[2015-01-23 15:03:30,282: WARNING/Worker-2] test mail
+[2015-01-23 15:03:30,283: ERROR/MainProcess] Task qpcmms.crons.test[f0df2707-6024-4c89-a80c-a50ad9f47b03] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 15:03:51,924: WARNING/Worker-1] im also being calling
+[2015-01-23 15:04:10,624: WARNING/Worker-2] im here now
+[2015-01-23 15:04:10,631: WARNING/Worker-2] []
+[2015-01-23 15:04:50,292: WARNING/Worker-1] test mail
+[2015-01-23 15:04:50,296: ERROR/MainProcess] Task qpcmms.crons.test[88aed607-0339-42e2-aaa7-d59c1ff0b0e3] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 15:04:50,696: WARNING/Worker-2] im also being calling
+[2015-01-23 15:05:24,730: ERROR/MainProcess] Process 'Worker-1' pid:11312 exited with 'signal 9 (SIGKILL)'
+[2015-01-23 15:05:30,368: WARNING/Worker-3] test mail
+[2015-01-23 15:05:30,603: ERROR/MainProcess] Task qpcmms.crons.test[1ede6a9e-bb1b-46a9-b5fc-9134d1fc1ec0] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 15:05:50,691: ERROR/MainProcess] Process 'Worker-2' pid:11313 exited with 'signal 9 (SIGKILL)'
+[2015-01-23 15:05:50,744: ERROR/MainProcess] Task qpcmms.crons.childern_age_expiry[e86c2531-ac7e-4ac1-90e4-c8cb0891c1bc] raised unexpected: WorkerLostError('Worker exited prematurely: signal 9 (SIGKILL).',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/billiard/pool.py", line 1170, in mark_as_worker_lost
+    human_status(exitcode)),
+WorkerLostError: Worker exited prematurely: signal 9 (SIGKILL).
+[2015-01-23 15:06:10,629: WARNING/Worker-3] im here now
+[2015-01-23 15:06:10,859: WARNING/Worker-3] []
+[2015-01-23 15:06:50,300: WARNING/Worker-4] test mail
+[2015-01-23 15:06:50,305: ERROR/MainProcess] Task qpcmms.crons.test[5cafcda0-8fce-4081-b312-036c57157b09] raised unexpected: AssertionError('"to" argument must be a list or tuple',)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 240, in trace_task
+    R = retval = fun(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/celery/app/trace.py", line 437, in __protected_call__
+    return self.run(*args, **kwargs)
+  File "/home/chinna/Desktop/Django-1.4/qpcm/qpcmms/crons.py", line 167, in test
+    send_mass_mail(datatuple, fail_silently = True)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/__init__.py", line 82, in send_mass_mail
+    for subject, message, sender, recipient in datatuple]
+  File "/usr/local/lib/python2.7/dist-packages/django/core/mail/message.py", line 184, in __init__
+    assert not isinstance(to, basestring), '"to" argument must be a list or tuple'
+AssertionError: "to" argument must be a list or tuple
+[2015-01-23 15:06:50,797: WARNING/Worker-3] im also being calling
+[2015-01-23 15:07:13,559: ERROR/MainProcess] Process 'Worker-4' pid:14571 exited with 'signal 9 (SIGKILL)'
+[2015-01-23 15:07:13,570: ERROR/MainProcess] Process 'Worker-3' pid:14538 exited with 'signal 9 (SIGKILL)'

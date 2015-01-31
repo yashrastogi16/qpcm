@@ -1,0 +1,15 @@
+{% if result.count > 0 %}
+{%  for i in result %}
+<div>
+<li style="color: #CCC; background: transparent; z-index: 1;"><a href="/common/?mid={{i.id}}">{{i.name}}</a></li>
+</div>
+
+{%csrf_token%}
+
+{% endfor %}
+
+{%else%}
+
+<li style="color:red;"> No records found!!</li>
+
+{% endif %}

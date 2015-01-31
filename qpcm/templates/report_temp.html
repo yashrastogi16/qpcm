@@ -1,0 +1,21 @@
+<P>The List Of Dependents Are Going To Be Of 21 Year Age On Its Date Of Expiry As Mentioned In The Table.</p>
+       
+<table border="1" style="border:1px solid #000;line-height:12px;padding:3px;border-collapse:collapse;"">
+    <thead style="background-color:#000;font-size:16px;color:#fff">
+        <tr>
+            <th align="vmiddle">Name</th>
+            <th align="vmiddle">Membership Id</th>
+            <th align="vmiddle">Date of Age Expiry</th>
+        </tr>
+    </thead>
+           
+    <tbody>
+        {% for obj in obj_list %}
+        <tr>
+            <td style="padding:13px;">{{ obj.name }}</td>
+            <td style="padding:13px;">{{ obj.uid }}</td>
+            <td style="padding:13px;">{{ obj.exp_date|date:"Y-m-d"}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table><br/>

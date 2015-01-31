@@ -1,0 +1,30 @@
+
+<html>
+<head>
+<link href="../static/bs3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<br/>
+<h2 align = "center" style="color:lightseagreen;"> Club Information</h2> <br/><br/>
+<div class="col-lg-6"> 
+                      
+  <form method="post" action="{{url}}"> <table class="table table-striped"><tr>
+  		{% csrf_token %}
+		<td>Name</td><td>:</td><td>{{form.name}}</td></tr>		       
+		<tr><td>IP</td><td>:</td><td>{{form.ip}}</td></tr>      
+		<tr></tr>
+		<tr><td><td><td><button type="submit" class="btn btn-primary">Submit</button> </td></tr></table>
+		<input type="hidden" name="cid" value="{{cid}}" />
+	</form>
+
+	<input type="button" value="Cancel" style="margin-top: -63px;
+margin-left: 323px;
+padding: 11px;
+background: #C58482;
+border: #1fb5ad;
+border-radius: 9px 9px 9px;
+color: white;
+cursor: pointer;" onclick="window.close()">
+			  
+</div>
+
+</html>

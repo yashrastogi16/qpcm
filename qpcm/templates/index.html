@@ -1,0 +1,211 @@
+   
+{% extends 'base.html' %}
+  {% block content %}
+
+    <section id="main-content">
+        <section class="wrapper">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="mini-stat clearfix">
+                <img src="/static/images/1.png" style="float: left;margin: 8px;">
+                <div class="mini-stat-info">
+                    <span>{{count}}</span>
+                   <h4 title="Active Members"> Total Members</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mini-stat clearfix">
+               <img src="/static/images/3.png" style="float: left;margin: 8px;">
+               {%csrf_token%}
+                <div class="mini-stat-info">
+                    <span>{{qp_list}}</span>
+                 <h4 title="QP Members">   QP</h4> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mini-stat clearfix">
+                <img src="/static/images/4.png" style="float: left;margin: 8px;">
+                <div class="mini-stat-info">
+                    <span>{{nonqp_list}}</span>
+                   <h4 title="Non-QP Members"> Non-QP</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mini-stat clearfix">
+                <img src="/static/images/5.png" style="float: left;margin: 8px;">
+                <div class="mini-stat-info">
+                    <span>{{total_clubs}}</span>
+                <h4>  Total Clubs </h4> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--mini statistics end-->
+
+    
+    <div class="row">
+      <div class="col-lg-6">
+            <div class="panel panel-success">
+                <div class="row">
+                  <div class="col-xs-12 text-right">
+                    <center>
+                    <p class="announcement-text"> <h3>Approval Pending</h3></p>
+                    <p class="announcement-heading"><h3>{{pending_members}}</h3></p>
+                    </center>
+                  </div>
+                </div>              
+            </div>
+          </div>
+    
+     <div class="col-lg-6">
+            <div class="panel panel-success">
+              
+                <div class="row">
+                  
+                  <div class="col-xs-12 text-right">
+                      <center>
+                    <p class="announcement-text"><h3 title="New Members last 5 days">New Members</h3></p>
+                    <p class="announcement-heading"><h3>{{new_members}}</h3></p>
+                    </center>
+                  </div>
+                </div>
+              
+              
+            </div>
+          </div>
+    </div>
+    
+   
+    
+    <div class="row">
+    
+    
+    
+    <div class="col-md-4">
+        <!--todolist start-->
+        <section class="panel">
+            <header class="panel-heading">
+               <i class="fa fa-money"></i> Registration To Approve <span class="tools pull-right">
+            <!-- <a href="javascript:;" class="fa fa-chevron-down"></a>
+            <a href="javascript:;" class="fa fa-cog"></a>
+            <a href="javascript:;" class="fa fa-times"></a> -->
+            </span>
+            </header>
+            
+             <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped tablesorter">
+                    <thead>
+                      <tr>
+                        <th>Staff Id&nbsp;</th>
+                        <th>Name&nbsp;</th>
+                        <!-- <th>Datetime<i class="fa fa-sort"></i></th> -->                   
+                        <th>Done By&nbsp;</th>                 
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {%for r in to_approve %}
+                        <td align="left">{{ r.member_uid}}</td>
+                        <td>{{ r.name}}</td>                    
+                        <td align="left">{{ r.qpuser.name}}</td>                    
+                        <!-- <td align="right">{{ r.Name}}</td>                     -->
+                        </tr>
+                        {%endfor%}                     
+                    </tbody>
+                  </table>
+                </div>     
+            
+        </section>
+        <!--todolist end-->
+    </div>
+    
+    
+    
+    
+    
+    <div class="col-md-4">
+        <!--notification start-->
+        <section class="panel">
+            <header class="panel-heading">
+             <i class="fa fa-money"></i> Club Utilisation Today <span class="tools pull-right">
+            <!-- <a href="javascript:;" class="fa fa-chevron-down"></a>
+            <a href="javascript:;" class="fa fa-cog"></a>
+            <a href="javascript:;" class="fa fa-times"></a> -->
+            </span>
+            </header>
+            <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped tablesorter">
+                    
+                    <thead>
+                      <tr>
+                        <!-- <th>Id<i class="fa fa-sort"></i></th> -->
+                        <!-- <th>Name <i class="fa fa-sort"></i></th> -->
+                        <th>Club Name&nbsp;</th>
+                        <th>Number of Visitors&nbsp;</th>
+                        <!-- <th>Datetime<i class="fa fa-sort"></i></th>-->          
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {%for r in clubutil %}
+                        <td align="left">{{ r.club}}</td>
+                        <td align="left">{{ r.visitor}}</td>                    
+                        </tr>
+                        {%endfor%} 
+                        </tr>               
+                    </tbody>
+
+
+                  </table>
+                </div>
+        </section>
+        <!--notification end-->
+    </div>
+    <div class="col-md-4">
+        <!--todolist start-->
+        <section class="panel">
+            <header class="panel-heading">
+              <i class="fa fa-money"></i> Renewal Done 
+              <p style="font-size:10px">(Renewal done in last 5 Days)</p>
+            <!-- <a href="javascript:;" class="fa fa-chevron-down"></a>
+            <a href="javascript:;" class="fa fa-cog"></a>
+            <a href="javascript:;" class="fa fa-times"></a> -->
+            
+            </header>
+            
+            <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped tablesorter">
+                    <thead>
+                      <tr>
+                        <th>Staff Id&nbsp;</th>
+                        <th>Name&nbsp;</th>
+                        <th>Date&nbsp;</th>
+                        <!-- <th>Datetime<i class="fa fa-sort"></i></th>-->          
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {%for r in renewals %}
+                        <td align="left">{{ r.member.member_uid}}</td>
+                        <td align="left">{{ r.member}}</td>                    
+                        <td align="left">{{ r.datetime|date:"Y-m-d"}}</td>                    
+                        <!-- <td align="right">{{ r.Name}}</td>                     -->
+                        </tr>
+                        {%endfor%}                     
+                    </tbody>
+                  </table>
+                </div>    
+            
+        </section>
+        <!--todolist end-->
+    </div>
+    </div>
+    
+    </section>
+    </section>
+
+    {%endblock content%}

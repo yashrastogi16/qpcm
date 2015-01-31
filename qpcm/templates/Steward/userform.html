@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>E-Club Membership Management System</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="{{STATIC_URL}}css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{STATIC_URL}}font-awesome/css/font-awesome.min.css">
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">E-Club Membership Management System</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <!-- <li><a href="/index/"> Dashboard</a></li> -->
+            <li><a href="/members/"> Members</a></li>
+      <li class="active"><a href="/membershipform/">Add Membership</a></li>
+            <!-- <li><a href="/reports/"> Reporting</a></li> -->
+            <!--<li><a href="/users/"> Users</a></li>
+      <li><a href="/userform/">Add User</a></li>
+      <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file"></i> Forms <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                
+                
+               <li><a href="#">Third Item</a></li>
+                <li><a href="#">Last Item</a></li>     
+              </ul>
+            </li>-->
+            <li><a href="/settings/"> Settings</a></li>
+            <li><a href="/logout/">Logout</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+      <div id="page-wrapper">
+        <div class="row">
+          <div class="col-lg-1">
+		  </div>
+          <div class="col-lg-4">
+            
+            <div class="bs-example">
+              
+                  <form action="{{url}}" method="post">
+                  {%csrf_token%}
+				  <table>
+				  <tbody>
+					<tr>
+						<td>Name</td>
+						<td>:</td>
+						<td>{{form.name}}</td>
+					</tr>
+					<tr>
+						<td>User ID</td>
+						<td>:</td>
+						<td>{{form.userid}}</td>
+					</tr>
+					<tr>
+						<td>Password</td>
+						<td>:</td>
+						<td><input type="password"></td>
+					</tr>
+
+          <tr>
+            <td>Email</td>
+            <td>:</td>
+            <td>{{form.emailid}}</td>
+          </tr>
+					<tr>
+						<td>Residence Location</td>
+						<td>:</td>
+						<td>{{form.residencelocation}}</td>
+					</tr>
+          <tr>
+            <td>Clubs Allowed</td>
+            <td>:</td>
+            <td>{{form.clubsallowed}}</td>
+          </tr>
+					<tr>
+						<td>Status</td>
+						<td>:</td>
+						<td>{{form.status}}</td>
+					</tr>
+					<tr>
+						<td>Role</td>
+						<td>:</td>
+						<td>{{form.role}}</td>
+					</tr>
+				  </tbody>
+				  </table></br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit"/>
+					</form>
+            </div>
+         
+        </div><!-- /.row -->
+        </div><!-- /.row -->
+    </div><!-- /#wrapper -->
+    <!-- JavaScript -->
+    <script src="{{STATIC_URL}}js/jquery-1.10.2.js"></script>
+    <script src="{{STATIC_URL}}js/bootstrap.js"></script>
+    <script src="{{STATIC_URL}}js/rc.js"></script>
+    
+  </body>
+</html>

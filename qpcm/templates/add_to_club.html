@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.html">
+    <title>E-Club Membership Management System  </title>
+    <!--Core CSS -->
+    <link href="{{STATIC_URL}}assets/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}assets/jvector-map/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/clndr.css" rel="stylesheet">
+    <!--clock css-->
+    <link href="{{STATIC_URL}}assets/css3clock/css/style.css" rel="stylesheet">
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="..static/assets/morris-chart/morris.css">
+    <link href="{{STATIC_URL}}bs3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/style-responsive.css" rel="stylesheet"/>
+    <script type="text/javascript" 
+    src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/jquery.datetimepicker.css"/>
+     <link href="{{STATIC_URL}}css/sweet-alert.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/sweet-alert.scss" rel="stylesheet">
+
+</head>
+<script>
+        var myCalendar;
+        function doOnLoad() {
+            // myCalendar = new dhtmlXCalendarObject(["id_date_of_expiry","id_date_of_joining",'id_dob']);
+        }
+</script>
+
+<script type="text/javascript">
+  /*<![CDATA[*/
+  jQuery(function() {
+      var form = jQuery("#cform");
+      s = $('#id_status').val();
+      form.submit(function(e) {
+         $('#sbutton').click(function() {
+        $('#spinner').show();
+
+    });
+          jQuery("#ajaxwrapper").load(
+              form.attr('action') + ' #ajaxwrapper',
+              form.serializeArray(),
+              function(responseText, responseStatus) {
+                  
+                    window.close();window.opener.location.reload(true);
+              }
+          );
+          e.preventDefault(); 
+      });
+  });
+  /*]]>*/
+  </script>
+
+  <script type="text/javascript">
+$(document).ready(function(){
+    $("#spinner").bind("ajaxSend", function() {
+        $(this).show();
+    }).bind("ajaxStop", function() {
+        $(this).hide();
+    }).bind("ajaxError", function() {
+        $(this).hide();
+    });
+ 
+     });
+</script>
+
+
+<body onLoad="doOnLoad();">
+    <div id="ajaxwrapper">
+	<form name="cancel" action="/addclubs/" method="post"  style="margin: 10% 23%;" id="cform">
+	{%csrf_token%}
+  <h1 style="argin-left: 77px;color: #14AAC7;"> Allow Access to</h1>
+  {%if mobj.organization.name != 'QP'%}<div style="margin-left: -136px;">
+		<span>From Date: </span><input type="text" name="fromdate" id="calendar" placeholder="From Date.." value="{{fromdate}}" required>&nbsp;
+		<span>To Date: </span><input type="text" name="todate" id="calendar2" placeholder="To Date.." value="{{todate}}" required><br/>
+    </div>
+    {%endif%}
+    <div id="clublist" style="padding: 20px 0;">
+
+        <table class="table table-striped">
+        <tr><td>Clubs</td><td>:</td><td>{{sform.clubsallowed}}&nbsp;&nbsp;<span id="Err13"></span></td></tr>
+        <tr style="display:none;"><td>Member</td><td>:</td><td>{{sform.member}}&nbsp;&nbsp;<span id="Err13"></span></td></tr>
+        <tr style="display:none;"><td>Doneby</td><td>:</td><td>{{sform.doneby}}&nbsp;&nbsp;<span id="Err13"></span></td></tr>
+        <tr style="display:none;"><td>Club</td><td>:</td><td>{{sform.club}}&nbsp;&nbsp;<span id="Err13"></span></td></tr>
+        <tr style="display:none;"><td>Status</td><td>:</td><td>{{sform.status}}&nbsp;&nbsp;<span id="Err13"></span></td></tr>
+        </table>
+        </div>
+        <div id="spinner" class="spinner" style="display:none;">
+                <img id="img-spinner" src="{{STATIC_URL}}images/spinner_2.gif" alt="Loading"/>
+            </div>
+        <div id="reason">
+        {%if action != 'app'%}{%if reas%}<textarea name="reason" id="reason1" placeholder="Enter the reason" style="width: 318px; height: 63px;" required>{{reas}}</textarea><br/>
+        {%else%}<textarea name="reason" id="reason" placeholder="Enter the reason" style="width: 318px; height: 63px;" required></textarea><br/>{%endif%}{%endif%}
+        </div>
+        <input type="hidden" value="{{mid}}" name="mid"/>
+        <input type="hidden" value="{{user}}" name="user"/>
+
+    <input type="submit" value="Confirm"  name="submit" id="submit" style="margin-top: 22px;
+padding: 11px;
+background: #1fb5ad;
+border: #1fb5ad;
+border-radius: 9px 9px 9px;
+color: white;
+cursor: pointer">
+
+<input type="button" value="Cancel" style="margin-top: -35px;
+margin-left: 122px;
+padding: 11px;
+background: #C58482;
+border: #1fb5ad;
+border-radius: 9px 9px 9px;
+color: white;
+cursor: pointer;" onclick="window.close()">
+	</form>
+    </div>
+
+
+<script src="../static/js/lib/jquery.js"></script>
+<script src="../static/js/lib/jquery-1.8.3.min.js"></script>
+<script src="../static/js/jquery.datetimepicker.js"></script>
+<script src="../static/assets/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="../static/js/accordion-menu/jquery.dcjqaccordion.2.7.js"></script>
+<script src="../static/js/scrollTo/jquery.scrollTo.min.js"></script>
+<script src="../static/js/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script src="../static/assets/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+<script src="../static/assets/skycons/skycons.js"></script>
+<script src="../static/assets/jquery.scrollTo/jquery.scrollTo.js"></script>
+
+<script src="../static/assets/sparkline/jquery.sparkline.js"></script>
+<!--Morris Chart-->
+<script src="../static/assets/morris-chart/morris.js"></script>
+
+<!--Core js-->
+
+<script type="text/javascript" src="../static/assets/jquery-multi-select/js/jquery.quicksearch.js"></script>
+
+<script src="../static/assets/jquery-tags-input/jquery.tagsinput.js"></script>
+<script src="{{STATIC_URL}}js/sweet-alert.min.js" ></script>
+
+
+  <script type="text/javascript">
+  function Reject(id)
+{
+    var input = document.getElementById('reason1'),
+    reason = input.value;
+
+    var date1 = document.getElementById('calendar'),
+    f_date = date1.value;
+
+    var date2 = document.getElementById('calendar2'),
+    t_date = date2.value;
+
+    // var date1 = document.getElementById('sus_date1'),
+    // f_date = date1.value;
+
+    // var date2 = document.getElementById('sus_date2'),
+    // t_date = date2.value;
+
+     if((f_date == "") || (t_date == ""))
+    {
+        alert('Please Enter Dates!');
+        return False;
+    }
+  
+  var url ='/rejection?mid=' +id+'&app'+'&d1='+f_date+'&d2='+t_date;
+    // window.location.href = url
+
+  alert(url);
+
+
+  
+} 
+
+</script>
+
+<script>
+$(function(){
+
+// $('#id_clubsallowed_0').prop("disabled",true);
+
+ $('#calendar').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d',
+    minDate: 0,        
+                 });
+
+ $('#calendar2').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d',
+    minDate: 0,       
+                 });
+});
+</script>
+
+<script>
+// function validate(form) {
+
+//     // validation code here ...
+
+
+//     if(!valid) {
+//         alert('Please correct the errors in the form!');
+//         return false;
+//     }
+//     else {
+//         return confirm('Do you really want to continue?');
+//     }
+// }
+// </script>
+<!-- <form onsubmit="return validate(this);"> -->
+</body>
+</html>

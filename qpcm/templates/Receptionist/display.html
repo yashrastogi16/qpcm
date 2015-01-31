@@ -1,0 +1,94 @@
+{% extends 'Receptionist/recep_base.html' %}
+
+ {% block content %}
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper"><br/><br/><br/>
+  {%if not hide%}
+  <div style="width:25%;float:left;"><div id = "refresh2" ><div id="er2"><img alt=""  src="{{IMAGE_URL}}{{photo}}" height="100px" width="100px" style="margin-left: 100px;"></div></div></div>
+        <div style="float:left;"><div id = "refresh1" ><div id="er1">{%endif%}
+         <table>
+          <tbody>
+    {%if not hide%}
+          <tr>
+          <td></td><td> <h4>Name</h4></td><td><h4 style="padding:2px;"> : </h4></td><td><h4>{{uname}}</h4></td>
+          </tr>
+    {%endif%}
+    {%if not hide%}
+          <tr><tr>
+          <td></td><td> <h4>Staff Id</h4></td><td><h4 style="padding:2px;"> : </h4></td><td><h4>{{uid}}</h4></td>
+          </tr>
+    {%endif%}
+    
+          {%if not hide%}
+          <tr>
+          <td></td><td><h4>Type</h4></td><td> <h4 style="padding:2px;"> : </h4></td><td> <h4>{{type}}</h4></td>
+                  </tr>
+   {%endif%}   
+   {%if not hide%}   
+           {%if main%}
+             <tr>
+            <td></td><td> <h4>No of Dependents</h4></td><td><h4 style="padding:2px;"> : </h4></td><td><h4>{{dependents}}</h4></tr>{%endif%}{%endif%}
+   {%if not hide%}
+            {%if fam%}
+             <tr>
+            <td></td><td> <h4>Main Staff Id</h4></td><td><h4 style="padding:2px;"> : </h4></td><td><h4>{{main_id}}</h4></tr>{%endif%}{%endif%}
+            {%if not hide%}
+            {%if not org%}
+             <tr>
+            <td></td><td> <h4>Date of Expiry</h4></td><td><h4 style="padding:2px;"> : </h4></td><td><h4>{{expirydate}}</h4></tr>{%endif%}
+            {%endif%}
+            
+            </tbody>
+            </table>
+    </div></div>
+    {%if not hide%}
+    
+    {%if status != 'Active'%}
+  <div id = "refresh"> <div id="er"><br\><h1 align="center"><div id="status" id="blink" class="blink" style="color:red">Status:{{status}}</div></h1><br/></div>
+    </div>
+ {%endif%}
+ {%if status == 'Active'%}
+ <div id = "refresh"> <div id="er"><br\><h1 align="center"><div id="status" id="blink" class="blink" style="color:green">Status:{{status}}</div></h1><br/></div>
+    </div>
+ {%endif%}
+ {%endif%}
+ </div>
+    </section>
+    </section>
+    <!--main content end-->
+<!--right sidebar start-->
+<div class="right-sidebar">
+<div class="search-row">
+    <input type="text" placeholder="Search" class="form-control">
+</div>
+
+</div>
+
+<script type="text/javascript">
+        setInterval("my_function();",1200); 
+        function my_function(){
+            
+          $('#refresh').load(location.href="/display/" + ' #er');
+          $('#refresh1').load(location.href="/display/" + ' #er1');
+          $('#refresh2').load(location.href="/display/" + ' #er2');
+          $('#refresh2').load(location.href="/display/" + ' #er2');
+          //$('.blink').blink(); 
+          $('#blink').blink({delay:1});
+          var color = "#" + Math.random().toString(16).slice(2, 8);
+          var div = document.getElementById("status");
+          document.getElementById('status').style.color = '#f1f2f7';
+        
+        }
+        
+    </script>
+
+
+
+<script>
+$(function(e){
+		$('#blink').blink();
+		});
+</script>
+<!--script for this page-->
+ {% endblock content %}

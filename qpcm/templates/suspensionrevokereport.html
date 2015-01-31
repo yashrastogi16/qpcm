@@ -1,0 +1,373 @@
+{% extends 'base.html' %}
+  {% block content %}
+<script>
+        var myCalendar;
+        function doOnLoad() {
+            // myCalendar = new dhtmlXCalendarObject(["calendar","calendar2"]);
+        }
+</script>
+
+
+<script>
+    
+    
+    function generate() {
+		var data = [], fontSize = 9, height =12, doc;
+		doc = new jsPDF('l', 'pt', 'letter', true);
+		doc.setFont("times", "normal");
+		doc.text(260, 80, "Suspension Revoke Report");
+		var frmdate = document.getElementById('frmdate');
+		var fromdate =frmdate.value ;
+		var tdate = document.getElementById('tdate');
+		var todate =tdate.value ;
+		var club_q = document.getElementById('club_q');
+		var clubq =club_q.value ;
+		
+		var canvas = document.getElementById('myCanvas');
+          var imgData = canvas.toDataURL("image/jpg");
+		doc.addImage(imgData, 'JPG', 280, -30, 200, 206);
+		doc.setFontSize(fontSize);
+		doc.text(210, 65, "(Input Data: From Date = "+fromdate+", To Date = "+todate+" And Club = "+clubq+")");
+        data = doc.tableToJson('members');
+        height = doc.drawTable(data, {
+            xstart : 15,
+            ystart : 5,
+            tablestart :90,
+            marginleft : 50,
+        });
+        doc.addPage();
+        doc.save("Suspension Revoke Report.pdf");
+    };
+</script>
+
+
+
+<canvas id="myCanvas" width="600" height="600" style="display:none;"></canvas>
+<input type="hidden" value="{{club_q}}" id="club_q1"/>
+				<script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
+
+      imageObj.onload = function() {
+        context.drawImage(imageObj, 99, 90);
+      };
+	  //var imgname = document.getElementById('club_q1');
+	  
+	  imagename = "QP_logo_latest";
+    imageObj.src = '../static/images/'+imagename+'.jpg';
+    </script>
+
+    <section id="main-content">
+        <section class="wrapper">
+        <!-- page start-->
+
+        
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                       Suspension Revoke Report
+                          
+                         
+                    </header>
+                    <div class="panel-body" class="col-md-12">
+                        <form  action="{{url}}"  id="form1" method="post" onsubmit="return executiveValidate()">
+                        {% csrf_token %}
+						<div class="col-md-4 " style="margin-top:1%">
+                             <div class="form-group" >
+                                <!--<div class="col-md-4 col-xs-12">
+                                <label class="control-label"><h4>From Date</h4></label>
+                                </div> -->
+                                <div class="col-md-9 col-xs-12">
+								<span id="fromdate_Err" style="color:red;"></span>
+								<label class="control-label" id="control-label1"><p>From Date: </p></label>
+                                    <input   size="10" type="text" name="fromdate" id="calendar"/>
+                                    <!-- <span class="help-block">Select date</span> -->
+                            </div>
+                            </div>    
+                        </div>
+                      <div class="col-md-4" style="margin-top:1%">
+                           <div class="form-group">
+                            <!-- <div class="col-md-4 col-xs-12">
+                                <label class="control-label"><h4>To Date</h4></label>
+                                </div> -->
+                                <div class="col-md-8 col-xs-12">
+								<span id="todate_Err" style="color:red;"></span>
+								<label class="control-label" id="control-label2"><p>To Date: </p></label>
+                                    <input   size="10" type="text" name="todate" id="calendar2"/>
+                                    <!-- <span class="help-block">Select date</span> -->
+                                </div>
+                            </div>   
+                        </div>
+					<div class="col-lg-4 form-group" style="margin-top:1%">
+                              <label class="control-label"><p>Clubs : </p></label>
+                                   <select form="form1" name="club">
+                                          {%for i in userclubs %}
+											<option value="{{i}}">{{i}}</option>
+                                         {%endfor%}
+                                        </select> 
+                                    <span class="help-block"></span>
+                                
+                            </div>   
+				<div style="margin-left:30%;margin-bottom:1%">
+				{%if not msssg%}
+				<span id="submit_Err" style="color:red;"></span>
+				{%endif%}
+				<h5><font color="red">{{msssg}}</font></h5>
+				
+				</div>     			
+               <div class="col-lg-4 text-center" style="margin-left:40%">
+            
+             
+                <button type="submit" class="btn btn-primary" style="margin-left: -120%;">Submit</button>
+              
+                      
+          </div>
+                        </form>
+                    </div>
+					
+					
+					
+					
+					   <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="new" class="tab-pane active"><br><br>
+                              <div class="row">
+          <div class="col-lg-12">                  
+            <div class="table-responsive">
+            {%if report_list%}<button type="button" onclick="Export('excel')">Export to Excel</button>
+            <button onclick="generate()">Export to pdf</button>
+			<button onclick="print()">Print</button>
+            <input type="hidden" value="{{frmdate}}" id="frmdate"/>
+            <input type="hidden" value="{{tdate}}" id="tdate"/>
+            <input type="hidden" value="{{club_q}}" id="club_q"/>
+			<h5><font color="green">(Input Data: From Date={{frmdate}} And To Date={{tdate}} Club={{club_q}})</font></h5>
+			{%endif%}
+			
+		<div id="print" style="display:none;">
+			    <img src="../static/images/QP_logo_latest.jpg" id="imgid" alt ="" style="margin-left:39%;margin-top:-15%;"height="92" width="162"></img>
+				<h5 style="margin-left:10%"><font color="green">(Input Data: From Date={{frmdate}} , To Date={{tdate}} And Club={{club_q}})</font></h5>
+				<h3 style="margin-left:30%;">Suspension Revoke Report</h3>
+			<table class="table table-bordered table-striped" id="members">
+                <thead>
+                  <tr>
+                    <th>Staff Id<i class="fa fa-sort"></i></th>
+                    <th>Name<i class="fa fa-sort"></i></th>
+                    <th>Date Of Revoke Done<i class="fa fa-sort"></i></th> 
+                    <th>Reason<i class="fa fa-sort"></i></th>                   
+                    <th>Clubs Allowed<i class="fa fa-sort"></i></th>                   
+                    <th>Done By<i class="fa fa-sort"></i></th>                   
+                                        
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                    {%for r in report_list %}
+					<tr>
+                    <td align="left">{{ r.uid}}</td> 
+                    <td align="left">{{ r.name}}</td>                
+                    <td align="left">{{ r.datetime}}</td> 
+                    <td align="left">{{ r.reason}}</td> 
+                    <td align="left">{{ r.clubs}}</td> 
+                    <td align="left">{{ r.doneby}}</td> 
+					
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+              </table>
+		</div>	  
+			
+			
+              <table class="table table-bordered table-hover table-striped tablesorter" id="active-members">
+                <thead>
+                  <tr>
+                    <th>Staff Id</th>
+                    <th>Name</th>
+                    <th>Date Of Revoke Done</th> 
+                    <th>Reason</th>                   
+                    <th>Clubs Allowed</th>                   
+                    <th>Done By</th>                   
+                                        
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                    {%for r in report_list %}
+					<tr>
+                    <td align="left">{{ r.uid}}</td> 
+                    <td align="left">{{ r.name}}</td>                
+                    <td align="left">{{ r.datetime}}</td> 
+                    <td align="left">{{ r.reason}}</td> 
+                    <td align="left">{{ r.clubs}}</td> 
+                    <td align="left">{{ r.doneby}}</td> 
+					
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+              </table>
+              <h1><font color="red">{{msg}}</font></h1>
+            </div>                  
+          </div>
+        </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                </section>
+                
+            </div>
+        </div>
+        <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+<!--right sidebar start-->
+
+<!--right sidebar end-->
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+
+
+<!--script for this page-->
+<!--Core js-->
+
+<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+<script src="../static/js/jquery.datetimepicker.js"></script>
+<script src="{{STATIC_URL}}js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+
+<script>
+function print()
+{
+  //var divToPrint=document.getElementById('print');
+  $("#print").show();
+  jQuery.print('#print');
+  $("#print").hide();
+}
+</script>
+<script>
+$(function(){
+
+ $('#calendar').datetimepicker({
+		maxDate: new Date(),
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+
+ $('#calendar2').datetimepicker({
+		maxDate: new Date(),
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+});
+</script>
+
+<script>
+
+function popitup(url) {
+    newwindow=window.open(url,'{{title}}','height=500,width=700');
+    if (window.focus) {newwindow.focus()}
+    return false;
+}
+function executiveValidate()
+{
+ var a = $("#calendar").val();
+ var b = $("#calendar2").val();
+ var c = $("#member").val();
+ 
+  
+var is_error=0; 
+
+if(a == "")
+	 {
+	   errmsg = "Please Select From Date";
+	   is_error = 1;  
+	   //$("#fromdate_Err").html(errmsg);
+	   $("#control-label1").css("color","red");
+		$("#calendar").css("border", "solid red 1px");
+	 }
+
+if(b == "")
+	 {
+	  errmsg = "Please Select To Date";
+	  is_error = 1;  
+	   //$("#todate_Err").html(errmsg);
+	   $("#control-label2").css("color","red");
+		$("#calendar2").css("border", "solid red 1px");
+	 }
+
+
+if(is_error==1)
+    {
+		errmsg = "Please Provide The Above Data.";
+	    
+	  $("#submit_Err").html(errmsg);
+      return false;
+    }
+else
+    {
+     return true;
+    }
+}		
+
+</script>
+
+ <script>
+           $(function() {
+        
+              $("#active-members").dataTable({
+        "lengthMenu": [[3,5,7,10, 25, 50, -1], [3,5,7,10, 25, 50, "All"]]
+    });
+        });
+       </script>
+<script>
+$(function(){
+    $('#search_members').keyup(function(){
+
+$.ajax({
+
+    type: 'POST',
+    url: '/search/',//this is the default though, you don't actually need to always mention it
+    data: {
+        'search_text' : $('#search_members').val(),
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+
+    },
+
+
+    success: searchSuccess,
+    dataType: 'html'
+    
+});
+});
+});
+
+function searchSuccess(data,textStatus,jqXHR)
+{
+    $('#search-results').html(data);
+}
+
+function view(id)
+{
+   window.location.href="/common/?mid="+id;
+}
+
+function Export(typ)
+{
+
+    var input = document.getElementById('frmdate'),
+    fdate = input.value;
+    var date1 = document.getElementById('tdate'),
+    tdate = date1.value;
+	var club_q = document.getElementById('club_q'),
+		clubq = club_q.value;
+
+    var url = '/suspensionrevokereport/?d1='+fdate+'&d2='+tdate+'&type='+typ+'&club='+clubq;
+    // alert(url);
+
+    window.location.href=url;
+}
+
+</script>
+{%endblock content%}

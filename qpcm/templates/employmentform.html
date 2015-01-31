@@ -1,0 +1,27 @@
+
+<html>
+<head>
+<link href="../static/bs3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<br/>
+<h2 align = "center" style="color:lightseagreen;"> Employment Form </h2> <br/><br/>
+<div class="col-lg-6"> 
+                      
+  <form method="post"> <table class="table table-striped">
+  {% csrf_token %}
+  <tr>
+		<td>Work Location</td><td>:</td><td>{{form.worklocation}}</td></tr>
+		<td>Company Name</td><td>:</td><td>{{form.companyname}}</td></tr>
+		<tr><td>Office Phone No</td><td>:</td><td>{{form.officephone}}</td></tr>
+		<tr><td>Position</td><td>:</td><td>{{form.position}}</td></tr>
+		<tr><td>Staff ID</td><td>:</td><td>{{form.staffid}}</td></tr>
+		<tr><td>Personal Level</td><td>:</td><td>{{form.personallevel}}</td></tr>            
+		<tr><td>Status</td><td>:</td><td>{{form.status}}</td></tr>            
+		<tr><td>Department</td><td>:</td><td>{{form.department}}</td></tr>
+		<tr><td><td><td><button type="submit" class="btn btn-primary">Submit</button> </td></tr></table>
+		<input type="hidden" name="mid" value="{{mid}}" />
+	</form>
+			  
+</div>
+
+</html>

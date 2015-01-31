@@ -1,0 +1,407 @@
+{% extends 'base.html' %}
+  {% block content %}
+<script>
+
+        var myCalendar;
+        function doOnLoad() {
+            // myCalendar = new dhtmlXCalendarObject(["calendar","calendar2","calendar3"]);
+        }
+        /*$(function() {
+  $( "#calendar" ).datepicker({  maxDate: new Date() });
+ });*/
+</script>
+
+<script>
+    function generate() {
+    var data = [], fontSize =10, height =120, doc;
+    doc = new jsPDF('l', 'pt', 'letter', false);
+    doc.setFont("times", "normal");
+    
+	var ftr=''
+	
+    var input = document.getElementById('filter1'),
+        filter = input.value;
+    if (filter=='hourly'){
+			ftr='Hourly'
+	}
+	if (filter=='daily'){
+			ftr='Daily'
+	}
+	if (filter=='monthly'){
+			ftr='Monthly'
+	}
+	if (filter=='yearly'){
+			ftr='Yearly'
+	}
+	if (filter=='weekly'){
+			ftr='Weekly'
+	}
+		doc.text(270, 75, ftr+" Club Utilization Report");
+		var canvas = document.getElementById('myCanvas');
+        var imgData = canvas.toDataURL("image/jpg");
+		doc.addImage(imgData, 'JPG', 298, -30, 200, 206);
+		doc.setFontSize(fontSize);
+        data = doc.tableToJson('members');
+        height = doc.drawTable(data, {
+            xstart :30,
+            ystart :10,
+            tablestart :90,
+            marginleft :50,
+        });
+        
+        doc.save(ftr +" Club Utilization Report.pdf");
+        doc.addPage();
+    };
+    
+        </script>     
+<canvas id="myCanvas" width="600" height="600" style="display:none;"></canvas>
+<input type="hidden" value="{{club_q}}" id="club_q1"/>
+				<script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
+
+      imageObj.onload = function() {
+        context.drawImage(imageObj, 99, 90);
+      };
+	  var imgname = document.getElementById('club_q1');
+	  
+	  imagename = imgname.value;
+      imageObj.src = '../static/images/'+imagename+'.jpg';
+    </script>
+
+<!--sidebar end-->
+    <!--main content start-->
+     <section id="main-content">
+        <section class="wrapper">
+        <!-- page start-->
+
+        
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                       Clubs Utilization 
+
+                        
+                    </header>
+                    <div class="panel-body" class="col-md-12">
+                        <form id="form1" action="/reports/" method="post" onsubmit="return executiveValidate()">
+						{% csrf_token %}
+						 
+						<div class="row">
+                           <div class="col-lg-2 form-group" style="margin-top:1%">
+                            
+								<label class="control-label"><h5>Filter By : </h5></label>
+                                     <select form="form1" name="filter" id="filter" selected="selected">
+                                          
+											<option value="hourly">Hourly</option>
+											<option value="daily">Daily</option>
+											<option value="weekly">Weekly</option>
+											<option value="monthly">Monthly</option>
+											<option value="yearly">Yearly</option>
+                                         
+                                        </select> 
+                                    <span class="help-block"></span>
+								
+                                </div>
+                             
+                        
+                            <div class="col-lg-3 form-group" style="margin-top: 1%;">
+							<div>
+							<span id="datef_Err" style="color:red;"></span>
+							<span id="month_Err" style="color:red;"></span>
+							<span id="yearf_Err" style="color:red;"></span>
+							<span id="timefrom_Err" style="color:red;"></span>
+							
+							
+							
+							</div>
+                                <!-- <div class="col-md-4 col-xs-12">
+                                <label class="control-label"><h4>From Date</h4></label>
+                                </div> -->
+								<label class="control-label" id="label_monthw" style="display:none"><h5>Select Month : </h5></label><select name="month" id="month" style="display:none;">
+								<option value="">----</option>
+								<option value="1">Jan</option>
+								<option value="2">Feb</option>
+								<option value="3">Mar</option>
+								<option value="4">Apr</option>
+								<option value="5">May</option>
+								<option value="6">Jun</option>
+								<option value="7">Jul</option>
+								<option value="8">Aug</option>
+								<option value="9">Sep</option>
+								<option value="10">Oct</option>
+								<option value="11">Nov</option>
+								<option value="12">Dec</option>
+								</select>
+								<label class="control-label" id="label_monthm" style="display:none"><h5>Select Month : </h5></label><select name="month1" id="month1" style="display:none;">
+								<option value="all">All</option>
+								<option value="1">Jan</option>
+								<option value="2">Feb</option>
+								<option value="3">Mar</option>
+								<option value="4">Apr</option>
+								<option value="5">May</option>
+								<option value="6">Jun</option>
+								<option value="7">Jul</option>
+								<option value="8">Aug</option>
+								<option value="9">Sep</option>
+								<option value="10">Oct</option>
+								<option value="11">Nov</option>
+								<option value="12">Dec</option>
+								</select>
+								<label class="control-label" id="label_timefrom" ><h5>Time From : </h5></label><input size="8" id="timefrom" name="timefrom" type="text" />
+								
+								<label class="control-label" id="label_yearyf" style="display:none"><h5> Year From : </h5></label><select name="yearpicker2" id="yearpicker2" style="display:none;">
+								<option value="">------</option>
+								</select> 
+                                    <label class="control-label" id="label_datefrom" style="display:none"><h5>Date From : </h5></label><input   size="7" type="text" name="fromdate" id="calendar"  style="display:none;"/>
+                                    <!-- <span class="help-block">Select date</span> -->
+                            
+                                
+                        </div>
+                           <div class="col-lg-2 form-group" style="margin-top:1%;">
+						   <div>
+						   
+						   <span id="datet_Err" style="color:red;"></span>
+						   <span id="yeart_Err" style="color:red;"></span>
+						   <span id="yearw_Err" style="color:red;"></span>
+						   <span id="year_Err" style="color:red;"></span>
+						   <span id="timeto_Err" style="color:red;"></span>
+						   </div>
+                            <!-- <div class="col-md-4 col-xs-12">
+                                <label class="control-label"><h4>To Date</h4></label>
+                                </div> -->
+                                <label class="control-label" id="label_yearw" style="display:none"><h5>Select Year : </h5></label><select name="yearpicker" id="yearpicker" style="display:none;">
+								<option value="">------</option>
+								</select>
+								<label class="control-label" id="label_yearyt" style="display:none"><h5>Year To: </h5></label><select name="yearpicker3" id="yearpicker3" style="display:none;">
+								<option value="">--------</option>
+								</select>
+                                    <label class="control-label" id="label_dateto" style="display:none"><h5>Date To : </h5></label><input   size="8" type="text" name="todate" id="calendar2"  style="display:none;"  />
+								<label class="control-label" id="label_timeto" ><h5>Time To : </h5></label><input size="7" id="timeto" name="timeto"  type="text" />
+                                    <!-- <span class="help-block">Select date</span> -->
+                                
+
+                        </div>
+						 <div class="col-lg-5 form-group" style="margin-top:1%">
+                              <label class="control-label"><h5>Clubs : </h5></label>
+                                   <select form="form1" name="club">
+                                          {%for i in userclubs %}
+											<option value="{{i}}">{{i}}</option>
+                                         {%endfor%}
+                                        </select> 
+                                    <span class="help-block"></span>
+                                
+                            </div>   
+					</div >
+					<div class="row" style="margin-left: 20px;"> 
+						
+					<div class="col-lg-2 form-group" >
+					
+							<label class="control-label" id="dateh"><h5>Date   :   </h5></label><input size="8" type="text" name="dateh" id="calendar3" />	
+							 </div>
+				<div style="margin-left:25%;margin-bottom:1%">
+				{%if not msssg%}
+				<span id="submit_Err" style="color:red;"></span>
+				{%endif%}
+				<h5><font color="red">{{msssg}}</font></h5>
+				
+				</div>     			
+					
+              <div class="col-md-1 form-group" style="margin-left: 10%;">						
+                <button type="submit" class="btn btn-primary" style="margin-left: 10%;" >Submit</button>
+              </div>
+                      
+		  </div>
+        
+                        </form>
+                              <div class="row">
+          <div class="col-lg-12">                  
+            <div class="table-responsive">
+            {%if trxn_list%}
+            <!--<input type="button" onclick="tableToExcel('active-members')" value="Export to Excel" class="btn btn-primary" />-->
+            
+            <button type="button" onclick="Export('excel')">Export to Excel</button>
+            <input type="hidden" value="{{filter}}" id="filter1"/>
+            <input type="hidden" value="{{datefornew}}" id="calendar33"/>
+            <input type="hidden" value="{{timefrom}}" id="timefrom1"/>
+            <input type="hidden" value="{{timeto}}" id="timeto1"/>
+            <input type="hidden" value="{{club_q}}" id="club1"/>
+            <input type="hidden" value="{{yearf}}" id="yearf"/>
+            <input type="hidden" value="{{yeart}}" id="yeart"/>
+            <input type="hidden" value="{{yearofmonth}}" id="yearofmonth"/>
+            <input type="hidden" value="{{monthm}}" id="monthm"/>
+            <input type="hidden" value="{{monthw}}" id="monthw"/>
+            <input type="hidden" value="{{yearw}}" id="yearw"/>
+            <input type="hidden" value="{{todated}}" id="todated"/>
+            <input type="hidden" value="{{fromdated}}" id="fromdated"/>
+            <button onclick="generate()">
+            Export to pdf
+            </button>
+		<button onclick="print()">Print</button>
+		<div id="print" style="display:none;">
+			    <img src="../static/images/{{club_q}}.jpg" id="imgid" alt ="" style="margin-left:42%;margin-top:-10%;"height="62" width="62"></img>
+				<h3 style="margin-left:36%;">Club Utilization Report</h3>	
+             <table class="table table-bordered table-striped" id="members" >
+                <thead>
+                  <tr>
+                  {%if time%}
+                    <th>Time <i class="fa fa-sort"></i></th>
+                    {%endif%}
+                    {%if daily%}
+                    <th>Date <i class="fa fa-sort"></i></th>
+                    {%endif%}
+                    {%if weekly%}
+                    <th>week <i class="fa fa-sort"></i></th>
+                    {%endif%}
+                    {%if monthly%}
+                    <th>Month<i class="fa fa-sort"></i></th>
+                    {%endif%}
+                    {%if yearly%}
+                    <th>Year<i class="fa fa-sort"></i></th>
+                    {%endif%}
+                    <th>Club<i class="fa fa-sort"></i></th>
+                    <th>Adult-Members<i class="fa fa-sort"></i></th>
+                    <th>Chlid-Members<i class="fa fa-sort"></i></th>
+                    <th>Adult-Guests<i class="fa fa-sort"></i></th>
+                    <th>Chlid-Guests<i class="fa fa-sort"></i></th>
+                    <th>Total<i class="fa fa-sort"></i></th>
+                    <!--<th>Age<i class="fa fa-sort"></i></th>-->                    
+                                       
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                    {%for r in trxn_list %}
+                    <tr>
+                    
+                    <td align="left" rowspan="">{{ r.fdate}}{%if time%}-{{r.tdate}}{%endif%}</td>
+                    
+                    <td align="left">{{ r.club}}</td>                     
+                    <td align="left">{{ r.adult_member}}</td>                    
+                    <td align="left">{{ r.child_member}}</td>                    
+                    <td align="left">{{ r.adult_guest}}</td>                    
+                    <td align="left">{{ r.child_guest}}</td>                    
+                    <td align="left">{{ r.total}}</td>                    
+                    <!-- <td align="left">{{ r.age}}</td>-->  
+                      
+                    </tr>
+                    {%endfor%}
+                                     
+                </tbody>
+              </table>
+	</div>		  
+            <div class="table-responsive">
+            <marquee direction="right" ></marquee>
+            {%if time%}
+            <font color="green"> <h4>Hourly Club-Utilization Report Of Date {{datefor}} From {{fromtime}} To   {{totime}} For Club={{club_q}} </h4></font>
+            {%endif%}
+            {%if daily%}
+            <font color="green"> <h4>Daily Club-Utilization Report For Date From {{fromdate}} To {{todate}} And Club={{club_q}} </h4></font>
+            {%endif%}
+            {%if weekly%}
+            <font color="green"> <h4>Weekly Club-Utilization Report For Month = {{month}} ,Year = {{year}} And Club={{club_q}} </h4></font>
+            {%endif%}
+            {%if monthly%}
+            <font color="green"> <h4>Monthly Club-Utilization Report For Month = {{month}} ,Year = {{year}} And Club={{club_q}} </h4></font>
+            {%endif%}
+            {%if yearly%}
+            <font color="green"> <h4>Yearly Club-Utilization Report From Year-{{yearf}} To Year-{{yeart}} For Club={{club_q}} </h4></font>
+            {%endif%}
+             </div>
+            
+            {%endif%}
+              <table class="table table-bordered table-striped" id="active-members">
+                <thead>
+                  <tr>
+                  {%if time%}
+                    <th>Time </th>
+                    {%endif%}
+                    {%if daily%}
+                    <th>Date </th>
+                    {%endif%}
+                    {%if weekly%}
+                    <th>week </th>
+                    {%endif%}
+                    {%if monthly%}
+                    <th>Month</th>
+                    {%endif%}
+                    {%if yearly%}
+                    <th>Year</th>
+                    {%endif%}
+                    <th>Club</th>
+                    <th>Adult-Members</th>
+                    <th>Chlid-Members</th>
+                    <th>Adult-Guests</th>
+                    <th>Chlid-Guests</th>
+                    <th>Total</th>
+                    <!--<th>Age<i class="fa fa-sort"></i></th>-->                    
+                                       
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                    {%for r in trxn_list %}
+                    <tr>
+                    
+                    <td align="left" rowspan="">{{ r.fdate}}{%if time%}-{{r.tdate}}{%endif%}</td>
+                    
+                    <td align="left">{{ r.club}}</td>                     
+                    <td align="left">{{ r.adult_member}}</td>                    
+                    <td align="left">{{ r.child_member}}</td>                    
+                    <td align="left">{{ r.adult_guest}}</td>                    
+                    <td align="left">{{ r.child_guest}}</td>                    
+                    <td align="left">{{ r.total}}</td>                    
+                    <!-- <td align="left">{{ r.age}}</td>-->  
+                      
+                    </tr>
+                    {%endfor%}
+                                     
+                </tbody>
+              </table>
+              <h1><font color="red">{{msg}}</font></h1>
+            </div>                  
+          </div>
+        </div>
+                        </div>
+                        <div id="about" class="tab-pane">   
+                        
+                        
+                        
+                        </div>
+                        <div id="profile" class="tab-pane">   
+                        
+                        </div>
+                        <div id="contact" class="tab-pane">
+                        
+                        </div>
+                         <div id="Others" class="tab-pane">
+                         
+                         
+                         </div>
+                                 
+            
+        </div>
+        </div>
+        </section>
+    </section>
+    <!--main content end-->
+<!--right sidebar start-->
+
+
+<!--right sidebar end-->
+</section>
+    <!--main content end-->
+<!--right sidebar start-->
+
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+
+
+<!--script for this page-->
+<!--Core js-->
+
+
+
+{%endblock content%}

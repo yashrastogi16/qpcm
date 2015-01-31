@@ -1,0 +1,134 @@
+{% extends 'Steward/steward_base.html' %}
+  {% block content %}
+    <!--main content start-->
+    <section id="main-content" >
+        <section class="wrapper">
+           
+            
+          
+
+            <div class="row">
+           
+
+            <div class="col-lg-12">
+            <!--tab nav start-->
+            <section class="panel">
+                <header class="panel-heading tab-bg-dark-navy-blue ">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home">My Profile</a>
+                        </li>
+                        
+                    </ul>
+                </header>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane active"><br><br>
+                            <div class="tab-pane fade active in" id="profile">
+                  <div class="col-lg-12">
+                  <div class="row">
+                  <div class="col-lg-3 text-center">
+                  <img src="{{STATIC_URL}}img/People.jpg" height="100px" width="100px"><br/><br/><br/><br/><br/>                    
+                    <!--<button type="submit" class="btn btn-primary">Edit Profile</button>-->          
+                  </div>
+                  <div class="col-lg-4 text-left">
+                  
+                  <table class="table table-striped">
+                    
+                    <tr>
+                        <td><strong>Name</strong></td>
+                        <td>:</td>
+                        <td>{{name}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Organization</strong></td>
+                        <td>:</td>
+                        <td>QP</td>
+                    </tr>
+                    <tr>
+                        <td><strong>User ID</strong></td>
+                        <td>:</td>
+                        <td>{{userid}}</td>
+                    </tr>
+                                        
+                    <tr>
+                        <td><strong>Office Phone</strong></td>
+                        <td>:</td>
+                        <td>{{officephone}}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mobile No</strong></td>
+                        <td>:</td>
+                        <td>{{mobileno}}</td>
+                    </tr>
+                  </table>             
+                  </div>
+                  <div class="col-lg-5 text-left">
+                     
+
+                  <table class="table table-striped">                   
+                    <tr>
+                        <td><strong>Role</strong></td>
+                        <td>:</td>
+                        <td>{{role}}</td>
+                    </tr>                   
+                     <tr>
+                        <td style="vertical-align: top;"><strong>Clubs Allowed</strong></td>
+                        <td style="vertical-align: top;">:</td>
+                    <td><table>
+                    <thead>
+                </thead>
+                <tbody>
+                    {%for r in clubsallowed %}
+                    <tr> 
+                    <td align="left">{{r}}</td>
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table>
+                </td>
+                    </tr>           
+                  </table>          
+                  </div>       
+                  </div><br/><br/><br/><br/>    
+                </div>               
+              </div>
+                        </div>
+                        <div id="about" class="tab-pane">
+                        
+                        <div class="row">
+                            <div class="col-lg-3"> 
+                                </div>
+                            <div class="col-lg-6"> 
+                                <br/><br/>
+                                <form action="/settings/" method="post">
+                                {% csrf_token %}
+                                <table class="table table-striped">
+                                    <tr><td>Member ID</td><td><input class="form-control" style="width : 100%"></td> </tr>
+                                </table>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                            </div>
+                            <div class="col-lg-3"> 
+                                </div>
+                        </div>
+                        
+                        </div>
+                        <div id="profile" class="tab-pane"></div>
+                        <div id="contact" class="tab-pane"></div>
+                         <div id="Others" class="tab-pane"></div>
+                    </div>
+                </div>
+            </section>
+ 
+
+            </div>
+
+            </div>
+
+
+        </section>
+    </section>
+    <!--main content end-->
+<!--script for this page-->
+{%endblock content%}

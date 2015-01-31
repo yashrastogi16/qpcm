@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.html">
+    <title>E-Club Membership Management System	</title>
+    <!--Core CSS -->
+    <link href="{{STATIC_URL}}bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}assets/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/bootstrap-reset.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}assets/jvector-map/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/clndr.css" rel="stylesheet">
+    <!--clock css-->
+    <link href="{{STATIC_URL}}assets/css3clock/css/style.css" rel="stylesheet">
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="{{STATIC_URL}}assets/morris-chart/morris.css">
+    <!-- Custom styles for this template -->
+    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/style-responsive.css" rel="stylesheet"/>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="js/ie8/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<section id="container">
+    <!--header start-->
+    <header class="header fixed-top clearfix">
+        <!--logo start-->
+        <div class="brand">
+
+            <a href="/index/" class="logo" style="color:white;">
+           <center>    E-Club </center> 
+            </a>
+          <div class="sidebar-toggle-box">
+                <div class="fa fa-bars"></div>
+            </div>
+        </div>
+        <!--logo end-->
+
+        <!--<div class="nav notify-row" id="top_menu">
+            
+            <ul class="nav top-menu">
+                 settings start
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="fa fa-gears"></i>
+                        <span class="badge bg-success">8</span>
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <li>
+                            <p class="">You have 8 pending tasks</p>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info clearfix">
+                                    <div class="desc pull-left">
+                                        <h5>Target Sell</h5>
+                                        <p>25% , Deadline  12 </p>
+                                    </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="45">
+                            <span class="percent"></span>
+                            </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info clearfix">
+                                    <div class="desc pull-left">
+                                        <h5>Product Delivery</h5>
+                                        <p>45% , Deadline  12 </p>
+                                    </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="78">
+                            <span class="percent"></span>
+                            </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info clearfix">
+                                    <div class="desc pull-left">
+                                        <h5>Payment collection</h5>
+                                        <p>87% , Deadline  12 </p>
+                                    </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="60">
+                            <span class="percent"></span>
+                            </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info clearfix">
+                                    <div class="desc pull-left">
+                                        <h5>Target Sell</h5>
+                                        <p>33% , Deadline  12 </p>
+                                    </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="90">
+                            <span class="percent"></span>
+                            </span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="external">
+                            <a href="#">See All Tasks</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li id="header_inbox_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge bg-important">4</span>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <li>
+                            <p class="red">You have 4 Mails</p>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="{{STATIC_URL}}images/avatar-mini.jpg"></span>
+                                <span class="subject">
+                                <span class="from">Jonathan Smith</span>
+                                <span class="time">Just now</span>
+                                </span>
+                                <span class="message">
+                                    Hello, this is an example msg.
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="{{STATIC_URL}}images/avatar-mini-2.jpg"></span>
+                                <span class="subject">
+                                <span class="from">Jane Doe</span>
+                                <span class="time">2 min ago</span>
+                                </span>
+                                <span class="message">
+                                    Nice admin template
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="{{STATIC_URL}}images/avatar-mini-3.jpg"></span>
+                                <span class="subject">
+                                <span class="from">Tasi sam</span>
+                                <span class="time">2 days ago</span>
+                                </span>
+                                <span class="message">
+                                    This is an example msg.
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="{{STATIC_URL}}images/avatar-mini.jpg"></span>
+                                <span class="subject">
+                                <span class="from">Mr. Perfect</span>
+                                <span class="time">2 hour ago</span>
+                                </span>
+                                <span class="message">
+                                    Hi there, its a test
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">See all messages</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li id="header_notification_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge bg-warning">3</span>
+                    </a>
+                    <ul class="dropdown-menu extended notification">
+                        <li>
+                            <p>Notifications</p>
+                        </li>
+                        <li>
+                            <div class="alert alert-info clearfix">
+                                <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                                <div class="noti-info">
+                                    <a href="#"> Server #1 overloaded.</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="alert alert-danger clearfix">
+                                <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                                <div class="noti-info">
+                                    <a href="#"> Server #2 overloaded.</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="alert alert-success clearfix">
+                                <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                                <div class="noti-info">
+                                    <a href="#"> Server #3 overloaded.</a>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+                 
+            </ul>
+             
+        </div>-->
+        <div class="top-nav clearfix">
+            <!--search & user info start-->
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <input type="text" class="form-control search" placeholder=" Search">
+                </li>
+                <!-- user login dropdown start-->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <img alt="" src="images/avatar1_small.jpg">
+                        <span class="username">{{username}}</span>
+                        {%csrf_token%}
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <li><a href='#' onclick="popitup('/reset_self_pwd')"<i class=" fa fa-suitcase"></i>  Change Password</a></li>
+                        <li><a href="/settings/"><i class="fa fa-cog"></i> Settings</a></li>
+                        <li><a href="/logout/"><i class="fa fa-key"></i> LogOut</a></li>
+                    </ul>
+                </li>
+                <!-- user login dropdown end -->
+                <!-- <li>
+                    <div class="toggle-right-box">
+                        <div class="fa fa-bars"></div>
+                    </div>
+                </li> -->
+            </ul>
+            <!--search & user info end-->
+        </div>
+    </header>
+    <!--header end-->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <!-- <li>
+                    <a class="active" href="/index/">
+                        <i class="fa fa-line-chart"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li> -->
+                <li class="sub-menu">
+                    <a href="/members/">
+                        <i class="fa fa-users"></i>
+                        <span>Members</span>
+                    </a>
+                   
+                </li>
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file"></i> Reports <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/memberslist/">List of members</a></li>
+                    <li><a href="/nearrenewal/">Near Renewal Reports</a></li>
+                    <li><a href="/Childrenage/">Children Age Expiry Reports</a></li>
+
+
+                  </ul>
+                </li>
+                <!-- <li class="sub-menu">
+                    <a href="/reports/">
+                        <i class="fa fa-book"></i>
+                        <span>Reporting</span>
+                    </a>
+                   
+                </li>
+                <li>
+                    <a href="/users/">
+                        <i class="fa fa-user"></i>
+                        <span>Users </span>
+                    </a>
+                </li> -->
+                <!-- <li class="sub-menu">
+                    <a href="form.html">
+                        <i class="fa fa-th"></i>
+                        <span>Forms</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="/membershipform/">membership form</a></li>
+                        <li><a href="#"></a></li>
+                      
+                    </ul>
+                </li> -->
+
+                <li>
+                    <a href="/membershipform/">
+                        <i class="fa fa-user"></i>
+                        <span>Add Member </span>
+                    </a>
+                </li>
+
+                <!-- <li>
+                    <a href="/userform/">
+                        <i class="fa fa-user"></i>
+                        <span>Add User </span>
+                    </a>
+                </li> -->
+                <li class="sub-menu">
+                    <a href="/settings/">
+                        <i class="fa fa-gears"></i>
+                        <span>Settings</span>
+                    </a>
+                   
+                </li>
+                <li>
+                    <a href="/logout/">
+                        <i class="fa fa-sign-out"></i>
+                        <span>Signout </span>
+                    </a>
+                </li>
+              
+               
+               
+             
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+    <!--sidebar end-->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+
+    <!--mini statistics start-->
+    <!-- <div class="row">
+        <div class="col-md-3">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="top-stats-panel">
+                        <div class="gauge-canvas">
+                            <h4 class="widget-h">Total Members</h4>
+                            <canvas width=160 height=100 id="gauge"></canvas>
+                        </div>
+                        <ul class="gauge-meta clearfix">
+                            <li id="gauge-textfield" class="pull-left gauge-value"></li>
+                            <li class="pull-right gauge-title">Safe</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-3">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="top-stats-panel">
+                        <div class="daily-visit">
+                            <h4 class="widget-h">QP</h4>
+                            <div id="daily-visit-chart" style="width:100%; height: 100px; display: block">
+
+                            </div>
+                            <ul class="chart-meta clearfix">
+                                <li class="pull-left visit-chart-value">3233</li>
+                                <li class="pull-right visit-chart-title"><i class="fa fa-arrow-up"></i> 15%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-3">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="top-stats-panel">
+                        <h4 class="widget-h">Non QP</h4>
+                        <div class="sm-pie">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="col-md-3">
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="top-stats-panel">
+                        <h4 class="widget-h">Total Clubs</h4>
+                        <div class="bar-stats">
+                            <ul class="progress-stat-bar clearfix">
+                                <li data-percent="50%"><span class="progress-stat-percent pink"></span></li>
+                                <li data-percent="90%"><span class="progress-stat-percent"></span></li>
+                                <li data-percent="70%"><span class="progress-stat-percent yellow-b"></span></li>
+                            </ul>
+                            <ul class="bar-legend">
+                                <li><span class="bar-legend-pointer pink"></span> demo</li>
+                                <li><span class="bar-legend-pointer green"></span> demo</li>
+                                <li><span class="bar-legend-pointer yellow-b"></span> demo</li>
+                            </ul>
+                            <div class="daily-sales-info">
+                                <span class="sales-count">65 </span> <span class="sales-label">Clubs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div> -->
+    <!--mini statistics end-->
+    
+    <!--mini statistics start-->
+    <!-- <div class="row">
+        <div class="col-md-3">
+            <div class="mini-stat clearfix">
+                <span class="mini-stat-icon orange"><i class="fa fa-gavel"></i></span>
+                <div class="mini-stat-info">
+                    <span>{{count}}</span>
+                   <h4> Total Members</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mini-stat clearfix">
+                <span class="mini-stat-icon tar"><i class="fa fa-tag"></i></span>
+                <div class="mini-stat-info">
+                    <span>{{qp_list}}</span>
+                 <h4>   QP</h4> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mini-stat clearfix">
+                <span class="mini-stat-icon pink"><i class="fa fa-money"></i></span>
+                <div class="mini-stat-info">
+                    <span>{{nonqp_list}}</span>
+                   <h4> Non-QP</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="mini-stat clearfix">
+                <span class="mini-stat-icon green"><i class="fa fa-eye"></i></span>
+                <div class="mini-stat-info">
+                    <span>7</span>
+                <h4>  Total Clubs </h4> 
+                </div>
+            </div>
+        </div>
+    </div>
+    mini statistics end
+
+	
+	<div class="row">
+	  <div class="col-lg-6">
+            <div class="panel panel-success">
+                <div class="row">
+                  <div class="col-xs-12 text-right">
+				    <center>
+                    <p class="announcement-text"> <h3>Approval Pending</h3></p>
+                    <p class="announcement-heading">{{pending_members}}</p>
+                    </center>
+				  </div>
+                </div>              
+            </div>
+          </div>
+	
+	 <div class="col-lg-6">
+            <div class="panel panel-success">
+              
+                <div class="row">
+                  
+                  <div class="col-xs-12 text-right">
+                      <center>
+                    <p class="announcement-text"><h3>New Members</h3></p>
+                    <p class="announcement-heading">{{new_members}}</p>
+                    </center>
+				  </div>
+                </div>
+              
+              
+            </div>
+          </div>
+	</div> -->
+	
+	
+<!-- <div class="row">
+        <div class="col-md-8"> -->
+            <!--earning graph start-->
+            <!-- <section class="panel">
+                <header class="panel-heading">
+                    Earning Graph <span class="tools pull-right">
+            <a href="javascript:;" class="fa fa-chevron-down"></a>
+            <a href="javascript:;" class="fa fa-cog"></a>
+            <a href="javascript:;" class="fa fa-times"></a>
+            </span>
+                </header>
+                <div class="panel-body">
+
+                    <div id="graph-area" class="main-chart">
+                    </div>
+                    <div class="region-stats">
+                      
+                    </div>
+                </div>
+            </section> -->
+            <!--earning graph end-->
+        <!-- </div>
+        <div class="col-md-4">
+           
+            <section class="panel">
+                <div class="panel-body">
+                    <div class="monthly-stats pink">
+                        <div class="clearfix">
+                            <h4 class="pull-left"> January 2014</h4>
+                            Nav tabs 
+                            <div class="btn-group pull-right stat-tab">
+                                <a href="#line-chart" class="btn stat-btn active" data-toggle="tab"><i class="ico-stats"></i></a>
+                                <a href="#bar-chart" class="btn stat-btn" data-toggle="tab"><i class="ico-bars"></i></a>
+                            </div>
+                        </div>
+                         Tab panes
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="line-chart">
+                                <div class="sparkline" data-type="line" data-resize="true" data-height="75" data-width="90%" data-line-width="1" data-min-spot-color="false" data-max-spot-color="false" data-line-color="#ffffff" data-spot-color="#ffffff" data-fill-color="" data-highlight-line-color="#ffffff" data-highlight-spot-color="#e1b8ff" data-spot-radius="3" data-data="[100,200,459,234,600,800,345,987,675,457,765]">
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="bar-chart">
+                                <div class="sparkline" data-type="bar" data-resize="true" data-height="75" data-width="90%" data-bar-color="#fff" data-bar-width="10" data-data="[300,200,500,700,654,987,457,300,876,454,788,300,200,500,700,654,987,457,300,876,454,788]"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="circle-sat">
+                        <ul>
+                            <li class="left-stat-label"><span class="sell-percent">60%</span><span>Direct Sell</span></li>
+                            <li><span class="epie-chart" data-percent="45">
+                        <span class="percent"></span>
+                        </span></li>
+                            <li class="right-stat-label"><span class="sell-percent">40%</span><span>Channel Sell</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+    </div> -->
+   
+    
+    <div class="row">
+	
+	
+	
+	<div class="col-md-4">
+        <!--todolist start-->
+        <section class="panel">
+            <header class="panel-heading">
+               <i class="fa fa-money"></i> Registration To Approve <span class="tools pull-right">
+            <a href="javascript:;" class="fa fa-chevron-down"></a>
+            <a href="javascript:;" class="fa fa-cog"></a>
+            <a href="javascript:;" class="fa fa-times"></a>
+            </span>
+            </header>
+			
+			 <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped tablesorter">
+                    <thead>
+                      <tr>
+                        <th>Name </th>
+                        <th>Access Card No <i class="fa fa-sort"></i></th>
+                        <!-- <th>Datetime<i class="fa fa-sort"></i></th> -->                   
+                        <th>Mobile</th>                 
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {%for r in to_approve %}
+                        <td align="left">{{ r.name}}</td>
+                        <td>{{ r.rfidcardno}}</td>                    
+                        <td align="left">{{ r.mobileno}}</td>                    
+                        <!-- <td align="right">{{ r.Name}}</td>                     -->
+                        </tr>
+                        {%endfor%}                     
+                    </tbody>
+                  </table>
+                </div>     
+            
+        </section>
+        <!--todolist end-->
+    </div>
+	
+	
+	
+	
+	
+    <div class="col-md-4">
+        <!--notification start-->
+        <section class="panel">
+            <header class="panel-heading">
+             <i class="fa fa-money"></i> Club Utilisation Today <span class="tools pull-right">
+            <a href="javascript:;" class="fa fa-chevron-down"></a>
+            <a href="javascript:;" class="fa fa-cog"></a>
+            <a href="javascript:;" class="fa fa-times"></a>
+            </span>
+            </header>
+            <div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped tablesorter">
+                    <!-- <thead>
+                      <tr>
+                        <th>ID <i class="fa fa-sort"></i></th>
+                        <th>Name<i class="fa fa-sort"></i></th>
+                        <th>Date <i class="fa fa-sort"></i></th>
+                        <th>Time <i class="fa fa-sort"></i></th>                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>3326</td>
+                        <td>Mohammed Ali</td>
+                        <td>10/21/2013</td>
+                        <td>3:29 PM</td>                        
+                      </tr>
+                      <tr>
+                        <td>3325</td>
+                        <td>Jubair Ahamed</td>
+                        <td>10/21/2013</td>
+                        <td>3:20 PM</td>                        
+                      </tr>
+                      <tr>
+                        <td>3324</td>
+                        <td>Abdulla Shaikh</td>
+                        <td>10/21/2013</td>
+                        <td>3:03 PM</td>                        
+                      </tr>
+                      <tr>
+                        <td>3323</td>
+                        <td>Dilkash Jahan</td>
+                        <td>10/21/2013</td>
+                        <td>3:00 PM</td>                        
+                      </tr>
+                      <tr>
+                        <td>3322</td>
+                        <td>Nurul Hoda</td>
+                        <td>10/21/2013</td>
+                        <td>2:49 PM</td>                        
+                      </tr>
+                      <tr>
+                        <td>3321</td>
+                        <td>Anuraag Basu</td>
+                        <td>10/21/2013</td>
+                        <td>2:23 PM</td>                        
+                      </tr>
+                      <tr>
+                        <td>3320</td>
+                        <td>Farham Jamshedpuri</td>
+                        <td>10/21/2013</td>
+                        <td>2:15 PM</td>                        
+                      </tr>
+                      <tr>
+                        <td>3319</td>
+                        <td>Kahkasha naaz</td>
+                        <td>10/21/2013</td>
+                        <td>2:13 PM</td>                        
+                      </tr>
+                    </tbody> -->
+
+                    <thead>
+                      <tr>
+                        <!-- <th>Id<i class="fa fa-sort"></i></th> -->
+                        <!-- <th>Name <i class="fa fa-sort"></i></th> -->
+                        <th>Club <i class="fa fa-sort"></i></th>
+                        <!-- <th>Datetime<i class="fa fa-sort"></i></th>-->          
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {%for r in clubs_list %}
+                        <td align="left">{{ r }}</td>
+                       <!--  <td align="left">{{ r.member}}</td>                    
+                        <td  align="left">{{ r.renewaldate|date:"Y-m-d"}}</td>       -->             
+                        <!-- <td align="right">{{ r.Name}}</td>                     -->
+                        </tr>
+                        {%endfor%}                     
+                    </tbody>
+
+
+                  </table>
+                </div>
+        </section>
+        <!--notification end-->
+    </div>
+    <div class="col-md-4">
+        <!--todolist start-->
+        <section class="panel">
+            <header class="panel-heading">
+              <i class="fa fa-money"></i> Renewal Done <span class="tools pull-right">
+            <a href="javascript:;" class="fa fa-chevron-down"></a>
+            <a href="javascript:;" class="fa fa-cog"></a>
+            <a href="javascript:;" class="fa fa-times"></a>
+            </span>
+            </header>
+			
+			<div class="table-responsive">
+                  <table class="table table-bordered table-hover table-striped tablesorter">
+                    <thead>
+                      <tr>
+                        <th>Id<i class="fa fa-sort"></i></th>
+                        <th>Name <i class="fa fa-sort"></i></th>
+                        <th>Date <i class="fa fa-sort"></i></th>
+                        <!-- <th>Datetime<i class="fa fa-sort"></i></th>-->          
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {%for r in renewals %}
+                        <td align="left">{{ r.id}}</td>
+                        <td align="left">{{ r.member}}</td>                    
+                        <td align="left">{{ r.renewaldate|date:"Y-m-d"}}</td>                    
+                        <!-- <td align="right">{{ r.Name}}</td>                     -->
+                        </tr>
+                        {%endfor%}                     
+                    </tbody>
+                  </table>
+                </div>    
+            
+        </section>
+        <!--todolist end-->
+    </div>
+    </div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 
+	
+	
+	
+	
+    </section>
+    </section>
+    <!--main content end-->
+<!--right sidebar start-->
+<div class="right-sidebar">
+<div class="search-row">
+    <input type="text" placeholder="Search" class="form-control">
+</div>
+<ul class="right-side-accordion">
+<li class="widget-collapsible">
+    <a href="#" class="head widget-head red-bg active clearfix">
+        <span class="pull-left">E-CLUB</span>
+        <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
+    </a>
+    <ul class="widget-container">
+        <li>
+            <div class="prog-row side-mini-stat clearfix">
+                <div class="side-graph-info">
+                    <h4>Total Members</h4>
+                   <p>{{count}}</p>
+                </div>
+                <div class="side-mini-graph">
+                    <div class="target-sell">
+                    </div>
+                </div>
+            </div>
+            <div class="prog-row side-mini-stat">
+                <div class="side-graph-info">
+                    <h4>qp</h4>
+                    <p>56
+                        
+                    </p>
+                </div>
+                <div class="side-mini-graph">
+                    <div class="p-delivery">
+                        <div class="sparkline" data-type="bar" data-resize="true" data-height="30" data-width="90%" data-bar-color="#39b7ab" data-bar-width="5" data-data="[200,135,667,333,526,996,564,123,890,564,455]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="prog-row side-mini-stat">
+                <div class="side-graph-info payment-info">
+                    <h4>Non QP</h4>
+                    <p>
+                        56
+                    </p>
+                </div>
+                <div class="side-mini-graph">
+                    <div class="p-collection">
+						<span class="pc-epie-chart" data-percent="45">
+						<span class="percent"></span>
+						</span>
+                    </div>
+                </div>
+            </div>
+            <div class="prog-row side-mini-stat">
+                <div class="side-graph-info">
+                    <h4>Total Clubs</h4>
+                    <p>
+                        65
+                    </p>
+                </div>
+                <div class="side-mini-graph">
+                    <div class="d-pending">
+                    </div>
+                </div>
+            </div>
+            <div class="prog-row side-mini-stat">
+                <div class="col-md-12">
+                    <h4>Approval Pending</h4>
+                    <p>
+                       {{pending_members}}
+                    </p>
+                    <div class="progress progress-xs mtop10">
+                        <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-info">
+                            <span class="sr-only">50% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="prog-row side-mini-stat">
+                <div class="col-md-12">
+                    <h4>New Members</h4>
+                    <p>
+                       {{new_members}}
+                    </p>
+                    <div class="progress progress-xs mtop10">
+                        <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-info">
+                            <span class="sr-only">50% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			
+			
+			
+        </li>
+    </ul>
+</li>
+<li class="widget-collapsible">
+    <a href="#" class="head widget-head terques-bg active clearfix">
+        <span class="pull-left">contact online (5)</span>
+        <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
+    </a>
+    <ul class="widget-container">
+        <li>
+            <div class="prog-row">
+                <div class="user-thumb">
+                    <a href="#"><img src="images/avatar1_small.jpg" alt=""></a>
+                </div>
+                <div class="user-details">
+                    <h4><a href="#">e - club 1</a></h4>
+                    <p>
+                        Work for fun
+                    </p>
+                </div>
+                <div class="user-status text-danger">
+                    <i class="fa fa-comments-o"></i>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb">
+                    <a href="#"><img src="images/avatar1.jpg" alt=""></a>
+                </div>
+                <div class="user-details">
+                    <h4><a href="#">e - club 2</a></h4>
+                    <p>
+                        Available
+                    </p>
+                </div>
+                <div class="user-status text-success">
+                    <i class="fa fa-comments-o"></i>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb">
+                    <a href="#"><img src="images/chat-avatar2.jpg" alt=""></a>
+                </div>
+                <div class="user-details">
+                    <h4><a href="#">e - club 3</a></h4>
+                    <p>
+                        Away from Desk
+                    </p>
+                </div>
+                <div class="user-status text-warning">
+                    <i class="fa fa-comments-o"></i>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb">
+                    <a href="#"><img src="images/avatar1_small.jpg" alt=""></a>
+                </div>
+                <div class="user-details">
+                    <h4><a href="#">e - club 4</a></h4>
+                    <p>
+                        working
+                    </p>
+                </div>
+                <div class="user-status text-info">
+                    <i class="fa fa-comments-o"></i>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb">
+                    <a href="#"><img src="images/avatar1.jpg" alt=""></a>
+                </div>
+                <div class="user-details">
+                    <h4><a href="#">e - club 5</a></h4>
+                    <p>
+                        Work for fun
+                    </p>
+                </div>
+                <div class="user-status text-danger">
+                    <i class="fa fa-comments-o"></i>
+                </div>
+            </div>
+            <p class="text-center">
+                <a href="#" class="view-btn">View all Contacts</a>
+            </p>
+        </li>
+    </ul>
+</li>
+<li class="widget-collapsible">
+    <a href="#" class="head widget-head purple-bg active">
+        <span class="pull-left"> recent activity (3)</span>
+        <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
+    </a>
+    <ul class="widget-container">
+        <li>
+            <div class="prog-row">
+                <div class="user-thumb rsn-activity">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="rsn-details ">
+                    <p class="text-muted">
+                        just now
+                    </p>
+                    <p>
+                        <a href="#">E- Club</a>Purchased new equipments for zonal office setup
+                    </p>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb rsn-activity">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="rsn-details ">
+                    <p class="text-muted">
+                        2 min ago
+                    </p>
+                    <p>
+                        <a href="#">E-club </a>Purchased new equipments for zonal office setup
+                    </p>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb rsn-activity">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="rsn-details ">
+                    <p class="text-muted">
+                        1 day ago
+                    </p>
+                    <p>
+                        <a href="#">E-club</a>Purchased new equipments for zonal office setup
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</li>
+
+</ul>
+</div>
+<!--right sidebar end-->
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="js/lib/jquery.js"></script>
+<script src="assets/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="bs3/js/bootstrap.min.js"></script>
+<script src="js/accordion-menu/jquery.dcjqaccordion.2.7.js"></script>
+<script src="js/scrollTo/jquery.scrollTo.min.js"></script>
+<script src="js/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script src="assets/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+<script src="assets/skycons/skycons.js"></script>
+<script src="assets/jquery.scrollTo/jquery.scrollTo.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="assets/calendar/clndr.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+<script src="assets/calendar/moment-2.2.1.js"></script>
+<script src="js/calendar/evnt.calendar.init.js"></script>
+<script src="assets/jvector-map/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="assets/jvector-map/jquery-jvectormap-us-lcc-en.js"></script>
+<script src="assets/gauge/gauge.js"></script>
+<!--clock init-->
+<script src="assets/css3clock/js/script.js"></script>
+<!--Easy Pie Chart-->
+<script src="assets/easypiechart/jquery.easypiechart.js"></script>
+<!--Sparkline Chart-->
+<script src="assets/sparkline/jquery.sparkline.js"></script>
+<!--Morris Chart-->
+<script src="assets/morris-chart/morris.js"></script>
+<script src="assets/morris-chart/raphael-min.js"></script>
+<!--jQuery Flot Chart-->
+<script src="assets/flot-chart/jquery.flot.js"></script>
+<script src="assets/flot-chart/jquery.flot.tooltip.min.js"></script>
+<script src="assets/flot-chart/jquery.flot.resize.js"></script>
+<script src="assets/flot-chart/jquery.flot.pie.resize.js"></script>
+<script src="assets/flot-chart/jquery.flot.animator.min.js"></script>
+<script src="assets/flot-chart/jquery.flot.growraf.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/custom-select/jquery.customSelect.min.js" ></script>
+<!--common script init for all pages-->
+<script src="js/scripts.js"></script>
+
+<!--script for this page-->
+<script>
+function popitup(url) {
+    newwindow=window.open(url,'{{title}}','height=500,width=700');
+    if (window.focus) {newwindow.focus()}
+    return false;
+}
+
+</script>
+
+</body>
+</html>

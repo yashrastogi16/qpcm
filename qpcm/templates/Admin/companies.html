@@ -1,0 +1,102 @@
+{% extends 'Admin/admin_base.html' %}
+  {% block content %}
+    <!--main content start-->
+    <section id="main-content" >
+        <section class="wrapper">
+           
+            
+          
+
+            <div class="row">
+           
+
+            <div class="col-lg-12">
+            <!--tab nav start-->
+            <section class="panel">
+                <header class="panel-heading tab-bg-dark-navy-blue ">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home">View Companies</a>
+                        </li>
+                    </ul>
+                </header>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane active"><br><br>
+                            <div class="row">
+                    <div class="col-lg-12">                  
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped tablesorter">
+                          <thead>
+                            <tr>
+                              <th>Company Name</th>              
+                              <th>Edit</th>              
+                              <th>Delete</th>              
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              {%for r in companies %}
+                              <td align="left">{{ r.name}}</td>
+                              <td><button type="button" class="btn btn-primary center" onclick="return popitup('/companyform/?cid={{r.id}}')">Edit</button><br/>
+                              </td>
+
+                              <td><button type="button" class="btn btn-danger" onclick="return Delete({{r.id}})">Delete</button><br/>
+                              </td>                   
+                              </tr>
+
+                              {%endfor%}
+                              <tr>
+                              <td><button type="button" class="btn btn-primary center" onclick="return popitup('/companyform/')">Add New</button><br/>
+                              </td>
+                              </tr>                    
+                          </tbody>
+                        </table>
+                      </div>                  
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            </div>
+
+            </div>
+
+
+        </section>
+    </section>
+    <!--main content end-->
+<!--script for this page-->
+<script>
+function Edit(id)
+{
+    var url ='/userform?uid='+id;
+    window.location.href = url
+
+    // alert(url)
+}
+
+function Delete(id)
+{
+
+    // alert('im here');
+    var option = swal({   title: "Are you sure?",   text: "Your will not be able to recover this Company!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Yes, delete it!",   closeOnConfirm: false }, function(){  
+        var url = '/company-delete?cid=' +id;
+        window.location.href = url
+     });
+    console.log(option);
+   /* if(option == true)
+    {
+        var url = '/company-delete?cid=' +id;
+        window.location.href = url
+    }
+    else
+    {
+        var url = '/companies';
+        window.location.href = url
+    }*/
+}
+</script>
+{%endblock content%}

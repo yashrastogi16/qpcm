@@ -1,0 +1,295 @@
+{% extends 'Steward/steward_base.html' %}
+  {% block content %}
+<script>
+        var myCalendar;
+        function doOnLoad() {
+            // myCalendar = new dhtmlXCalendarObject(["calendar","calendar2"]);
+        }
+</script>
+
+<script>
+    
+    
+    function generate() {
+		var data = [], fontSize = 12, height =12, doc;
+		doc = new jsPDF('l', 'pt', 'letter', true);
+		doc.setFont("times", "normal");
+		doc.text(305, 75, "Near Renewal Report");
+		var canvas = document.getElementById('myCanvas');
+        var imgData = canvas.toDataURL("image/jpg");
+		doc.addImage(imgData, 'JPG', 285, -20, 200, 206);
+		doc.setFontSize(fontSize);
+		
+        data = doc.tableToJson('members');
+        height = doc.drawTable(data, {
+            xstart : 20,
+            ystart : 10,
+            tablestart : 90,
+            marginleft : 40
+        });
+        doc.addPage();
+        doc.save("Near Renewal Report.pdf");
+    };
+</script>
+<canvas id="myCanvas" width="600" height="600" style="display:none;"></canvas>
+<input type="hidden" value="{{club_q}}" id="club_q1"/>
+				<script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
+
+      imageObj.onload = function() {
+        context.drawImage(imageObj, 99, 90);
+      };
+	 // var imgname = document.getElementById('club_q1');
+	  
+	  imagename = 'QP_logo_latest';
+      imageObj.src = '../static/images/'+imagename+'.jpg';
+    </script>
+    <section id="main-content">
+        <section class="wrapper">
+        <!-- page start-->
+
+        
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <header class="panel-heading"> 
+                    Near Renewal Report
+
+                         
+                    </header>
+					
+					<div class="panel-body" class="col-md-5">
+					<form  action="{{url}}" method="post" id="form1" onsubmit="return executiveValidate()">
+                        {% csrf_token %}
+						
+					<div class="col-lg-4 form-group" style="margin-top:1%">
+                              <label class="control-label"><p>Clubs : </p></label>
+                                   <select form="form1" name="club">
+                                          {%for i in userclubs %}
+											<option value="{{i}}">{{i}}</option>
+                                         {%endfor%}
+                                        </select> 
+                                    <span class="help-block"></span>
+                                
+                            </div>   
+                <div class="col-lg-2 text-center" style="margin-top:1%">
+            
+             
+                <button type="submit" class="btn btn-primary" >Submit</button>
+              
+                      
+          </div>
+                        </form>
+						</div>
+            <!-- <div class="panel-body" class="col-md-12">
+                 <form  action="{{url}}" method="post">
+	
+							   
+                      <div class="col-lg-4 text-center">
+                        
+                         
+                            <button type="submit" style="width:70%;" class="btn btn-primary">Find Member Near Renewal</button>
+                          
+                                  
+                      </div>
+        
+                </form>
+            </div> -->
+					
+					
+					
+					
+					   <!-- <div class="panel-body"> -->
+                    
+                    <div style="margin-top:1%;margin-left:1%;">
+					{%if renew_mem%}<button type="button" onclick="Export('excel')">Export to Excel</button>
+            <!-- <button type="button" onclick="Export('pdf')">Export to Pdf</button> -->
+            <input type="hidden" value="{{frmdate}}" id="frmdate"/>
+            <input type="hidden" value="{{tdate}}" id="tdate"/>
+            <input type="hidden" value="{{club_q}}" id="club_q"/>
+            <button onclick="generate()">
+            Export to pdf
+        </button>
+		<button onclick="print()">Print</button>{%endif%}
+		<div id="print" style="display:none;">
+			    <img src="../static/images/QP_logo_latest.jpg" id="imgid" alt ="" style="margin-left:39%;margin-top:-15%;"height="92" width="162"></img>
+				<h3 style="margin-left:35%;">Near Renewal Report</h3>
+			<table class="table table-bordered table-hover table-striped tablesorter" id="members">
+                <thead>
+                  <tr align="center">
+                    <th >Staff Id<i class="fa fa-sort"></i></th>
+                    <th >Name<i class="fa fa-sort"></i></th>
+                    <th >Date Of Expiry<i class="fa fa-sort"></i></th> 
+                    <th >Club<i class="fa fa-sort"></i></th> 
+                                       
+                                        
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {%for r in renew_mem %}
+                    <td >{{ r.member.member_uid}}</td>  
+                    <td >{{ r.member.name}} {{r.member.first_name_1}}</td>                     
+                    <td >{{ r.date_of_expiry|date:"Y-m-d"}}</td>                    
+                    <td >{{ r.club}}</td>                    
+                                      
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+              </table>
+			     
+		</div>
+		   
+			</div>
+			<div class="tab-content">
+                        <div id="new" class="tab-pane active"><br><br>
+                              
+          <div class="col-lg-12">
+          
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped tablesorter" id="active-members">
+                <thead>
+                  <tr align="center">
+                    <th >Staff Id</th>
+                    <th >Name</th>
+                    <th >Date Of Expiry</th> 
+                    <th >Club<i class="fa fa-sort"></i></th> 
+                                       
+                                        
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {%for r in renew_mem %}
+                    <td >{{ r.member.member_uid}}</td>  
+                    <td >{{ r.member.name}} {{r.member.first_name_1}} {{r.member.first_name_2}}</td>                     
+                    <td >{{ r.date_of_expiry|date:"Y-m-d"}}</td>                    
+                    <td >{{r.club}}</td>                    
+                                      
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+              </table>
+             <h1><font color="red">{{msg}}</font></h1>
+            </div>                  
+          </div>
+                 </div>
+                        <div id="about" class="tab-pane">   
+						
+						
+						
+						</div>
+                        <div id="profile" class="tab-pane">   
+						
+						</div>
+                        <div id="contact" class="tab-pane">
+						
+						</div>
+						 <div id="Others" class="tab-pane">
+						 
+						 
+						 </div>
+                    </div>
+              <!--   </div> -->
+                </section>
+                
+            </div>
+        </div>
+        <!-- page end-->
+        </section>
+    </section>
+    <!--main content end-->
+<!--right sidebar start-->
+
+<!--right sidebar end-->
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+
+
+
+<script>
+function print()
+{
+  //var divToPrint=document.getElementById('print');
+  $("#print").show();
+  jQuery.print('#print');
+  $("#print").hide();
+}
+</script>
+<script>
+$(function(){
+
+ $('#calendar').datetimepicker({
+		maxDate: new Date(),
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+
+ $('#calendar2').datetimepicker({
+		maxDate: new Date(),
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+});
+</script>
+
+
+<script>
+function popitup(url) {
+    newwindow=window.open(url,'{{title}}','height=500,width=700');
+    if (window.focus) {newwindow.focus()}
+    return false;
+}
+
+</script>
+
+<script>
+$(function(){
+    $('#search_members').keyup(function(){
+
+$.ajax({
+
+    type: 'POST',
+    url: '/search/',//this is the default though, you don't actually need to always mention it
+    data: {
+        'search_text' : $('#search_members').val(),
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+
+    },
+
+
+    success: searchSuccess,
+    dataType: 'html'
+    
+});
+});
+});
+
+function searchSuccess(data,textStatus,jqXHR)
+{
+    $('#search-results').html(data);
+}
+
+function view(id)
+{
+   window.location.href="/common/?mid="+id;
+}
+function Export(typ)
+{
+
+    var input = document.getElementById('frmdate'),
+    fdate = input.value;
+    var date1 = document.getElementById('tdate'),
+    tdate = date1.value;
+	var club = document.getElementById('club_q'),
+    clubq = club.value;
+
+    var url = '/nearrenewal/?export&type='+typ+'&club='+clubq;
+    // alert(url);
+
+    window.location.href=url;
+}
+</script>
+{%endblock content%}

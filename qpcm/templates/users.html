@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.html">
+    <title>E-Club Membership Management System	</title>
+    <!--Core CSS -->
+    <link href="{{STATIC_URL}}bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}assets/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/bootstrap-reset.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}assets/jvector-map/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/clndr.css" rel="stylesheet">
+    <!--clock css-->
+    <link href="{{STATIC_URL}}assets/css3clock/css/style.css" rel="stylesheet">
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="{{STATIC_URL}}assets/morris-chart/morris.css">
+    <!-- Custom styles for this template -->
+    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/style-responsive.css" rel="stylesheet"/>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="js/ie8/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<section id="container">
+    <!--header start-->
+    <header class="header fixed-top clearfix">
+        <!--logo start-->
+        <div class="brand">
+
+            <a href="/index/" class="logo" style="color:white;">
+           <center>    E-Club </center> 
+            </a>
+          <div class="sidebar-toggle-box">
+                <div class="fa fa-bars"></div>
+            </div>
+        </div>
+        <!--logo end-->
+
+        <!--<div class="nav notify-row" id="top_menu">
+            
+            <ul class="nav top-menu">
+                 settings start
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="fa fa-gears"></i>
+                        <span class="badge bg-success">8</span>
+                    </a>
+                    <ul class="dropdown-menu extended tasks-bar">
+                        <li>
+                            <p class="">You have 8 pending tasks</p>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info clearfix">
+                                    <div class="desc pull-left">
+                                        <h5>Target Sell</h5>
+                                        <p>25% , Deadline  12 </p>
+                                    </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="45">
+                            <span class="percent"></span>
+                            </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info clearfix">
+                                    <div class="desc pull-left">
+                                        <h5>Product Delivery</h5>
+                                        <p>45% , Deadline  12 </p>
+                                    </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="78">
+                            <span class="percent"></span>
+                            </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info clearfix">
+                                    <div class="desc pull-left">
+                                        <h5>Payment collection</h5>
+                                        <p>87% , Deadline  12 </p>
+                                    </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="60">
+                            <span class="percent"></span>
+                            </span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <div class="task-info clearfix">
+                                    <div class="desc pull-left">
+                                        <h5>Target Sell</h5>
+                                        <p>33% , Deadline  12 </p>
+                                    </div>
+                                    <span class="notification-pie-chart pull-right" data-percent="90">
+                            <span class="percent"></span>
+                            </span>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="external">
+                            <a href="#">See All Tasks</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li id="header_inbox_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge bg-important">4</span>
+                    </a>
+                    <ul class="dropdown-menu extended inbox">
+                        <li>
+                            <p class="red">You have 4 Mails</p>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="{{STATIC_URL}}images/avatar-mini.jpg"></span>
+                                <span class="subject">
+                                <span class="from">Jonathan Smith</span>
+                                <span class="time">Just now</span>
+                                </span>
+                                <span class="message">
+                                    Hello, this is an example msg.
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="{{STATIC_URL}}images/avatar-mini-2.jpg"></span>
+                                <span class="subject">
+                                <span class="from">Jane Doe</span>
+                                <span class="time">2 min ago</span>
+                                </span>
+                                <span class="message">
+                                    Nice admin template
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="{{STATIC_URL}}images/avatar-mini-3.jpg"></span>
+                                <span class="subject">
+                                <span class="from">Tasi sam</span>
+                                <span class="time">2 days ago</span>
+                                </span>
+                                <span class="message">
+                                    This is an example msg.
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="photo"><img alt="avatar" src="{{STATIC_URL}}images/avatar-mini.jpg"></span>
+                                <span class="subject">
+                                <span class="from">Mr. Perfect</span>
+                                <span class="time">2 hour ago</span>
+                                </span>
+                                <span class="message">
+                                    Hi there, its a test
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">See all messages</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li id="header_notification_bar" class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                        <i class="fa fa-bell-o"></i>
+                        <span class="badge bg-warning">3</span>
+                    </a>
+                    <ul class="dropdown-menu extended notification">
+                        <li>
+                            <p>Notifications</p>
+                        </li>
+                        <li>
+                            <div class="alert alert-info clearfix">
+                                <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                                <div class="noti-info">
+                                    <a href="#"> Server #1 overloaded.</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="alert alert-danger clearfix">
+                                <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                                <div class="noti-info">
+                                    <a href="#"> Server #2 overloaded.</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="alert alert-success clearfix">
+                                <span class="alert-icon"><i class="fa fa-bolt"></i></span>
+                                <div class="noti-info">
+                                    <a href="#"> Server #3 overloaded.</a>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </li>
+                 
+            </ul>
+             
+        </div>-->
+        <div class="top-nav clearfix">
+            <!--search & user info start-->
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <input type="text" class="form-control search" placeholder=" Search">
+                </li>
+                <!-- user login dropdown start-->
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <img alt="" src="{{STATIC_URL}}images/avatar1_small.jpg">
+                        <span class="username">{{username}}</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <li><a href='#' onclick="popitup('/reset_self_pwd')"<i class=" fa fa-suitcase"></i>  Change Password</a></li>
+                        <li><a href="/settings/"><i class="fa fa-cog"></i> Settings</a></li>
+                        <li><a href="/logout/"><i class="fa fa-key"></i> Logout</a></li>
+                    </ul>
+                </li>
+                <!-- user login dropdown end -->
+                <!-- <li>
+                    <div class="toggle-right-box">
+                        <div class="fa fa-bars"></div>
+                    </div>
+                </li>                  <div class="toggle-right-box">
+                        <div class="fa fa-bars"></div>
+                    </div>
+                </li>-->
+            </ul>
+            <!--search & user info end-->
+        </div>
+    </header>
+    <!--header end-->
+    <!--sidebar start-->
+    <aside>
+        <div id="sidebar" class="nav-collapse">
+            <!-- sidebar menu start-->
+            <ul class="sidebar-menu" id="nav-accordion">
+                <li>
+                    <a class="active" href="/index/">
+                        <i class="fa fa-line-chart"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="/members/">
+                        <i class="fa fa-users"></i>
+                        <span>Members</span>
+                    </a>
+                   
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file"></i> Reports <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                  
+                 <li><a href="/reports/">Club Utilization</a></li>
+                 <li><a href="/attendancereport/">Attendance</a></li>
+                 <li><a href="/newmemberreport/">New Members</a></li>
+                 <li><a href="/suspensionreport/">Suspension Reports</a></li>
+                 <li><a href="/cancellationreport/">Cancellation Reports</a></li>
+                 <li><a href="/nearrenewal/">Near Renewal Reports</a></li>
+                  </ul>
+                </li>
+                <li>
+                <li>
+                    <a href="/users/">
+                        <i class="fa fa-user"></i>
+                        <span>Users </span>
+                    </a>
+                </li>
+                <!-- <li class="sub-menu">
+                    <a href="form.html">
+                        <i class="fa fa-th"></i>
+                        <span>Forms</span>
+                    </a>
+                    <ul class="sub">
+                        <li><a href="membershipform.html">membership form</a></li>
+                        <li><a href="#"></a></li>
+                      
+                    </ul>
+                </li> -->
+
+                <li>
+                    <a href="/membershipform/">
+                        <i class="fa fa-user"></i>
+                        <span>Add Member </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/userform/">
+                        <i class="fa fa-user"></i>
+                        <span>Add User </span>
+                    </a>
+                </li>
+                <li class="sub-menu">
+                    <a href="/settings/">
+                        <i class="fa fa-gears"></i>
+                        <span>Settings</span>
+                    </a>
+                   
+                </li>
+                <li>
+                    <a href="/logout/">
+                        <i class="fa fa-sign-out"></i>
+                        <span>Signout </span>
+                    </a>
+                </li>
+              
+               
+               
+             
+            </ul>
+            <!-- sidebar menu end-->
+        </div>
+    </aside>
+<!--sidebar end-->
+    <!--main content start-->
+    <section id="main-content" >
+        <section class="wrapper">
+           
+            
+          
+
+            <div class="row">
+           
+
+            <div class="col-lg-12">
+            <!--tab nav start-->
+            <section class="panel">
+                <header class="panel-heading tab-bg-dark-navy-blue ">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home">View Users</a>
+                        </li>
+                        <!-- <li class="">
+                            <a data-toggle="tab" href="#about">Create New User</a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" href="#profile">User Role</a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" href="#contact">Access Rights</a>
+                        </li>
+						<li class="">
+                            <a data-toggle="tab" href="#Others">Others</a>
+                        </li> -->
+                    </ul>
+                </header>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane active"><br><br>
+                            <div class="row">
+                    <div class="col-lg-12">                  
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped tablesorter">
+                          <thead>
+                            <tr>
+                              <th>Name <i class="fa fa-sort"></i></th>
+                              <th>UserId <i class="fa fa-sort"></i></th>
+                              <th>Status<i class="fa fa-sort"></i></th>                    
+                              <th>Role<i class="fa fa-sort"></i></th>                    
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              {%for r in users %}
+                              <td align="left">{{ r.name}}</td>
+                              <td>{{ r.userid}}</td>                    
+                              <td align="left">{{ r.status}}</td>                    
+                              <td align="right">{{ r.role}}</td>                    
+                              </tr>
+                              {%endfor%}                     
+                          </tbody>
+                        </table>
+                      </div>                  
+                    </div>
+                </div>
+                        </div>
+                        <div id="about" class="tab-pane">   
+						
+						
+						
+						</div>
+                        <div id="profile" class="tab-pane">   
+						
+						</div>
+                        <div id="contact" class="tab-pane">
+						
+						</div>
+						 <div id="Others" class="tab-pane">
+						 
+						 
+						 </div>
+                    </div>
+                </div>
+            </section>
+            <!--tab nav start-->
+
+            <!--tab nav start-->
+            
+            <!--tab nav end-->
+
+
+            <!--tab nav start-->
+           
+            <!--tab nav end-->
+
+            <!--navigation start-->
+         
+            <!--navigation end-->
+
+            
+
+           
+
+            
+
+           
+            <!--carousel start-->
+           
+            <!--carousel end-->
+
+            </div>
+
+            </div>
+
+
+        </section>
+    </section>
+    <!--main content end-->
+<!--right sidebar start-->
+<div class="right-sidebar">
+<div class="search-row">
+    <input type="text" placeholder="Search" class="form-control">
+</div>
+<ul class="right-side-accordion">
+<li class="widget-collapsible">
+    <a href="#" class="head widget-head red-bg active clearfix">
+        <span class="pull-left">E-CLUB</span>
+        <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
+    </a>
+    <ul class="widget-container">
+        <li>
+            <div class="prog-row side-mini-stat clearfix">
+                <div class="side-graph-info">
+                    <h4>Total Members</h4>
+                   <p>{{count}}</p>
+                </div>
+                <div class="side-mini-graph">
+                    <div class="target-sell">
+                    </div>
+                </div>
+            </div>
+            <div class="prog-row side-mini-stat">
+                <div class="side-graph-info">
+                    <h4>qp</h4>
+                    <p>56
+                        
+                    </p>
+                </div>
+                <div class="side-mini-graph">
+                    <div class="p-delivery">
+                        <div class="sparkline" data-type="bar" data-resize="true" data-height="30" data-width="90%" data-bar-color="#39b7ab" data-bar-width="5" data-data="[200,135,667,333,526,996,564,123,890,564,455]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="prog-row side-mini-stat">
+                <div class="side-graph-info payment-info">
+                    <h4>Non QP</h4>
+                    <p>
+                        56
+                    </p>
+                </div>
+                <div class="side-mini-graph">
+                    <div class="p-collection">
+						<span class="pc-epie-chart" data-percent="45">
+						<span class="percent"></span>
+						</span>
+                    </div>
+                </div>
+            </div>
+            <div class="prog-row side-mini-stat">
+                <div class="side-graph-info">
+                    <h4>Total Clubs</h4>
+                    <p>
+                        65
+                    </p>
+                </div>
+                <div class="side-mini-graph">
+                    <div class="d-pending">
+                    </div>
+                </div>
+            </div>
+            <div class="prog-row side-mini-stat">
+                <div class="col-md-12">
+                    <h4>Approval Pending</h4>
+                    <p>
+                       {{pending_members}}
+                    </p>
+                    <div class="progress progress-xs mtop10">
+                        <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-info">
+                            <span class="sr-only">50% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="prog-row side-mini-stat">
+                <div class="col-md-12">
+                    <h4>New Members</h4>
+                    <p>
+                       {{new_members}}
+                    </p>
+                    <div class="progress progress-xs mtop10">
+                        <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" role="progressbar" class="progress-bar progress-bar-info">
+                            <span class="sr-only">50% Complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+			
+			
+			
+        </li>
+    </ul>
+</li>
+<li class="widget-collapsible">
+    <a href="#" class="head widget-head terques-bg active clearfix">
+        <span class="pull-left">contact online (5)</span>
+        <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
+    </a>
+    <ul class="widget-container">
+        <li>
+            <div class="prog-row">
+                <div class="user-thumb">
+                    <a href="#"><img src="{{STATIC_URL}}images/avatar1_small.jpg" alt=""></a>
+                </div>
+                <div class="user-details">
+                    <h4><a href="#">e - club 1</a></h4>
+                    <p>
+                        Work for fun
+                    </p>
+                </div>
+                <div class="user-status text-danger">
+                    <i class="fa fa-comments-o"></i>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb">
+                    <a href="#"><img src="{{STATIC_URL}}images/avatar1.jpg" alt=""></a>
+                </div>
+                <div class="user-details">
+                    <h4><a href="#">e - club 2</a></h4>
+                    <p>
+                        Available
+                    </p>
+                </div>
+                <div class="user-status text-success">
+                    <i class="fa fa-comments-o"></i>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb">
+                    <a href="#"><img src="{{STATIC_URL}}images/chat-avatar2.jpg" alt=""></a>
+                </div>
+                <div class="user-details">
+                    <h4><a href="#">e - club 3</a></h4>
+                    <p>
+                        Away from Desk
+                    </p>
+                </div>
+                <div class="user-status text-warning">
+                    <i class="fa fa-comments-o"></i>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb">
+                    <a href="#"><img src="{{STATIC_URL}}images/avatar1_small.jpg" alt=""></a>
+                </div>
+                <div class="user-details">
+                    <h4><a href="#">e - club 4</a></h4>
+                    <p>
+                        working
+                    </p>
+                </div>
+                <div class="user-status text-info">
+                    <i class="fa fa-comments-o"></i>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb">
+                    <a href="#"><img src="{{STATIC_URL}}images/avatar1.jpg" alt=""></a>
+                </div>
+                <div class="user-details">
+                    <h4><a href="#">e - club 5</a></h4>
+                    <p>
+                        Work for fun
+                    </p>
+                </div>
+                <div class="user-status text-danger">
+                    <i class="fa fa-comments-o"></i>
+                </div>
+            </div>
+            <p class="text-center">
+                <a href="#" class="view-btn">View all Contacts</a>
+            </p>
+        </li>
+    </ul>
+</li>
+<li class="widget-collapsible">
+    <a href="#" class="head widget-head purple-bg active">
+        <span class="pull-left"> recent activity (3)</span>
+        <span class="pull-right widget-collapse"><i class="ico-minus"></i></span>
+    </a>
+    <ul class="widget-container">
+        <li>
+            <div class="prog-row">
+                <div class="user-thumb rsn-activity">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="rsn-details ">
+                    <p class="text-muted">
+                        just now
+                    </p>
+                    <p>
+                        <a href="#">E- Club</a>Purchased new equipments for zonal office setup
+                    </p>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb rsn-activity">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="rsn-details ">
+                    <p class="text-muted">
+                        2 min ago
+                    </p>
+                    <p>
+                        <a href="#">E-club </a>Purchased new equipments for zonal office setup
+                    </p>
+                </div>
+            </div>
+            <div class="prog-row">
+                <div class="user-thumb rsn-activity">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div class="rsn-details ">
+                    <p class="text-muted">
+                        1 day ago
+                    </p>
+                    <p>
+                        <a href="#">E-club</a>Purchased new equipments for zonal office setup
+                    </p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</li>
+
+</ul>
+</div>
+<!--right sidebar end-->
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="{{STATIC_URL}}js/lib/jquery.js"></script>
+<script src="{{STATIC_URL}}assets/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="{{STATIC_URL}}bs3/js/bootstrap.min.js"></script>
+<script src="{{STATIC_URL}}js/accordion-menu/jquery.dcjqaccordion.2.7.js"></script>
+<script src="{{STATIC_URL}}js/scrollTo/jquery.scrollTo.min.js"></script>
+<script src="{{STATIC_URL}}js/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script src="{{STATIC_URL}}assets/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+<script src="{{STATIC_URL}}assets/skycons/skycons.js"></script>
+<script src="{{STATIC_URL}}assets/jquery.scrollTo/jquery.scrollTo.js"></script>
+<script src="{{STATIC_URL}}http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="{{STATIC_URL}}assets/calendar/clndr.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+<script src="{{STATIC_URL}}assets/calendar/moment-2.2.1.js"></script>
+<script src="{{STATIC_URL}}js/calendar/evnt.calendar.init.js"></script>
+<script src="{{STATIC_URL}}assets/jvector-map/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="{{STATIC_URL}}assets/jvector-map/jquery-jvectormap-us-lcc-en.js"></script>
+<script src="{{STATIC_URL}}assets/gauge/gauge.js"></script>
+<!--clock init-->
+<script src="{{STATIC_URL}}assets/css3clock/js/script.js"></script>
+<!--Easy Pie Chart-->
+<script src="{{STATIC_URL}}assets/easypiechart/jquery.easypiechart.js"></script>
+<!--Sparkline Chart-->
+<script src="{{STATIC_URL}}assets/sparkline/jquery.sparkline.js"></script>
+<!--Morris Chart-->
+<script src="{{STATIC_URL}}assets/morris-chart/morris.js"></script>
+<script src="{{STATIC_URL}}assets/morris-chart/raphael-min.js"></script>
+<!--jQuery Flot Chart-->
+<script src="{{STATIC_URL}}assets/flot-chart/jquery.flot.js"></script>
+<script src="{{STATIC_URL}}assets/flot-chart/jquery.flot.tooltip.min.js"></script>
+<script src="{{STATIC_URL}}assets/flot-chart/jquery.flot.resize.js"></script>
+<script src="{{STATIC_URL}}assets/flot-chart/jquery.flot.pie.resize.js"></script>
+<script src="{{STATIC_URL}}assets/flot-chart/jquery.flot.animator.min.js"></script>
+<script src="{{STATIC_URL}}assets/flot-chart/jquery.flot.growraf.js"></script>
+<script src="{{STATIC_URL}}js/dashboard.js"></script>
+<script src="{{STATIC_URL}}js/custom-select/jquery.customSelect.min.js" ></script>
+<!--common script init for all pages-->
+<script src="{{STATIC_URL}}js/scripts.js"></script>
+
+<!--script for this page-->
+<script>
+function popitup(url) {
+    newwindow=window.open(url,'{{title}}','height=500,width=700');
+    if (window.focus) {newwindow.focus()}
+    return false;
+}
+
+</script>
+
+</body>
+</html>

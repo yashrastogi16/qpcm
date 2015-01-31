@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.html">
+    <title>E-Club Membership Management System  </title>
+    <!--Core CSS -->
+   <!--  <link href="{{STATIC_URL}}assets/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}assets/jvector-map/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/clndr.css" rel="stylesheet"> -->
+    <!--clock css-->
+    <link href="{{STATIC_URL}}assets/css3clock/css/style.css" rel="stylesheet">
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="..static/assets/morris-chart/morris.css">
+    <link href="{{STATIC_URL}}bs3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/style-responsive.css" rel="stylesheet"/>
+    <script type="text/javascript" 
+    src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/jquery.datetimepicker.css"/>
+     <link href="{{STATIC_URL}}css/sweet-alert.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/sweet-alert.scss" rel="stylesheet">
+
+</head>
+<body onLoad="doOnLoad();">
+    <!--main content start-->
+        
+  
+                    <div class="col-lg-8">
+                    
+                       
+          <form action="/extend/" method="post" enctype="multipart/form-data"> 
+					   {% csrf_token %}
+			         
+                
+                <table style="margin-left:15%;margin-top:18%"><tr><td><h3>Period Of Membership :</h3></td> <td><h4>
+                <select name="period" style="margin-top:3.7%;margin-left:20%;">
+                  <option value="1">One Month</option>
+                  <option value="2">Two Month</option>
+                  <option value="3">Three Month</option>
+                  
+                </select></h4>
+                </td>
+                </table>
+                <input style="display:none;" type="text" name="gstid" value="{{gid}}"/>
+                <input style="display:none;" type="text" name="rfidcardno" value="{{rfidcardno}}"/>
+            <div style="margin-left:198px"> 
+                  
+                <button type="submit" class="btn btn-primary" style="margin-top:8%;margin-left:15%;">Submit</button>
+
+                &nbsp;&nbsp;
+                <input type="button" value="Cancel" class="btn btn-success" onclick="Cancel()" style="margin-top:8%"/>
+                
+                
+            </div>
+                    </form>
+                      </div>                  
+                    </div>
+                    
+                </div>
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+            
+    <!--main content end-->
+
+
+<!-- <script src="{{STATIC_URL}}js/scripts.js"></script> -->
+
+<!-- <script src="{{STATIC_URL}}js/custom-select/jquery.customSelect.min.js" ></script> -->
+<!--common script init for all pages-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script src="../static/js/jquery.datetimepicker.js"></script>
+<script src="{{STATIC_URL}}js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script type="text/javascript">
+  function Cancel(id)
+{
+  
+   window.close()
+}
+</script>
+</body>
+</html>

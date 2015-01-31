@@ -1,0 +1,256 @@
+{% extends 'Steward/steward_base.html' %}
+  {% block content %}
+
+<script>
+        var myCalendar;
+        function doOnLoad() {
+            myCalendar = new dhtmlXCalendarObject(["calendar","calendar2"]);
+        }
+</script>
+<script>
+			
+			
+			function generate() {
+				var data = [], fontSize = 12, height =12, doc;
+				doc = new jsPDF('l', 'pt', 'legal', true);
+				doc.setFont("times", "normal");
+				doc.text(350, 90, "Childreen's Age Expiry Report");
+				var canvas = document.getElementById('myCanvas');
+    			var imgData = canvas.toDataURL("image/jpg");
+    			doc.addImage(imgData, 'JPG', 350, -20, 200, 206);
+				doc.setFontSize(fontSize);
+				data = doc.tableToJson('members');
+				
+				height = doc.drawTable(data, {
+					xstart : 10,
+					ystart : 10,
+					tablestart : 100,
+					marginleft : 40
+				});
+				doc.addPage();
+				doc.save("Childreen Age Expiry Report.pdf");
+			};
+			</script>
+
+<canvas id="myCanvas" width="600" height="600" style="display:none;"></canvas>
+<input type="hidden" value="{{club_q}}" id="club_q1"/>
+<script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var imageObj = new Image();
+
+      imageObj.onload = function() {
+        context.drawImage(imageObj, 99, 90);
+      };
+	  //var imgname = document.getElementById('club_q1');
+	  
+	  imagename = 'QP_logo_latest';
+      imageObj.src = '../static/images/'+imagename+'.jpg';
+    </script>			
+<!--sidebar end-->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper">
+        <!-- page start-->
+
+        
+        <div class="row">
+            <div class="col-md-12">
+                <section class="panel">
+                    <header class="panel-heading"> 
+                    Childreen Age Expiry Report
+                          
+                         
+                    </header>
+            <!-- <div class="panel-body" class="col-md-12">
+                 <form  action="{{url}}" method="post">
+	
+							   
+                      <div class="col-lg-4 text-center">
+                        
+                         
+                            <button type="submit" style="width:70%;" class="btn btn-primary">Find Member Near Renewal</button>
+                          
+                                  
+                      </div>
+        
+                </form>
+            </div> -->
+					
+					
+					
+					
+					   <!-- <div class="panel-body"> -->
+                    <div class="tab-content">
+					<div class="col-lg-12" style="margin-top:1%;margin-bottom:1%;">  
+				{%if obj_list%}<button type="button" onclick="Export('excel')">Export to Excel</button>
+				<button onclick="generate()">
+							Export to pdf
+						</button>
+						<button onclick="print()">Print</button>{%endif%}
+		<div id="print" style="display:none;">
+			    <img src="../static/images/QP_logo_latest.jpg" id="imgid" alt ="" style="margin-left:39%;margin-top:-15%;"height="92" width="162"></img>
+				<h3 style="margin-left:30%;">Childreen's Age Expiry Report</h3>
+			<table class="table table-bordered table-hover table-striped tablesorter" id="members" >
+                <thead>
+                  <tr align="center">
+                    <th >Staff Id<i class="fa fa-sort"></i></th>
+                    <th >Name<i class="fa fa-sort"></i></th>
+                    <th>Main Member Id<i class="fa fa-sort"></i></th>
+                    
+                    <th >Date of Age Expiry<i class="fa fa-sort"></i></th> 
+                                       
+                                        
+                  </tr>
+                </thead>
+                <tbody>
+                {%for r in obj_list %}
+                  <tr>
+                    
+                    <td >{{ r.uid}}</td>  
+                    <td >{{ r.name}}</td>  
+                    <td> {{r.parent}}  </td>                 
+                    <td >{{ r.exp_date|date:"Y-m-d"}}</td>                    
+                                      
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+              </table>
+			</div>
+                        <div id="new" class="tab-pane active"><br><br>
+                              <div class="row">
+							  
+          <div class="col-lg-12">  
+          
+            <div class="table-responsive">
+			
+              <table class="table table-bordered table-hover table-striped tablesorter" id="active-members">
+                <thead>
+                  <tr align="center">
+                    <th >Staff Id</th>
+                    <th >Name</th>
+                    <th>Main Member Id</th>
+                    
+                    <th >Date of Age Expiry</th> 
+                                       
+                                        
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    {%for r in obj_list %}
+                    <td >{{ r.uid}}</td>  
+                    <td >{{ r.name}}</td>  
+                    <td> {{r.parent}}  </td>                 
+                    <td >{{ r.exp_date|date:"Y-m-d"}}</td>                    
+                                      
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+              </table>
+             <h1><font color="red">{{msg}}</font></h1>
+            </div>                  
+          </div>
+        </div>
+                        </div>
+                        <div id="about" class="tab-pane">   
+						
+						
+						
+						</div>
+                        <div id="profile" class="tab-pane">   
+						
+						</div>
+                        <div id="contact" class="tab-pane">
+						
+						</div>
+						 <div id="Others" class="tab-pane">
+						 
+						 
+						 </div>
+                    </div>
+              <!--   </div> -->
+                </section>
+    <!--main content end-->
+<!--right sidebar start-->
+
+<!--right sidebar end-->
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<script>
+function print()
+{
+  //var divToPrint=document.getElementById('print');
+  $("#print").show();
+  jQuery.print('#print');
+  $("#print").hide();
+}
+</script>
+
+
+<script>
+function popitup(url) {
+    newwindow=window.open(url,'{{title}}','height=500,width=700');
+    if (window.focus) {newwindow.focus()}
+    return false;
+}
+
+</script>
+<script>
+           $(function() {
+        
+        $("#members").dataTable({
+        "lengthMenu": [[3,5,7,10, 25, 50, -1], [3,5,7,10, 25, 50, "All"]],
+		"iDisplayLength": 50,
+    });
+    
+               
+        });
+       </script>
+       
+<script>
+<script>
+$(function(){
+    $('#search_members').keyup(function(){
+
+$.ajax({
+
+    type: 'POST',
+    url: '/search/',//this is the default though, you don't actually need to always mention it
+    data: {
+        'search_text' : $('#search_members').val(),
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+
+    },
+
+
+    success: searchSuccess,
+    dataType: 'html'
+    
+});
+});
+});
+
+function searchSuccess(data,textStatus,jqXHR)
+{
+    $('#search-results').html(data);
+}
+
+function view(id)
+{
+   window.location.href="/common/?mid="+id;
+}
+</script>
+<script>
+function Export(typ)
+{
+
+    
+    var url = '/Childrenage/?export&type='+typ;
+    // alert(url);
+
+    window.location.href=url;
+}
+</script>
+
+{%endblock content%}

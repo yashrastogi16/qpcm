@@ -1,0 +1,21 @@
+
+<html>
+<head>
+<link href="../static/bs3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<br/>
+<h2 align = "center" style="color:lightseagreen;"> Organization Form</h2> <br/><br/>
+<div class="col-lg-6"> 
+                      
+  <form method="post"> <table class="table table-striped"><tr>
+  		{% csrf_token %}
+		<td>Name</td><td>:</td><td>{{form.name}}</td></tr>		       
+		<tr><td>Status</td><td>:</td><td>{{form.status}}</td></tr>      
+		<tr></tr>
+		<tr><td><td><td><button type="submit" class="btn btn-primary">Submit</button> </td></tr></table>
+		<input type="hidden" name="mid" value="{{mid}}" />
+	</form>
+			  
+</div>
+
+</html>

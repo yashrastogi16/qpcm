@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="images/favicon.html">
+    <title>E-Club Membership Management System  </title>
+    <!--Core CSS -->
+    <link href="{{STATIC_URL}}bs3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}assets/jquery-ui/jquery-ui-1.10.1.custom.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/bootstrap-reset.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}assets/jvector-map/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/clndr.css" rel="stylesheet">
+    <!--clock css-->
+    <link href="{{STATIC_URL}}assets/css3clock/css/style.css" rel="stylesheet">
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="..static/assets/morris-chart/morris.css">
+    <!-- Custom styles for this template -->
+    <link href="{{STATIC_URL}}css/style.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/style-responsive.css" rel="stylesheet"/>
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/dhtmlxcalendar.css"/> -->
+    <link rel="stylesheet" type="text/css" href="../static/css/jquery.datetimepicker.css"/>
+    <script src="../static/js/dhtmlxcalendar.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="js/ie8/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+<script>
+        var myCalendar;
+        function doOnLoad() {
+            // myCalendar = new dhtmlXCalendarObject(["id_date_of_expiry","id_date_of_joining",'id_dob']);
+        }
+</script>
+<body onLoad = "doOnLoad();">
+    <section id="main-content" >
+        <section class="wrapper">
+
+            <div class="col-lg-12">
+            <!--tab nav start-->
+            <section class="panel">
+                <header class="panel-heading tab-bg-dark-navy-blue ">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home"><h4>Add Family Member</h4></a>
+                        </li>
+                        <li class="">
+                            <a data-toggle="tab" href="#about"><h4>Family Member Upload </h4></a>
+                        </li> 
+                    </ul>
+                </header>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane active"><br><br>
+                            <div class="row">
+                                <div class="col-lg-1"> 
+                                </div>
+
+                    <div class="col-lg-8">                  
+                      <div class="table-responsive">
+                      <form action="/familyform/" method="post" enctype="multipart/form-data"> 
+                      {%csrf_token%}
+                      <table class="table table-striped"><tbody>
+            <thead>
+            
+              <tr>
+              <h3 style="color:#14AAC7;margin-left: 185px;"> Family Person Details </h3>
+              </tr>
+                    <tr>
+                        <td>Dependent First Name</td>
+                        <td>:</td>
+                        <td>{{form.dapendent_first_name1}}<span id="Errn"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Dependent Family Name</td>
+                        <td>:</td>
+                        <td>{{form.dependent_family_name}}<span id="Errf"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Dependent Sequence</td>
+                        <td>:</td>
+                        <td>{{form.dependent_sequence}}<span id="Errn"></span></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td>Family ID</td>
+                        <td>:</td>
+                        <td>{{form.family_uid}}<span id="Errf"></span></td>
+                    </tr>
+
+                    <input type="hidden" name="mid" value="{{mid}}" />
+                    <tr>
+                        <td>Relationship</td>
+                        <td>:</td>
+                        <td>{{form.relationship}}<span id="ErrR"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Membership Card ID</td>
+                        <td>:</td>
+                        <td>{{form.rfidcardno}}<span id="Errmem"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Nationality</td>
+                        <td>:</td>
+                        <td>{{form.nationality}}<span id="ErrNa"></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Date of Birth</td>
+                        <td>:</td>
+                        <td>{{form.dob}}<span id="Errd"></span></td>
+                    </tr>
+
+                    <tr>
+                  <td>Photo</td>
+                  <td>:</td>
+                  <td><img src="{{IMAGE_URL}}{{photo}}" height="100px" width="100px"><input type="file" name="Imagefile" src="{{IMAGE_URL}}{{photo}}"/></td>
+                  </tr>
+                    
+                    <tr>
+                        <td>Contact No.</td>
+                        <td>:</td>
+                        <td>{{form.contact_no}}<span id="Errc"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Joining</td>
+                        <td>:</td>
+                        <td>{{form.date_of_joining}}<span id="Errdj"></span></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td>Date of Expiry</td>
+                        <td>:</td>
+                        <td>{{form.date_of_expiry}}<span id="Errde"></span></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td>Clubs Allowed</td>
+                        <td>:</td>
+                        <td>{{form.clubsallowed}}<span id="Errca"></span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Emailid</td>
+                        <td>:</td>
+                        <td>{{form.emailid}}<span id="Errem"></span></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td>Member</td>
+                        <td>:</td>
+                        <td>{{form.member}}<span id="Errmb"></span></td>
+                    </tr>
+                    
+
+                    <tr style="display:none;">
+                        <td>Status</td>
+                        <td>:</td>
+                        <td>{{form.status}}<span id="Errs"></span></td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td>Datetime</td>
+                        <td>:</td>
+                        <td>{{form.datetime}}</td>
+                    </tr>
+                  </tbody>
+        </table>
+                <input type="hidden" name="fid" value="{{fid}}" />
+        <input type="hidden" name="photo" value="{{photo}}"/>
+            <input type="submit" value="Submit" class="btn btn-primary" name="submit" style="margin-left: 200px;" onclick="return executiveValidate()"/>&nbsp;&nbsp;
+
+            <input type="button" value="Cancel" style="margin-top: -35px;
+margin-left: 122px;
+padding: 11px;
+background: #1F54B5;
+border: #1fb5ad;
+border-radius: 9px 9px 9px;
+color: white;
+cursor: pointer;" onclick="window.close()">
+                    </form>
+                      </div>                  
+                    </div>
+                    <div class="col-lg-3"> 
+                                </div>
+                </div>
+                        </div>
+                        
+                    <div id="about" class="tab-pane"><br><br>
+                    <div class="row">
+                            <div class="col-lg-3"> 
+                                </div>
+                            <div class="col-lg-6"> 
+                                <br/><br/>
+                                <h3>{{err_msg}}</h3>
+                                <form action="/familyform/" method="post" name="fam-upload">
+                                {% csrf_token %}
+                                <table class="table table-striped">
+                                    <tr><td>Family ID</td><td><input class="form-control" style="width : 50%" name="famid" required value="{{famid}}"></td> </tr>
+                                </table>
+                                <button type="submit" class="btn btn-primary" style="margin-left: 200px;">Submit</button>
+                                <input type="button" value="Cancel" style="margin-top: -35px;
+margin-left: 122px;
+padding: 11px;
+background: #1F54B5;
+border: #1fb5ad;
+border-radius: 9px 9px 9px;
+color: white;
+cursor: pointer;" onclick="window.close()">
+                            </form>
+                            </div>
+                            <div class="col-lg-3"> 
+                                </div>
+                        </div>
+                        </div>
+                    
+                    
+                    </div>  
+                        
+                    
+                       
+                    </div>
+                    
+                </div>
+            </section>
+                        </div>
+
+            </div>
+
+
+        </section>
+    </section>
+    <!--main content end-->
+<!--right sidebar start-->
+
+<!--right sidebar end-->
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<!--Core js-->
+<script src="../static/js/lib/jquery.js"></script>
+<script src="../static/js/lib/jquery-1.8.3.min.js"></script>
+<script src="../static/js/jquery.datetimepicker.js"></script>
+<script src="../static/assets/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+<script src="../static/bs3/js/bootstrap.min.js"></script>
+<script src="../static/js/accordion-menu/jquery.dcjqaccordion.2.7.js"></script>
+<script src="../static/js/scrollTo/jquery.scrollTo.min.js"></script>
+<script src="../static/js/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script src="../static/assets/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+<script src="../static/assets/skycons/skycons.js"></script>
+<script src="../static/assets/jquery.scrollTo/jquery.scrollTo.js"></script>
+
+<script src="../static/assets/sparkline/jquery.sparkline.js"></script>
+<!--Morris Chart-->
+<script src="../static/assets/morris-chart/morris.js"></script>
+
+<!--Core js-->
+
+
+
+<script src="../static/js/scrollTo/jquery.scrollTo.min.js"></script>
+<script src="../static/js/nicescroll/jquery.nicescroll.js" type="text/javascript"></script>
+<script type="text/javascript" src="../static/assets/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+
+<script type="text/javascript" src="../static/assets/jquery-multi-select/js/jquery.quicksearch.js"></script>
+
+<script type="text/javascript" src="../static/assets/bootstrap-inputmask/bootstrap-inputmask.min.js"></script>
+
+<script src="../static/assets/jquery-tags-input/jquery.tagsinput.js"></script>
+
+<script>
+$(function(){
+
+ $('#id_date_of_expiry').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+ $('#id_dob').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+ $('#id_date_of_joining').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+});
+</script>
+
+<script type="text/javascript">
+ function executiveValidate()
+{
+ var a = $("#id_dapendent_first_name1").val();
+ var b = $("#id_dependent_family_name").val();
+ var c = $("#id_nationality").val();
+ var d = $("#id_relationship").val();
+ var e = $("#id_dob").val();
+ var f = $("#id_contact_no").val();
+ var g = $("#id_gender").val();
+ var h = $("#id_residencelocation").val();
+ var i = $("#id_date_of_joining").val();
+ var j = $("#id_date_of_expiry").val();
+ var k = $("#id_rfidcardno").val();
+ var l = $("#id_emailid").val();
+ var m = $("#id_clubsallowed").val();
+
+ var o = $("#id_member").val();
+ var p = $("#id_organization").val();
+ var q = $("#id_age").val();
+ 
+ is_error=false;
+
+ if (d == 'S' || d == 'D')
+ {
+    if(e == "")
+     {
+       errmsg = "Please Enter Date Of Birth";
+       is_error = true;  
+       document.getElementById("Errd").style.color="red";
+       $("#Errd").html(errmsg);
+       $("#id_dob").focus();
+       
+     }
+ }
+if(a == "")
+     {
+       errmsg = "Please Enter First Name";
+       is_error = true;  
+       document.getElementById("Errn").style.color="red";
+       $("#Errn").html(errmsg);
+       $("#id_dapendent_first_name1").focus();
+     }
+
+if(b == "")
+     {
+       errmsg = "Please Enter Family Name";
+       is_error = true;  
+       document.getElementById("Errf").style.color="red";
+       $("#Errf").html(errmsg);
+       $("#id_dependent_family_name").focus();
+     }
+// if(c == "")
+//      {
+//        errmsg = "Please Enter Nationality";
+//        is_error = true;  
+//        document.getElementById("ErrNa").style.color="red";
+//        $("#ErrNa").html(errmsg);
+//        $("#id_nationality").focus();
+//      }   
+if(d == "")
+     {
+       errmsg = "Please Enter Relationship";
+       is_error = true;  
+       document.getElementById("ErrR").style.color="red";
+       $("#ErrR").html(errmsg);
+       $("#id_relationship").focus();
+     }       
+// if(e == "")
+//      {
+//        errmsg = "Please Enter Date Of Birth";
+//        is_error = true;  
+//        document.getElementById("Errd").style.color="red";
+//        $("#Errd").html(errmsg);
+//        $("#id_dob").focus();
+       
+//      }  
+// if(f == "")
+//      {
+//        errmsg = "Please Enter Contact No";
+//        is_error = true;  
+//        document.getElementById("Errc").style.color="red";
+//        $("#Errc").html(errmsg);
+//        $("#id_contact_no").focus()
+//     };
+// if(g == "")
+//      {
+//        errmsg = "Please Enter Gender";
+//        is_error = true;  
+//        document.getElementById("Errg").style.color="red";
+//        $("#Errg").html(errmsg);
+//        $("#id_gender").focus()
+//     };
+// if(i == "")
+//      {
+//        errmsg = "Please Enter Date Of Joining";
+//        is_error = true;  
+//        document.getElementById("Errdj").style.color="red";
+//        $("#Errdj").html(errmsg);
+//        $("#id_date_of_joining").focus()
+//     };   
+// if(j == "")
+//      {
+//        errmsg = "Please Enter Date Of Expiry";
+//        is_error = true;  
+//        document.getElementById("Errde").style.color="red";
+//        $("#Errde").html(errmsg);
+//        $("#id_date_of_expiry").focus()
+//     };          
+// if(k == "")
+//      {
+//        errmsg = "Please Enter Membership Card ID";
+//        is_error = true;  
+//        document.getElementById("Errmem").style.color="red";
+//        $("#Errmem").html(errmsg);
+//        $("#id_rfidcardno").focus()
+//     }
+// if(l == "")
+//      {
+//        errmsg = "Please Enter Email Id";
+//        is_error = true;  
+//        document.getElementById("Errem").style.color="red";
+//        $("#Errem").html(errmsg);
+//        $("#id_email_id").focus()
+//     }
+// if(m =="")
+//      {
+//        errmsg = "Please Enter Clubs Allowed";
+//        is_error = true;  
+//        document.getElementById("Errca").style.color="red";
+//        $("#Errca").html(errmsg);
+//        $("#id_clubsallowed").focus()
+//     }
+
+// if(q == "")
+//      {
+//        errmsg = "Please Enter Age";
+//        is_error = true;  
+//        document.getElementById("Erra").style.color="red";
+//        $("#Erra").html(errmsg);
+//        $("#id_age").focus()
+//     }
+// if(p == "")
+//      {
+//        errmsg = "Please Enter Organization";
+//        is_error = true;  
+//        document.getElementById("Erro").style.color="red";
+//        $("#Erro").html(errmsg);
+//        $("#id_organization").focus()
+//     }       
+if(is_error)
+    {
+      return false;
+    }
+    else
+    {
+     return true;
+    }
+}
+</script>
+</body>
+</html>

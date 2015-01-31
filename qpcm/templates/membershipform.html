@@ -1,0 +1,513 @@
+{% extends 'base.html' %}
+  {% block content %}
+    <!--main content start-->
+    <section id="main-content" >
+        <section class="wrapper">
+
+            <div class="row">
+            <div class="col-lg-12">
+            <!--tab nav start-->
+            <section class="panel">
+                <header class="panel-heading tab-bg-dark-navy-blue ">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home"><h4>Add QP Staff</h4></a>
+                        </li>
+                          <li class="">
+                            <a data-toggle="tab" href="#about"><h4>Non-QP Membership</h4></a>
+                        </li>
+                    </ul>
+                </header>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane  active"><br><br>
+                            <div class="row">
+                            <div class="col-lg-3"> 
+                                </div>
+                            <div class="col-lg-6"> 
+                                <br/><br/>
+                                <h3>{{err_msg}}</h3>
+                                <form action="/qpaddmember/" method="post" name="bulk-upload" onsubmit="some_popup_post(this);">
+                                {% csrf_token %}
+                                <table class="table table-striped">
+                                    <tr><td>Staff ID</td><td><input class="form-control" style="width : 100%" name="personid" required></td> </tr>
+                                </table>
+                                <div style="margin-left:198px">       
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                        &nbsp;&nbsp;
+                        <input type="button" value="Cancel" class="btn btn-success" onclick="Cancel()"/>
+                        </div>
+                            </form>
+                            </div>
+                            <div class="col-lg-3"> 
+                                </div>
+                        </div>
+                        </div>
+                        <div id="about" class="tab-pane">   
+						<div class="row">
+                            <div class="row">
+                                <div class="col-lg-1"> 
+                                </div>
+
+                    <div class="col-lg-8">                  
+                      <div class="table-responsive">
+					<form action="/membershipform/" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table class="table table-striped">
+			<tr><td>Family Name</td><td>:</td><td>{{form.name}}&nbsp;&nbsp;<span id="Err1"></span></td></tr>
+			<tr><td>First Name 1</td><td>:</td><td>{{form.first_name_1}}&nbsp;&nbsp;<span id="Err2"></span></td></tr>
+			<tr><td>First Name 2</td><td>:</td><td>{{form.first_name_2}}&nbsp;&nbsp;<span id="Err1"></span></td></tr>
+			<tr><td>First Name 3</td><td>:</td><td>{{form.first_name_3}}&nbsp;&nbsp;<span id="Err1"></span></td></tr>
+			<tr><td>Initial</td><td>:</td><td>{{form.initials}}&nbsp;&nbsp;<span id="Err1"></span></td></tr>
+            <tr style="display:none;"><td>Member ID</td><td>:</td><td>{{form.member_uid}}&nbsp;&nbsp;<span id="Err2"></span></td></tr>
+            <tr><td>Nationality</td><td>:</td><td>{{form.nationality}}&nbsp;&nbsp;<span id="Err3"></span></td></tr>
+            <tr><td>Marital Status</td><td>:</td><td>{{form.maritalstatus}}&nbsp;&nbsp;<span id="Err4"></span></td></tr>
+            <tr><td>Date of Birth</td><td>:</td><td>{{form.dob}}&nbsp;&nbsp;<span id="Err5"></span></td></tr>
+            <tr><td>Mobile</td><td>:</td><td>{{form.mobileno}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr>
+            <td>Photo</td>
+            <td>:</td>
+            <td><img src="{{IMAGE_URL}}{{photo}}" height="100px" width="100px"><input type="file" name="Imagefile" src="{{IMAGE_URL}}{{photo}}"/></td>
+            </tr>
+            <tr><td>Office Fax No</td><td>:</td><td>{{form.office_fax_no}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr><td>Cont Type</td><td>:</td><td>{{form.cont_type}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr><td>Cont Term Reason</td><td>:</td><td>{{form.cont_term_reason}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr><td>Cont Expiry Date</td><td>:</td><td>{{form.cont_expiry_date}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr><td>No Of Dependents</td><td>:</td><td>{{form.No_of_dependents}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+            <tr><td>Gender</td><td>:</td><td>{{form.gender}}&nbsp;&nbsp;<span id="Err7"></span></td></tr>
+            <tr><td>Attachment</td><td>:</td><td>{{form.attachment}}&nbsp;&nbsp;<span id="Err7"></span></td></tr>
+            <tr><td>Extract_run_date</td><td>:</td><td>{{form.extract_run_date}}&nbsp;&nbsp;<span id="Err7"></span></td></tr>
+            <tr><td>Position Desc</td><td>:</td><td>{{form.pos_desc}}&nbsp;&nbsp;<span id="Err7"></span></td></tr>
+            <tr><td>Work Location</td><td>:</td><td>{{form.worklocation}}&nbsp;&nbsp;<span id="Err7"></span></td></tr>
+            <tr><td>Residence Location</td><td>:</td><td>{{form.residencelocation}}&nbsp;&nbsp;<span id="Err8"></span></td></tr>
+            <tr><td>Date of Joining</td><td>:</td><td>{{form.date_of_joining}}&nbsp;&nbsp;<span id="Err9"></span></td></tr>
+            <tr><td>Email id</td><td>:</td><td>{{form.emailid}}&nbsp;&nbsp;<span id="Errem"></span></td></tr>
+            <tr style="display:none;"><td>Membership Expire On</td><td>:</td><td>{{form.date_of_expiry}}&nbsp;&nbsp;<span id="Err10"></span></td></tr>
+            <tr><td>Access Card No.</td><td>:</td><td>{{form.rfidcardno}}&nbsp;&nbsp;<span id="Err11"></span></td></tr>
+            
+            <tr><td>Clubs Allowed</td><td>:</td><td>{{form.clubsallowed}}&nbsp;&nbsp;<span id="Err13"></span></td></tr>
+             <tr><td>Membership Category</td><td>:</td><td>{{form.membership_category}}&nbsp;&nbsp;<span id="Err14"></span></td></tr>
+            <tr style="display:none;"><td>Status</td><td>:</td><td>{{form.status}}</td></tr>
+            <tr><td>Associated Company</td><td>:</td><td>{{form.associatecompany}}&nbsp;&nbsp;<span id="Err15"></span></td></tr>
+            <tr><td>Department</td><td>:</td><td>{{form.department}}&nbsp;&nbsp;<span id="Err16"></span></td></tr>
+            <tr style="display:none;"><td>Organization</td><td>:</td><td>{{form.organization}}<!--<a href="#" onclick="return popitup('/organizationform/')" style="margin-left: 22px;"><img src="../static/images/addlink.gif" style = ""></img></a>-->&nbsp;&nbsp;<span id="Err18"></span></td></tr>
+            <tr><td>Membership Grade</td><td>:</td><td>{{form.membership_grade}}&nbsp;&nbsp;<span id="Err17"></span></td></tr>
+          <!--  <tr><td>Employment</td><td>:</td><td>{{form.employment}}<a href="#" onclick="return popitup('/employmentform/')" style="margin-left: 22px;"><img src="../static/images/addlink.gif" style = ""></img></a>&nbsp;&nbsp;<span id="Err19"></span></tr></td> -->
+            <tr style="display:none;"><td>User</td><td>:</td><td>{{form.qpuser}}</span></td>
+            <tr style="display:none;"><td>Datetime</td><td>:</td><td>{{form.datetime}}</td>    
+            </tr>
+        </table>
+                
+            <div style="margin-left:278px">       
+                <button type="submit" class="btn btn-primary" onclick="return executiveValidate()">Submit</button>
+
+                &nbsp;&nbsp;
+                <input type="button" value="Cancel" class="btn btn-success" onclick="Cancel()"/>
+            </div>
+            <input type="hidden" name="mid" value="{{mid}}" />
+            <input type="hidden" name="photo" value="{{photo}}"/>
+                    </form>
+                      </div>                  
+                    </div>
+                    <div class="col-lg-3"> 
+                                </div>
+                </div>
+                            <div class="col-lg-3"> 
+                                </div>
+                        </div>
+						
+						
+						</div>
+                       
+                    </div>
+                </div>
+            </section>
+            
+
+            </div>
+
+            </div>
+
+
+        </section>
+    </section>
+    <!--main content end-->
+
+</section>
+<!-- Placed js at the end of the document so the pages load faster -->
+<!--Core js-->
+<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+<script src="../static/js/jquery.datetimepicker.js"></script>
+<script src="{{STATIC_URL}}js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+<script>
+$(function(){
+
+ $('#id_dob').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+
+ $('#id_cont_expiry_date').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+ $('#id_extract_run_date').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+
+ $('#id_date_of_expiry').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+
+ $('#id_date_of_joining').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+
+
+
+
+
+    $('#search_members').keyup(function(){
+
+$.ajax({
+
+    type: 'POST',
+    url: '/search/',//this is the default though, you don't actually need to always mention it
+    data: {
+        'search_text' : $('#search_members').val(),
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+
+    },
+
+
+    success: searchSuccess,
+    dataType: 'html'
+    
+});
+});
+});
+
+function searchSuccess(data,textStatus,jqXHR)
+{
+    $('#search-results').html(data);
+}
+
+function view(id)
+{
+   window.location.href="/common/?mid="+id;
+}
+
+function Cancel(id)
+{
+   window.location.href="/members/";
+}
+
+</script>
+
+
+<script type="text/javascript">
+
+// $("#location").change(function()
+// { 
+//     var category = $("#location").val();
+
+//     // alert(category);
+//     if(category == 'dukhan' )
+//     {
+//         $("#id_clubsallowed_0").show();
+//         $("#id_clubsallowed_1").show();
+//         $("#id_clubsallowed_2").show();
+//         $("#id_clubsallowed_3").show();
+//         $("#id_clubsallowed_4").show();
+//         $('label[for="id_clubsallowed_0"]').css('display', 'block');
+//         $('label[for="id_clubsallowed_1"]').css('display', 'block');
+//         $('label[for="id_clubsallowed_2"]').css('display', 'block');
+//         $('label[for="id_clubsallowed_3"]').css('display', 'block');
+//         $('label[for="id_clubsallowed_4"]').css('display', 'block');
+//     }
+//     else
+//     {
+//         $("#id_clubsallowed_0").hide();
+//         $("#id_clubsallowed_1").hide();
+//         $("#id_clubsallowed_2").hide();
+//         $("#id_clubsallowed_3").hide();
+//         $("#id_clubsallowed_4").hide();
+//         $('label[for="id_clubsallowed_0"]').css('display', 'none');
+//         $('label[for="id_clubsallowed_1"]').css('display', 'none');
+//         $('label[for="id_clubsallowed_2"]').css('display', 'none');
+//         $('label[for="id_clubsallowed_3"]').css('display', 'none');
+//         $('label[for="id_clubsallowed_4"]').css('display', 'none');
+    
+//     }
+
+
+//     if(category == 'maiseed' )
+//     {
+//         $("#id_clubsallowed_5").show();
+//         $("#id_clubsallowed_6").show();
+//         $('label[for="id_clubsallowed_5"]').css('display', 'block');
+//         $('label[for="id_clubsallowed_6"]').css('display', 'block');
+//     }
+//     else
+//     {
+//         $("#id_clubsallowed_5").hide();
+//         $("#id_clubsallowed_6").hide();
+//         $('label[for="id_clubsallowed_5"]').css('display', 'none');
+//         $('label[for="id_clubsallowed_6"]').css('display', 'none');
+//     }
+
+//     if(category == 'doha' )
+//     {
+//         $("#id_clubsallowed_7").show();
+//         $("#id_clubsallowed_8").show();
+//         $('label[for="id_clubsallowed_7"]').css('display', 'block');
+//         $('label[for="id_clubsallowed_8"]').css('display', 'block');
+//     }
+//     else
+//     {
+//         $("#id_clubsallowed_7").hide();
+//         $("#id_clubsallowed_8").hide();
+//         $('label[for="id_clubsallowed_7"]').css('display', 'none');
+//         $('label[for="id_clubsallowed_8"]').css('display', 'none');
+//     }
+
+//     if (category=='none')
+//     {
+//         $("#id_clubsallowed_0").show();
+//         $("#id_clubsallowed_1").show();
+//         $("#id_clubsallowed_2").show();
+//         $("#id_clubsallowed_3").show();
+//         $("#id_clubsallowed_4").show();
+//         $("#id_clubsallowed_5").show();
+//         $("#id_clubsallowed_6").show();
+//         $("#id_clubsallowed_7").show();
+//         $("#id_clubsallowed_8").show();
+
+//         $("#id_clubsallowed_0").css('display', 'block');
+//         $("#id_clubsallowed_1").css('display', 'block');
+//         $("#id_clubsallowed_2").css('display', 'block');
+//         $("#id_clubsallowed_3").css('display', 'block');
+//         $("#id_clubsallowed_4").css('display', 'block');
+//         $("#id_clubsallowed_5").css('display', 'block');
+//         $("#id_clubsallowed_6").css('display', 'block');
+//         $("#id_clubsallowed_7").css('display', 'block');
+//         $("#id_clubsallowed_8").css('display', 'block');
+//     }
+
+// });
+
+function popitup(url) {
+    newwindow=window.open(url,'{{title}}','height=500,width=650');
+    if (window.focus) {newwindow.focus()}
+    return false;
+}
+
+
+    function executiveValidate()
+{
+ var a = $("#id_name").val();
+ var b = $("#id_first_name_1").val();
+ var c = $("#id_nationality").val();
+ var d = $("#id_maritalstatus").val();
+ var e = $("#id_dob").val();
+ var f = $("#id_mobileno").val();
+ var g = $("#id_gender").val();
+ var h = $("#id_residencelocation").val();
+ var i = $("#id_date_of_joining").val();
+ var j = $("#id_date_of_expiry").val();
+ var k = $("#id_rfidcardno").val();
+ var l = $("#id_emailid").val();
+ var m = $("#id_clubsallowed_0").val();
+ var n = $("#id_membership_category").val();
+ var o = $("#id_associatecompany").val();
+ var p = $("#id_department").val();
+ var q = $("#id_membership_grade").val();
+ var r = $("#id_organization").val();
+ var s = $("#id_employment").val();
+ is_error=false; 
+if(a == "")
+     {
+       errmsg = "Please Enter Family Name";
+       is_error = true;  
+       document.getElementById("Err1").style.color="red";
+       $("#Err1").html(errmsg);
+       $("#id_name").focus();
+     }
+
+if(b == "")
+     {
+      errmsg = "Please Enter First Name";
+      is_error = true;  
+       document.getElementById("Err2").style.color="red";
+       $("#Err2").html(errmsg);
+      $("#id_first_name_1").focus();
+     }
+
+if(c == "")
+     {
+       errmsg = "Please Enter Nationality";
+       is_error = true;  
+       document.getElementById("Err3").style.color="red";
+       $("#Err3").html(errmsg);
+       $("#id_nationality").focus();
+     }
+
+if(d == "")
+     {
+       errmsg = "Please Enter Marital Status";
+       is_error = true;  
+       document.getElementById("Err4").style.color="red";
+       $("#Err4").html(errmsg);
+       $("#id_maritalstatus").focus();
+     }
+
+// if(e == "")
+//      {
+//        errmsg = "Please Enter Date of Birth";
+//        is_error = true;  
+//        document.getElementById("Err5").style.color="red";
+//        $("#Err5").html(errmsg);
+//        $("#id_dob").focus();
+//      }
+
+// if(f == "")
+//      {
+//        errmsg = "Please Enter Mobileno";
+//        is_error = true;  
+//        document.getElementById("Err6").style.color="red";
+//        $("#Err6").html(errmsg);
+//        $("#id_mobileno").focus();
+//      }
+
+if(g == "")
+     {
+       errmsg = "Please Enter Gender";
+       is_error = true;  
+       document.getElementById("Err7").style.color="red";
+       $("#Err7").html(errmsg);
+       $("#id_gender").focus();
+     }
+
+// if(h == "")
+//      {
+//        errmsg = "Please Enter Residence Location";
+//        is_error = true;  
+//        document.getElementById("Err8").style.color="red";
+//        $("#Err8").html(errmsg);
+//        $("#id_residencelocation").focus();
+//      }
+
+// if(i == "")
+//      {
+//        errmsg = "Please Enter Date of Join";
+//        is_error = true;  
+//        document.getElementById("Err9").style.color="red";
+//        $("#Err9").html(errmsg);
+//        $("#id_date_of_joining").focus();
+//      }
+
+// if(j == "")
+//      {
+//        errmsg = "Please Enter Expiry Date";
+//        is_error = true;  
+//        document.getElementById("Err10").style.color="red";
+//        $("#Err10").html(errmsg);
+//        $("#id_date_of_expiry").focus();
+//      }
+
+if(k == "")
+     {
+       errmsg = "Please Enter Access Card No.";
+       is_error = true;  
+       document.getElementById("Err11").style.color="red";
+       $("#Err11").html(errmsg);
+       $("#id_rfidcardno").focus();
+     }
+
+if(l == "")
+     {
+       errmsg = "Please Enter Email";
+       is_error = true;  
+       document.getElementById("Errem").style.color="red";
+       $("#Errem").html(errmsg);
+       $("#id_emailid").focus();
+     }
+
+// if(m == "")
+//      {
+//        errmsg = "Please Enter Clubs Allowed";
+//        is_error = true;  
+//        document.getElementById("Err13").style.color="red";
+//        $("#Err13").html(errmsg);
+//        $("#id_clubsallowed").focus();
+//      }
+
+// if(n == "")
+//      {
+//        errmsg = "Please Enter Category";
+//        is_error = true;  
+//        document.getElementById("Err14").style.color="red";
+//        $("#Err14").html(errmsg);
+//        $("#id_membership_category").focus();
+//      }
+
+// if(o == "")
+//      {
+//        errmsg = "Please Enter Company";
+//        is_error = true;  
+//        document.getElementById("Err15").style.color="red";
+//        $("#Err15").html(errmsg);
+//        $("#id_company_name").focus();
+//      }
+
+// if(p == "")
+//      {
+//        errmsg = "Please Enter Department";
+//        is_error = true;  
+//        document.getElementById("Err16").style.color="red";
+//        $("#Err16").html(errmsg);
+//        $("#id_department").focus();
+//      }
+
+// if(q == "")
+//      {
+//        errmsg = "Please Enter Membership Grade";
+//        is_error = true;  
+//        document.getElementById("Err17").style.color="red";
+//        $("#Err17").html(errmsg);
+//        $("#id_membership_grade").focus();
+//      }
+
+// if(r == "")
+//     {
+//       errmsg = "Please Enter Organization";
+//       is_error = true;  
+//       document.getElementById("Err18").style.color="red";
+//       $("#Err18").html(errmsg);
+//       $("#id_organization").focus();
+//     }
+
+// if(s == "")
+//      {
+//        errmsg = "Please Enter Employment";
+//        is_error = true;  
+//        document.getElementById("Err19").style.color="red";
+//        $("#Err19").html(errmsg);
+//        $("#id_employment").focus();
+//      }
+if(is_error)
+    {
+      return false;
+    }
+    else
+    {
+     return true;
+    }
+}
+</script>
+{%endblock content%}

@@ -1,0 +1,6 @@
+
+Unrecognized command-line arguments: start
+
+Try --help?
+
+("\nThe 'celeryd' command is deprecated, please use 'celery worker' instead:\n\n$ celery worker start\n\n",)

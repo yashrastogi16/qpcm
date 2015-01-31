@@ -1,0 +1,821 @@
+{% extends 'Steward/steward_base.html' %}
+  {% block content %}
+    <!--main content start-->
+    <section id="main-content" >
+        <section class="wrapper">
+            <div class="row">
+           
+
+            <div class="col-lg-12">
+            <!--tab nav start-->
+            <section class="panel">
+                <header class="panel-heading tab-bg-dark-navy-blue ">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home">View Profile</a>
+                        </li>
+                        
+                        {%if org != 'QP'%}{%if pending_ren or ren_list%}<li class="">
+                            <a data-toggle="tab" href="#contact">Renew Membership</a>
+                        </li>{%endif%}{%endif%}
+
+						{%if pend_sus or pend_sus_rev or act_list or sus_list%}<li class="">
+                            <a data-toggle="tab" href="#Others">Suspend/Revoke Membership</a>
+                        </li>{%endif%}
+
+                         {%if pend_cancel or act_list or inact_list or pend_react%}<li class="">
+                            <a data-toggle="tab" href="#profile">Cancel/Reactivate  Membership</a>
+                        </li>{%endif%}
+                    </ul>
+                </header>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane active"><br><br>
+                          
+                  <div class="col-lg-13">
+				  <div class="row">
+
+				  <div class="col-lg-2 text-center">
+				  <img src="{{IMAGE_URL}}{{photo}}" height="100px" width="100px"><br/><br/><br/><br/>
+
+					<button type="button" style="width:80%;" class="btn btn-primary center" onclick="Family({{id}})">Family</button><br/><br/><br/><br/>
+                    
+					<button type="button" style="width:80%;" class="btn btn-primary center" onclick="PrintCard({{id}})">Print Card</button>         
+				  </div>
+				  <div class="col-lg-5 text-left">
+				  
+                  <div class="col-lg-2 text-center" style="margin-top:-43px;margin-left: 571px;">
+                        {%if org == 'QP'%}
+                  <button type="button" class="btn btn-success" onclick="return popitup('/qpaddmember/?emid={{id}}')">Edit Profile</button>    
+                  {% else %}
+                  <button type="button" class="btn btn-success" onclick="return popitup('/membershipform/?emid={{id}}')">Edit Profile</button>
+                  {%endif%}
+
+                  <button type="button" class="btn btn-info" onclick="return popitup('/addclubs/?mid={{id}}')" style="margin-left: 100px;margin-top: -55px;">Add to My Clubs</button>
+
+                      </div>		
+				  <table class="table table-striped">
+				  	
+				  	<tr>
+				  		<td><strong>Name</strong></td>
+				  		<td>:</td>
+				  		<td>{{name}}</td>
+				  	</tr>
+                    <tr>
+                        <td><strong>Staff ID</strong></td>
+                        <td>:</td>
+                        <td>{{member_uid}}</td>
+                    </tr>
+				  	<tr>
+				  		<td><strong>Organization</strong></td>
+				  		<td>:</td>
+				  		<td>{{organization}}</td>
+				  	</tr>
+                    {%if attachment%}
+                    <tr>
+                        <td><strong>Attachment</strong></td>
+                        <td>:</td>
+                        <td><li><a href="/download/?mid={{id}}">Download</a></li></td>
+                    </tr>
+                    {%endif%}
+                    
+				  	<tr>
+				  		<td><strong>Martial Status</strong></td>
+				  		<td>:</td>
+				  		<td>{{maritalstatus}}</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Nationality</strong></td>
+				  		<td>:</td>
+				  		<td>{{nationality}}</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Work Location</strong></td>
+				  		<td>:</td>
+				  		<td>{{worklocation}}</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Office Phone</strong></td>
+				  		<td>:</td>
+				  		<td>{{officephone}}</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Mobile No</strong></td>
+				  		<td>:</td>
+				  		<td>{{mobileno}}</td>
+				  	</tr>
+				  	<!-- <tr>
+				  		<td><strong>Personal Level</strong></td>
+				  		<td>:</td>
+				  		<td>S</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Position</strong></td>
+				  		<td>:</td>
+				  		<td>IT Manager</td>
+				  	</tr> -->
+				  	
+				  	
+
+				  </table>			   
+				  </div>
+				  <div class="col-lg-5 text-left">
+					 <!-- <h4>Gender <small>M</small></h4>
+				  <h4>Department <small>IT</small></h4>
+				  <h4>Clubs Allowed <small>Dhukhan Recreation Club(DRC)</small></h4>
+				  <h4>Date of Joining <small>1/2/2005</small></h4>
+				  <h4>Date of Renewal<small>1/2/2015</small></h4>
+				  <h4>Date of Renewal<small>1/2/2015</small></h4>			 -->	
+
+				<table class="table table-striped">
+				  	
+				  	<tr>
+				  		<td><strong>Gender</strong></td>
+				  		<td>:</td>
+				  		<td>{{gender}}</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Email id</strong></td>
+				  		<td>:</td>
+				  		<td>{{emailid}}</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Department</strong></td>
+				  		<td>:</td>
+				  		<td>{{department}}</td>
+				  	</tr>
+				  	<tr>
+                        <td style="vertical-align: top;"><strong>Clubs Allowed</strong></td>
+                        <td style="vertical-align: top;">:</td>
+
+                    </tr>
+                    <tr>
+                    <td colspan="3"><table>
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <th>Date of Expiry</th>               
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in clubs_list %}
+                    <tr> 
+                    <td align="left">{{ r.club}}</td>
+                    {%if r.status == 'Active'%}<td align="right" style="color:green;">{{r.status}}</td>
+                    {%else%}<td align="right">{{r.status}}</td>{%endif%}
+                    {%if r.expiry%}<td align="left">{{ r.expiry|date:"Y-m-d"}}</td>
+                    {%else%}<td align="left">None</td>{%endif%}
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table>
+                </td>
+                        
+                    </tr>
+				  	<tr>
+				  		<td><strong>Date of Joining</strong></td>
+				  		<td>:</td>
+				  		<td>{{date_of_joining|date:"Y-m-d"}}</td>
+				  	</tr>
+				  	<!-- {%if org != 'QP'%}<tr>
+                        <td><strong>Date of Renewal</strong></td>
+                        <td>:</td>
+                        <td>{{date_of_expiry|date:"Y-m-d"}}</td>
+                    </tr>{%endif%} -->
+			
+				  </table>				
+				  </div>       
+                  </div><br/><br/><br/><br/>
+				  
+                </div>
+                
+                
+             
+                        </div>
+						
+						
+						
+						
+						
+                        <div id="about" class="tab-pane">
+						
+						
+						
+						
+					
+				<div class="row">
+				  <div class="col-lg-8 text-center">					
+					  <div class="panel-body" style="color: #14AAC7">
+						<center><h2>Approve Membership</h2></center>
+					  </div>					            
+				  </div>
+				</div>
+				<div class="col-lg-2 text-center">
+				  <img src="{{IMAGE_URL}}{{photo}}" height="100px" width="100px"><br/><br/><br/><br/>         
+				  </div>
+				<div class="col-lg-5 text-left">
+				
+					<table class="table table-striped">
+				  	<tr>
+				  		<td><strong>From Date</strong></td>
+				  		<td>:</td>
+				  		<td><input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" id="app_date1"/></td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Name</strong></td>
+				  		<td>:</td>
+				  		<td>{{name}}</td>
+				  	</tr>
+                    <tr>
+                        <td><strong>Staff ID</strong></td>
+                        <td>:</td>
+                        <td>{{member_uid}}</td>
+                    </tr>
+				  	<tr>
+				  		<td><strong>Organization</strong></td>
+				  		<td>:</td>
+				  		<td>{{organization}}</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Martial Status</strong></td>
+				  		<td>:</td>
+				  		<td>{{maritalstatus}}</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Nationality</strong></td>
+				  		<td>:</td>
+				  		<td>{{nationality}}</td>
+				  	</tr>
+				  	 <tr>
+				  		<td><strong>Work Location</strong></td>
+				  		<td>:</td>
+				  		<td>{{worklocation}}</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Office Phone</strong></td>
+				  		<td>:</td>
+				  		<td>{{officephone}}</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Mobile No</strong></td>
+				  		<td>:</td>
+				  		<td>{{mobileno}}</td>
+				  	</tr>
+				  	<!-- <tr>
+				  		<td><strong>Personal Level</strong></td>
+				  		<td>:</td>
+				  		<td>S</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Position</strong></td>
+				  		<td>:</td>
+				  		<td>IT Manager</td>
+				  	</tr>	 -->			  	
+				  </table>				   
+				  </div>
+				<div class="col-lg-5 text-left">
+				
+					<table class="table table-striped">
+				  	<tr>
+				  		<td><strong>To Date</strong></td>
+				  		<td>:</td>
+				  		<td><input class="form-control form-control-inline input-medium default-date-picker"  size="16" type="text" id="app_date2" /></td>
+				  		
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Gender</strong></td>
+				  		<td>:</td>
+				  		<td>{nder{ge}}</td>
+				  	</tr>
+				  	<!-- <tr>
+				  		<td><strong>Staff ID</strong></td>
+				  		<td>:</td>
+				  		<td>100110</td>
+				  	</tr> -->
+				  	<tr>
+				  		<td><strong>Department</strong></td>
+				  		<td>:</td>
+				  		<td>{{department}}</td>
+				  	</tr>
+				  	<tr>
+                        <td style="vertical-align: top;"><strong>Clubs Allowed</strong></td>
+                        <td style="vertical-align: top;">:</td>
+                        <td>{%if 'DRC' in clubsallowed%}<p>Dhukhan Recreation Club(DRC)</p>{%endif%}
+                        {%if 'JRC' in clubsallowed%}<p>Jinan Recreation Club(JRC)</p>{%endif%}
+                        {%if 'DWS' in clubsallowed%}<p>Dhukhan Water Sports Club(DWS)</p>{%endif%}
+                        {%if 'DGC' in clubsallowed%}<p>Dhukhan Golf Club(DGC)</p>{%endif%}
+                        {%if 'DFC' in clubsallowed%}<p>Dhukhan Fitness Club(DFC)</p>{%endif%}
+                        {%if 'MGC' in clubsallowed%}<p>Mesaieed Golf Club(MGC)</p>{%endif%}
+                        {%if 'ASRC' in clubsallowed%}<p>Al-Shaheen Recreation Club(ASRC)</p>{%endif%}
+                        {%if 'AC' in clubsallowed%}<p>Alghazal Club(AC)</p>{%endif%}
+                        {%if 'BC' in clubsallowed%}<p>Beach Club(BC)</p>{%endif%}                  
+                        </td>
+                    </tr>
+				  	<tr>
+                        <td><strong>Date of Joining</strong></td>
+                        <td>:</td>
+                        <td>{{date_of_joining|date:"Y-m-d"}}</td>
+                    </tr>
+                    {%if org != 'QP'%}<tr>
+                        <td><strong>Date of Renewal</strong></td>
+                        <td>:</td>
+                        <td>{{date_of_expiry|date:"Y-m-d"}}</td>
+                    </tr>{%endif%}
+				  	
+				  </table>		
+                  <button type="button" style="float:right;width:50%;" class="btn btn-success" onclick="Approve({{id}},'app')">Approve</button>		
+				  </div>       
+                  			
+						</div>
+					
+			<div id="profile" class="tab-pane">          
+             <div class="row">
+                  <div class="col-lg-7 text-center">                    
+                      <div class="panel-body" style="color: #14AAC7">
+                        <center><h2>User Cancellation</h2></center>
+                      </div>                                
+                  </div>
+
+                </div>
+
+                <div class="col-lg-2 text-center">
+                  <img src="{{IMAGE_URL}}{{photo}}" height="100px" width="100px" style="margin-top: -72px;"><br/><br/><br/><br/>         
+                  </div>
+
+                {%if pend_cancel%}<table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <!-- <th>Date of Expiry</th> -->
+                    <th>Action</th>             
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in pend_cancel %}
+                    <tr> 
+                    <td>{{ r.club.name}}</td>
+                    {%if r.status == 'Active'%}<td style="color:green;">{{r.status}}</td>
+                    {%else%}<td>{{r.status}}</td>{%endif%}
+                    <!-- <td >{{ r.expiry|date:"Y-m-d"}}</td> -->
+                    <td> <!-- <button class="btn btn-danger" onclick="return popitup('/clubslist/?mid={{id}}&action=can&c_id={{r.club_id}}')">Cancel Membership</button> -->
+                     <button type="button" class="btn btn-success" onclick="reject({{id}},{{r.club_id}},'can')">Cancel Cancellation</button>
+                    </td>
+
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table> {%endif%}
+
+                {%if act_list%}<table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <!-- <th>Date of Expiry</th> -->
+                    <th>Action</th>             
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in act_list %}
+                    <tr> 
+                    <td>{{ r.club.name}}</td>
+                    {%if r.status == 'Active'%}<td style="color:green;">{{r.status}}</td>
+                    {%else%}<td>{{r.status}}</td>{%endif%}
+                    <!-- <td >{{ r.expiry|date:"Y-m-d"}}</td> -->
+                    <td><button class="btn btn-danger" onclick="return popitup('/clubslist/?mid={{id}}&action=can&c_id={{r.club_id}}')">Cancel Membership</button>
+                    </td>
+
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table> {%endif%}
+
+
+                {%if inact_list%}<table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <!-- <th>Date of Expiry</th> -->
+                    <th>Action</th>             
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in inact_list %}
+                    <tr> 
+                    <td>{{ r.club.name}}</td>
+                    <td>{{r.status}}</td>
+                    <!-- <td >{{ r.expiry|date:"Y-m-d"}}</td> -->
+                    <td><button class="btn btn-success" onclick="return popitup('/clubslist/?mid={{id}}&action=act&c_id={{r.club_id}}')">Reactivate</button>
+                    </td>
+
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table> {%endif%}
+
+                {%if pend_react%}<table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <!-- <th>Date of Expiry</th> -->
+                    <th>Action</th>             
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in pend_react %}
+                    <tr> 
+                    <td>{{ r.club.name}}</td>
+                    {%if r.status == 'Active'%}<td style="color:green;">{{r.status}}</td>
+                    {%else%}<td>{{r.status}}</td>{%endif%}
+                    <!-- <td >{{ r.expiry|date:"Y-m-d"}}</td> -->
+                    <td> <!-- <button class="btn btn-danger" onclick="return popitup('/clubslist/?mid={{id}}&action=can&c_id={{r.club_id}}')">Cancel Membership</button> -->
+                     <button type="button" class="btn btn-success" onclick="reject({{id}},{{r.club_id}},'act')">Cancel Reactivation</button>
+                    </td>
+
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table> {%endif%}    
+            </div>
+
+
+            <div id="contact" class="tab-pane"> 
+              <div class="row">
+                  <div class="col-lg-7 text-center">                    
+                      <div class="panel-body" style="color: #14AAC7">
+                        <center><h2>Renew Membership</h2></center>
+                      </div>                                
+                  </div>
+                </div>
+
+                 <div class="col-lg-2 text-center">
+                  <img src="{{IMAGE_URL}}{{photo}}" height="100px" width="100px" style="margin-top: -72px;"><br/><br/><br/><br/>         
+                  </div>
+
+                {%if pending_ren%}<table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <!-- <th>Date of Expiry</th> -->
+                    <th>Action</th>             
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in pending_ren %}
+                    <tr> 
+                    <td>{{ r.club.name}}</td>
+                    {%if r.status == 'Active'%}<td style="color:green;">{{r.status}}</td>
+                    {%else%}<td>{{r.status}}</td>{%endif%}
+                    <!-- <td >{{ r.expiry|date:"Y-m-d"}}</td> -->
+                    <td><!-- <button class="btn btn-danger" onclick="return popitup('/clubslist/?mid={{id}}&action=ren&c_id={{r.club_id}}')">Renew</button> -->
+                    <button type="button" class="btn btn-success" onclick="reject({{id}},{{r.club_id}},'ren')">Cancel Renewal</button>
+                    </td>
+
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table>{%endif%}
+
+                {%if ren_list%}<table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <!-- <th>Date of Expiry</th> -->
+                    <th>Action</th>             
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in ren_list %}
+                    <tr> 
+                    <td>{{ r.club.name}}</td>
+                    {%if r.status == 'Active'%}<td style="color:green;">{{r.status}}</td>
+                    {%else%}<td>{{r.status}}</td>{%endif%}
+                    <!-- <td >{{ r.expiry|date:"Y-m-d"}}</td> -->
+                    <td><button class="btn btn-success" onclick="return popitup('/clubslist/?mid={{id}}&action=ren&c_id={{r.club_id}}')">Renew</button>
+                    </td>
+
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table>{%endif%}
+
+                  
+          </div>
+
+
+		<div id="Others" class="tab-pane">
+                         
+             <div class="row">
+                  <div class="col-lg-7 text-center">                    
+                      <div class="panel-body" style="color: #14AAC7">
+                        <center><h2>User Suspension</h2></center>
+                      </div>                                
+                  </div>
+                </div>
+                <div class="col-lg-2 text-center">
+                  <img src="{{IMAGE_URL}}{{photo}}" height="100px" width="100px" style="margin-top: -72px;"><br/><br/><br/><br/>         
+                  </div>
+                {%if pend_sus%}<table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <!-- <th>Date of Expiry</th> -->
+                    <th>Action</th>             
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in pend_sus %}
+                    <tr> 
+                    <td>{{ r.club.name}}</td>
+                    {%if r.status == 'Active'%}<td style="color:green;">{{r.status}}</td>
+                    {%else%}<td>{{r.status}}</td>{%endif%}
+                    <!-- <td >{{ r.expiry|date:"Y-m-d"}}</td> -->
+                    <td><!-- <button class="btn btn-danger" onclick="return popitup('/clubslist/?mid={{id}}&action=sus&c_id={{r.club_id}}')">Suspend</button> -->
+                    <button type="button" class="btn btn-success" onclick="reject({{id}},{{r.club_id}},'sus')">Cancel Suspension</button>
+                    </td>
+
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table>{%endif%}
+
+               {%if sus_list%} <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <!-- <th>Date of Expiry</th> -->
+                    <th>Action</th>             
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in sus_list %}
+                    <tr> 
+                    <td>{{ r.club.name}}</td>
+                    {%if r.status == 'Active'%}<td style="color:green;">{{r.status}}</td>
+                    {%else%}<td>{{r.status}}</td>{%endif%}
+                    <!-- <td >{{ r.expiry|date:"Y-m-d"}}</td> -->
+                    <td><button class="btn btn-danger" onclick="return popitup('/clubslist/?mid={{id}}&action=rev&c_id={{r.club_id}}')">Revoke</button>
+                    </td>
+
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table>{%endif%}
+
+                {%if pend_sus_rev%}<table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <!-- <th>Date of Expiry</th> -->
+                    <th>Action</th>             
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in pend_sus_rev %}
+                    <tr> 
+                    <td>{{ r.club.name}}</td>
+                    {%if r.status == 'Active'%}<td style="color:green;">{{r.status}}</td>
+                    {%else%}<td>{{r.status}}</td>{%endif%}
+                    <!-- <td >{{ r.expiry|date:"Y-m-d"}}</td> -->
+                    <td>{%if r.status != 'Pending-Suspension-Revoke'%}<button class="btn btn-danger" onclick="return popitup('/clubslist/?mid={{id}}&action=rev&c_id={{r.club_id}}')">Revoke</button>{%endif%}
+                    <button type="button" class="btn btn-success" onclick="reject({{id}},{{r.club_id}},'rev')">Cancel Revoke Request</button>
+                    </td>
+
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table>{%endif%}
+
+                {%if act_list%}<table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                    <th>Club Name</th>
+                    <th>Status</th>
+                    <!-- <th>Date of Expiry</th> -->
+                    <th>Action</th>             
+                  </tr>
+                </thead>
+                <tbody>
+                    {%for r in act_list %}
+                    <tr> 
+                    <td>{{ r.club.name}}</td>
+                    {%if r.status == 'Active'%}<td style="color:green;">{{r.status}}</td>
+                    {%else%}<td>{{r.status}}</td>{%endif%}
+                    <!-- <td >{{ r.expiry|date:"Y-m-d"}}</td> -->
+                    <td><button class="btn btn-danger" onclick="return popitup('/clubslist/?mid={{id}}&action=sus&c_id={{r.club_id}}')">Suspend</button>
+                    </td>
+
+                    </tr>
+                    {%endfor%}                     
+                </tbody>
+                </table>{%endif%}
+            </section>
+            </div>
+
+            </div>
+            
+            </section>
+            
+            </div>
+
+            </div>
+
+
+        </section>
+    </section>
+    <!--main content end-->
+<script>
+    $(function() {
+        var myDate = new Date();
+        var prettyDate =myDate.getFullYear() + '-' + (myDate.getMonth()+1) + '-' + myDate.getDate();
+        var prettyDate1 =myDate.getFullYear()+1 + '-' + (myDate.getMonth()+1) + '-' + myDate.getDate();
+$( "#frm_date1" ).datepicker();
+$( "#frm_date1" ).val(prettyDate);
+$( "#to_date1" ).datepicker();
+$( "#to_date1" ).val(prettyDate1);
+$( "#app_date1" ).datepicker();
+$( "#app_date1" ).val(prettyDate);
+$( "#app_date2" ).datepicker();
+$( "#app_date2" ).val(prettyDate1);
+$( "#ren_date1" ).datepicker();
+$( "#ren_date1" ).val(prettyDate);
+$( "#ren_date2" ).datepicker();
+$( "#ren_date2" ).val(prettyDate1);
+$( "#sus_date1" ).datepicker();
+$( "#sus_date1" ).val(prettyDate);
+$( "#sus_date2" ).datepicker();
+$( "#sus_date2" ).val(prettyDate1);
+});
+
+function Approve(id)
+{
+
+    var date1 = document.getElementById('app_date1'),
+    f_date = date1.value;
+
+    var date2 = document.getElementById('app_date2'),
+    t_date = date2.value;
+
+     if((f_date == "") || (t_date == ""))
+    {
+        alert('Please Enter Dates!');
+        return False;
+    }
+
+    var url ='/membershipform?mid=' +id+'&app'+'&d1='+f_date+'&d2='+t_date;;
+    window.location.href = url
+
+    // alert(url)
+}
+
+function Cancel(id)
+{
+    var input = document.getElementById('reason'),
+    reason = input.value;
+
+    var date1 = document.getElementById('frm_date1'),
+    f_date = date1.value;
+
+    var date2 = document.getElementById('to_date1'),
+    t_date = date2.value;
+
+     if((f_date == "") || (t_date == ""))
+    {
+        alert('Please Enter Dates!');
+        return False;
+    }
+
+    var url ='/membershipform?mid='+id+'&can'+'&r='+reason+'&d1='+f_date+'&d2='+t_date;
+    window.location.href = url
+
+    // alert(url)
+}
+
+function Renewal(id)
+{
+
+    var date1 = document.getElementById('ren_date1'),
+    f_date = date1.value;
+
+    var date2 = document.getElementById('ren_date2'),
+    t_date = date2.value;
+
+     if((f_date == "") || (t_date == ""))
+    {
+        alert('Please Enter Dates!');
+        return False;
+    }
+
+    var url ='/membershipform?mid='+id+'&ren'+'&d1='+f_date+'&d2='+t_date;;
+    window.location.href = url
+
+    // alert(url)
+}
+
+function Suspend(id)
+{
+    var input = document.getElementById('sus_reason'),
+    reason = input.value;
+
+    var date1 = document.getElementById('sus_date1'),
+    f_date = date1.value;
+
+    var date2 = document.getElementById('sus_date2'),
+    t_date = date2.value;
+    if((f_date == "") || (t_date == ""))
+    {
+        alert('Please Enter Dates!');
+        return False;
+    }
+    // alert(f_date);
+    var url ='/membershipform?mid='+id+'&sus'+'&r='+reason+'&d1='+f_date+'&d2='+t_date;;;
+    window.location.href = url
+
+    // alert(url)
+}
+
+function PrintCard(id)
+{
+    var url ='/printcard?id='+id;
+    window.location.href = url
+    // alert(url)
+}
+
+function Revoke(id)
+{
+
+    var date1 = document.getElementById('ren_date1'),
+    f_date = date1.value;
+
+    var date2 = document.getElementById('ren_date2'),
+    t_date = date2.value;
+
+     if((f_date == "") || (t_date == ""))
+    {
+        alert('Please Enter Dates!');
+        return False;
+    }
+
+    var url ='/membershipform?mid='+id+'&rev'+'&d1='+f_date+'&d2='+t_date;;
+    window.location.href = url
+
+    // alert(url)
+}
+
+function Save(id)
+{
+    var url ='/membershipform?mid='+id+'&sus';
+    window.location.href = url
+
+    // alert(url)
+}
+
+function Family(id)
+{
+    var url ='/familyform?mid='+id;
+    window.location.href = url
+
+    // alert(url)
+}
+
+function edit(id)
+{
+   //alert(id)
+   window.location.href="/membershipform/?emid="+id;
+}
+
+
+
+function reject(mid,cid,action)
+{
+
+    if (cid == "can")
+    {
+        var url = '/reject?mid='+mid+'&action='+cid;
+    }
+
+    else
+    {
+        var url ='/reject?mid='+mid+'&cid='+cid+'&action='+action;
+    }
+    // window.location.href = url
+    // alert(url);
+
+    var option = swal({   title: "Are you sure?",   text: "Want to Cancel!",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "Proceed",   closeOnConfirm: false }, function(){  
+        // var url ='/reject?mid='+mid+'&cid='+cid+'&action='+action;
+        window.location.href = url
+     });
+    console.log(option);
+}
+
+</script>
+{%endblock content%}

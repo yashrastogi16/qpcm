@@ -1,0 +1,31 @@
+
+<html>
+<head>
+<link href="../static/bs3/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<br/>
+<h2 align = "center" style="color:lightseagreen;">Reset Password</h2> <br/><br/>
+<div class="col-lg-6">
+
+	<p style="color:green;">{{suc_msg}}</p>
+                      
+  <form method="post" action='/reset_userpwd/'> <table class="table table-striped"><tr>
+  		{% csrf_token %}
+		<td>Email Id</td><td>:</td><td><input type="text" required value="{{email}}" name="email"/></td></tr>
+		<tr></tr>
+		<tr><td><td><td><button type="submit" class="btn btn-primary">Confirm</button> </td></tr></table>
+		<input type="hidden" name="uid" value="{{uid}}"/>
+	</form>
+
+	<input type="button" value="Cancel" style="margin-top: -63px;
+margin-left: 323px;
+padding: 11px;
+background: #C58482;
+border: #1fb5ad;
+border-radius: 9px 9px 9px;
+color: white;
+cursor: pointer;" onclick="window.close()">
+			  
+</div>
+
+</html>

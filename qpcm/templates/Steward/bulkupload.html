@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>E-Club Membership Management System</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Add custom CSS here -->
+    <link href="../static/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/font-awesome/css/font-awesome.min.css">
+  </head>
+
+  <body>
+
+    <div id="wrapper" style="
+    background-color: rgb(231, 231, 231);
+">
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/index/">E-Club Membership Management System</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <!-- <li><a href="/index/"> Dashboard</a></li> -->
+            <li><a href="/members/"> Members</a></li>
+            <li class="active"><a href="/membershipform/">Add Membership</a></li>
+            <!-- <li><a href="/reports/"> Reporting</a></li> -->
+            <!--<li><a href="/users/"> Users</a></li>
+            <li><a href="/userform/">Add User</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-file"></i> Forms <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                
+                
+                 <li><a href="#">Third Item</a></li>
+                <li><a href="#">Last Item</a></li>     
+              </ul>
+            </li>-->
+            <li><a href="/settings/"> Settings</a></li>
+            <li><a href="/logout/">Logout</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+      <div id="page-wrapper">
+        <div class="row">
+          <div class="col-lg-12">
+            
+            <div class="bs-example">
+              <ul class="nav nav-tabs" style="margin-bottom: 15px;">
+                <li><a href="#profile" data-toggle="tab">My Profile</a></li>
+                <li class="active"><a href="#bulk-upload" data-toggle="tab">Add Membership</a></li>
+               <!-- <li><a href="#associated-companies" data-toggle="tab">Associated Companies</a></li>
+                <li><a href="#" data-toggle="tab">Email Notification</a></li>
+                <li><a href="#" data-toggle="tab">Others</a></li>  -->
+                                
+              </ul>
+              <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade" id="profile">
+                  <div class="col-lg-13">
+				  <div class="row">
+				  <div class="col-lg-3 text-center">
+				  <img src="../static/img/people.jpg" height="100px" width="100px"><br/><br/><br/><br/><br/>					
+					<button type="submit" class="btn btn-default">Edit Profile</button>           
+				  </div>
+				  <div class="col-lg-4 text-left">
+				 
+				  <table>
+				  	
+				  	<tr>
+				  		<td><strong>Name</strong></td>
+				  		<td>:</td>
+				  		<td>Mohammed Ali</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Organization</strong></td>
+				  		<td>:</td>
+				  		<td>QP</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>User ID</strong></td>
+				  		<td>:</td>
+				  		<td>mz001</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Password</strong></td>
+				  		<td>:</td>
+				  		<td>Change</td>
+				  	</tr>				  	
+				  	<tr>
+				  		<td><strong>Office Phone</strong></td>
+				  		<td>:</td>
+				  		<td>1234123</td>
+				  	</tr>
+				  	<tr>
+				  		<td><strong>Mobile No</strong></td>
+				  		<td>:</td>
+				  		<td>012332112</td>
+				  	</tr>
+				  </table>				   
+				  </div>
+				  <div class="col-lg-5 text-left">
+					
+				  <table>				  	
+				  	<tr>
+				  		<td><strong>Role</strong></td>
+				  		<td>:</td>
+				  		<td>Manager</td>
+				  	</tr>				  	
+				  	<tr>
+				  		<td style="vertical-align: top;"><strong>Clubs Allowed</strong></td>
+				  		<td style="vertical-align: top;">:</td>
+				  		<td>Dhukhan Recreation Club(DRC)<br>
+				  		Jinan Recreation Club(JRC)<br>
+				  		Dhukhan Water Sports Club(DWS)<br>
+				  		Dhukhan Golf Club(DGC)<br>
+				  		Dhukhan Fitness Club(DFC)<br>				  		
+				  		</td>
+				  	</tr>			  	
+				  </table>					
+				  </div>       
+                  </div><br/><br/><br/><br/>	
+                </div>               
+              </div>		  
+			  
+			  <div class="tab-pane fade active in" id="bulk-upload">
+				
+				<form action="/bulkupload/" method="post">
+                {%csrf_token%}
+                  <table>
+                  <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{{form.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Nationality</td>
+                        <td>:</td>
+                        <td>{{form.nationality}}</td>
+                    </tr>
+                    <tr>
+                        <td>Marital Status</td>
+                        <td>:</td>
+                        <td>{{form.maritalstatus}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile No</td>
+                        <td>:</td>
+                        <td>{{form.mobileno}}</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>:</td>
+                        <td>{{form.gender}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date Of Birth</td>
+                        <td>:</td>
+                        <td>{{form.dob}}</td>
+                    </tr>
+                    <tr>
+                        <td>AccessCard No.</td>
+                        <td>:</td>
+                        <td>{{form.rfidcardno}}</td>
+                    </tr>
+                    <tr>
+                        <td>Clubs Allowed</td>
+                        <td>:</td>
+                        <td>{{form.clubsallowed}}</td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td>Status</td>
+                        <td>:</td>
+                        <td>{{form.status}}</td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td>:</td>
+                        <td>{{form.department}}</td>
+                    </tr>
+                    <tr>
+                        <td>Membership</td>
+                        <td>:</td>
+                        <td>{{form.membership}}</td>
+                    </tr>
+                    <tr>
+                        <td>Organization</td>
+                        <td>:</td>
+                        <td>{{form.organization}}</td>
+                    </tr>
+                    <tr>
+                        <td>Employment</td>
+                        <td>:</td>
+                        <td>{{form.employment}}</td>
+                    </tr>
+                    <tr style="display:none;">
+                        <td>User</td>
+                        <td>:</td>
+                        <td>{{form.user}}</td>
+                    </tr>
+                  </tbody>
+                  </table></br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit"/>
+                    </form>
+			  </div>
+			  
+			  
+			  
+			  
+			  
+        </div><!-- /.row -->
+        </div><!-- /.row -->
+    </div><!-- /#wrapper -->
+    <!-- JavaScript -->
+    <script src="../static/js/jquery-1.10.2.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+    <script src="../static/js/rc.js"></script>
+    
+  </body>
+</html>

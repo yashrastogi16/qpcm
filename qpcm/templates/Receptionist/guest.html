@@ -1,0 +1,321 @@
+{% extends 'Receptionist/recep_base.html' %}
+ {% block content %}
+    <!--main content start-->
+    <section id="main-content" >
+        <section class="wrapper">
+           
+            
+          
+
+            <div class="row">
+           
+
+            <div class="col-lg-12">
+            <!--tab nav start-->
+            <section class="panel">
+                
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane active"><br><br>
+                            <div class="row">
+                                <div class="col-lg-1"> 
+                                </div>
+                    
+                    <div class="col-lg-8" id="ermsgg">
+                    {% if  gid%}
+                    <!-- {% if timediffff%}
+                      <button type="button" class="btn btn-primary" onclick="Extend({{gid}})">Extend</button>
+                      {%endif%} -->
+                      <h4><span id="Errm"></span></h4>
+                      <button type="button" class="btn btn-primary" onclick="pop_up()" style ="margin-left:32%;margin-top:3%">Extend</button>
+                      {% if  deactive%}
+                      <button type="button" class="btn btn-primary" onclick="Deactivate({{gid}})" style ="margin-left:1%;margin-top:3%">Deactivate</button>
+                      {%endif%}
+                      {% if active%}
+                      {%if not date_expir%}
+                      <button type="button" class="btn btn-primary" onclick="Activate({{gid}})" style ="margin-left:1%;margin-top:3%">Activate</button>
+                      {%endif%}
+                      {%endif%}
+                  {%endif%}
+                    {%if gid%}
+                    <h3 style="color:cadetblue;">Update Guest Info</h3>
+                    {%else%}
+                    <h3 style="color:cadetblue;">Guest Registration</h3>{%endif%}                
+                      <div class="table-responsive">
+                       <h3>{{err_msg}}</h3>
+                       
+                      <form action="/guestEntry/" method="post" enctype="multipart/form-data"> 
+					  {% csrf_token %}
+			<table class="table table-striped"><tr>
+                <tr><td >Member ID</td><td>:</td><td>{{form.memberid}}&nbsp;&nbsp;<span id="Err1"></span></td></tr>
+                <td>Name</td><td>:</td><td>{{form.name}}&nbsp;&nbsp;<span id="Err2"></span></td></tr>
+                <tr><td>Gender</td><td>:</td><td>{{form.gender}}&nbsp;&nbsp;<span id="Err3"></span></td></tr>
+                <tr><td>Date of Birth</td><td>:</td><td>{{form.dob}}&nbsp;&nbsp;<span id="Err4"></span></td></tr>
+                <tr><td>Mobile</td><td>:</td><td>{{form.phone_no}}&nbsp;&nbsp;<span id="Err5"></span></td></tr>
+                <tr><td>Access card No.</td><td>:</td><td>{{form.rfidcardno}}&nbsp;&nbsp;<span id="Err6"></span></td></tr>
+                <!-- <tr><td>Guest Id</td><td>:</td><td>{{form.guest_uid}}</td></tr> -->
+                 <!-- <tr><td>Member</td><td>:</td><td><input type="text" id="search_members" name=id="search_members"></td></tr> -->
+                <td>Photo</td>
+                <td>:</td>
+                <td><img src="{{IMAGE_URL}}{{photo}}" height="100px" width="100px"><input type="file" name="Imagefile" src="{{IMAGE_URL}}{{photo}}"/></td>
+                <tr><td>Email Id</td><td>:</td><td>{{form.emailid}}&nbsp;&nbsp;<span id="Err7"></span></td></tr>
+                <tr><td>Residence Location</td><td>:</td><td>{{form.residencelocation}}&nbsp;&nbsp;<span id="Err8"></span></td></tr>
+                <tr><td>Nationality</td><td>:</td><td>{{form.nationality}}&nbsp;&nbsp;<span id="Err9"></span></td></tr>
+                <!-- <tr><td>Relationship</td><td>:</td><td>{{form.relationship}}</td></tr> -->
+                <tr style="display:none;"><td>Clubs Allowed</td><td>:</td><td>{{form.clubsallowed}}</td></tr>
+                <tr style="display:none;"><td>Status</td><td>:</td><td>{{form.status}}</td></tr>
+                {%if not gid%}
+                <tr><td>Period Of Membership</td><td>:</td><td id="period">{{form.period}}&nbsp;&nbsp;<span id="Err10"></span></td></tr>
+                
+                {%endif%}
+                {%if gid%}
+                <tr><td>Date of Expiry</td><td>:</td><td><input type="text" value="{{expiry}}" readonly/></td></tr>
+                <tr><td>Status</td><td>:</td><td><input type="text" value="{{status}}" readonly/></td></tr>
+                {%endif%}
+                <input type="hidden" name="gid" value="{{gid}}" />
+                <input type="hidden" id="timediff" value="{{timediff}}" />
+            </table>
+              <div style="margin-left:198px">
+                  
+                <button type="submit" class="btn btn-primary" onclick="return executiveValidate()">Submit</button>
+
+                &nbsp;&nbsp;
+                <input type="button" value="Cancel" class="btn btn-success" onclick="Cancel()"/>
+                </div>
+                
+            
+                    </form>
+                      </div>                  
+                    </div>
+                    
+                </div>
+                        </div>
+                        
+                       
+                    </div>
+                </div>
+            </section>
+    <!--main content end-->
+
+
+<!-- <script src="{{STATIC_URL}}js/scripts.js"></script> -->
+
+<!-- <script src="{{STATIC_URL}}js/custom-select/jquery.customSelect.min.js" ></script> -->
+<!--common script init for all pages-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script src="../static/js/jquery.datetimepicker.js"></script>
+<script src="{{STATIC_URL}}js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}js/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+
+<script>
+
+function Deactivate(id)
+{
+    var b =$("#id_name").val();
+    if (confirm("Do You Really Want To Deactivate! " +b) == true) {
+
+    var url ='/deactivate_guest?gstid='+id;
+    window.location.href = url
+  }
+
+
+    // alert(url)
+}
+
+function Activate(id)
+{
+    var b =$("#id_name").val();
+    var f = $("#id_rfidcardno").val();
+    if (f==""){
+        errmsg = "Please Enter Rf Id card no"; 
+         document.getElementById("Err6").style.color="red";
+         $("#Err6").html(errmsg);
+         $("#id_rfidcardno").focus();
+         return false
+    }
+    if (confirm("Do You Really Want To Activate! " +b) == true) {
+
+    var url ='/activate_guest?gstid='+id+'&rfidcardno='+f;
+    window.location.href = url
+  }
+}
+
+$(function(){
+
+  
+    $('#id_memberid').keyup(function(){
+
+
+$.ajax({
+    type: 'POST',
+    url: '/search_members/',
+    data: {
+        'search_text' : $('#id_memberid').val(),
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+    },
+    success: searchSuccess,
+    dataType: 'html'
+    
+});
+});
+});
+
+function searchSuccess(data,textStatus,jqXHR)
+{
+    var list=JSON.parse(data);
+  var autolist=list.list_of_jsonstuffs;
+  $( "#id_memberid" ).autocomplete({
+      source: autolist
+    });
+  
+}
+
+
+function view(id)
+{
+   window.location.href="/common/?mid="+id;
+}
+
+function Cancel()
+{
+   window.location.href="/guestList/";
+}
+
+function pop_up()
+{
+  var f = $("#id_rfidcardno").val();
+   var timediff = $("#id_timediff").val();
+    //alert(timediff)
+   //alert({{timediff}})
+   if ({{timediff}} <=7)
+   {
+    if (f==""){
+        errmsg = "Please Enter Rf Id card no"; 
+         document.getElementById("Err6").style.color="red";
+         $("#Err6").html(errmsg);
+         $("#id_rfidcardno").focus();
+         return false
+    }
+    var url='/extend/?gid='+{{gid}}+'&rfidcardno='+f;
+    newwindow=window.open(url,'extend','height=500,width=800');
+   }
+   else{
+       errmsg = "Can't Extend this Guest Now As Date Of Expiry Has Not Reached Near."; 
+        document.getElementById("Errm").style.color="red";
+        $("#Errm").html(errmsg);
+        $("#id_Errm").focus();
+        return false
+  }
+}
+
+
+function executiveValidate()
+{
+ var a = $("#id_memberid").val();
+ var b = $("#id_name").val();
+ var c = $("#id_gender").val();
+ var d = $("#id_dob").val();
+ var e = $("#id_phone_no").val();
+ var f = $("#id_rfidcardno").val();
+ var g = $("#id_emailid").val();
+ var h = $("#id_residencelocation").val();
+ var i = $("#id_nationality").val();
+ var j = $("#id_period").val();
+
+ is_error=false; 
+if(a == "")
+     {
+       errmsg = "Please Enter Main Member id";
+       is_error = true;  
+       document.getElementById("Err1").style.color="red";
+       $("#Err1").html(errmsg);
+       $("#id_memberid").focus();
+     }
+
+if(b == "")
+     {
+      errmsg = "Please Enter Guest Name";
+      is_error = true;  
+       document.getElementById("Err2").style.color="red";
+       $("#Err2").html(errmsg);
+      $("#id_name").focus();
+     }
+
+if(c == "")
+     {
+       errmsg = "Please Enter Gender";
+       is_error = true;  
+       document.getElementById("Err3").style.color="red";
+       $("#Err3").html(errmsg);
+       $("#id_gender").focus();
+     }
+
+if(d == "")
+     {
+       errmsg = "Please Enter Birth Date";
+       is_error = true;  
+       document.getElementById("Err4").style.color="red";
+       $("#Err4").html(errmsg);
+       $("#id_dob").focus();
+     }
+
+if(e == "")
+     {
+       errmsg = "Please Enter Mobile No.";
+       is_error = true;  
+       document.getElementById("Err5").style.color="red";
+       $("#Err5").html(errmsg);
+       $("#id_phone_no").focus();
+     }
+
+
+
+if(g == "")
+     {
+       errmsg = "Please Enter Email";
+       is_error = true;  
+       document.getElementById("Err7").style.color="red";
+       $("#Err7").html(errmsg);
+       $("#id_emailid").focus();
+     }
+
+if(h == "")
+     {
+       errmsg = "Please Enter Residence Location";
+       is_error = true;  
+       document.getElementById("Err8").style.color="red";
+       $("#Err8").html(errmsg);
+       $("#id_residencelocation").focus();
+     }
+
+if(i == "")
+     {
+       errmsg = "Please Enter Nationality";
+       is_error = true;  
+       document.getElementById("Err9").style.color="red";
+       $("#Err9").html(errmsg);
+       $("#id_nationality").focus();
+     }
+if(is_error)
+    {
+      return false;
+    }
+    else
+    {
+     return true;
+    }
+}
+
+</script>
+
+<script>
+$(function(){
+
+ $('#id_dob').datetimepicker({
+       timepicker:false,
+    format:'Y-m-d'        
+                 });
+
+});
+</script>
+ {% endblock content %}

@@ -1,0 +1,307 @@
+{% extends 'Admin/admin_base.html' %}
+  {% block content %}
+
+
+
+  
+    <!--main content start-->
+    <section id="main-content" >
+        <section class="wrapper">
+            <div class="row">
+          <div class="col-lg-12">
+            <!--tab nav start-->
+            <section class="panel">
+            <div id="spinner" class="spinner" style="display:none;">
+                <img id="img-spinner" src="{{STATIC_URL}}images/spinner_2.gif" alt="Loading"/>
+            </div>
+                <header class="panel-heading tab-bg-dark-navy-blue ">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home"><h4>Add User</h4></a>
+                        </li>
+                          <!-- <li class="">
+                            <a data-toggle="tab" href="#about"><h4>QP Bulk Upload </h4></a>
+                        </li> -->
+                    </ul>
+                </header>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane active"><br><br>
+                            <div class="row">
+                                <div class="col-lg-1"> 
+                                </div>
+
+                    <div class="col-lg-8">                  
+                      <div class="table-responsive" id="ajaxwrapper">
+                      <form action="/userform/" method="post" id="userform"> 
+                      {% csrf_token %}
+                      <table class="table table-striped"><tbody>
+            <thead>
+              <tr>
+              <h3 style="color:#14AAC7"> Create New User </h3>
+              </tr>
+            <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{{form.name}}&nbsp;&nbsp;<span id="Err1"></td></span>
+                    </tr>
+                    <tr>
+                        <td>User ID</td>
+                        <td>:</td>
+                        <td>{{form.userid}}&nbsp;&nbsp;<span id="Err2"></td></span>
+                    </tr>
+
+          <tr>
+            <td>Email</td>
+            <td>:</td>
+            <td>{{form.emailid}}&nbsp;&nbsp;<span id="Err5"></span></td>
+          </tr>
+                    <tr>
+                        <td>Residence Location</td>
+                        <td>:</td>
+                        <td>{{form.residencelocation}}&nbsp;&nbsp;<span id="Err4"></span></td>
+                    </tr>
+                  <tr>
+                    <td>Clubs Allowed</td>
+                    <td>:</td>
+                    <td>{{form.clubsallowed}}&nbsp;&nbsp;<span id="Err6"></span></td>
+                  </tr>
+
+                  <div id="spinner" class="spinner" style="display:none;">
+    <img id="img-spinner" src="{{STATIC_URL}}input-spinner.gif" alt="Loading"/>
+</div>
+
+
+                    <tr>
+                        <td>Office Phone</td>
+                        <td>:</td>
+                        <td>{{form.officephone}}&nbsp;&nbsp;<span id="Err3"></td></span>
+                    </tr>
+
+                    <!-- <tr style="display:none;">
+                        <td>Password</td>
+                        <td>:</td>
+                        <td>{{form.password1}}&nbsp;&nbsp;<span id="Err3"></td></span>
+                    </tr>-->
+                    <input type="hidden" value="{{pwd}}" name="pwd"/>
+
+                     <tr>
+                        <td>Mobile</td>
+                        <td>:</td>
+                        <td>{{form.mobileno}}&nbsp;&nbsp;<span id="Err3"></td></span>
+                    </tr>
+
+                    <tr style="display:none;">
+                        <td>Status</td>
+                        <td>:</td>
+                        <td>{{form.status}}</td>
+                    </tr>
+                    <tr>
+                        <td>Role</td>
+                        <td>:</td>
+                        <td>{{form.role}}&nbsp;&nbsp;<span id="Err7"></span></td>
+                    </tr>
+                  </tbody>
+        </table>
+                 <input type="hidden" name="uid" value="{{uid}}" />
+			<div style="margin-left:278px">	
+            <p id="sendwrapper"><input type="submit" value="Submit" class="btn btn-primary" onclick="return userValidate()" id="sbutton"/>
+            &nbsp;&nbsp;
+            <input type="button" value="Cancel" class="btn btn-success" onclick="Cancel()" id="cbutton"/></p>
+            </div>
+					</form>
+                      </div>                  
+                    </div>
+                    <div class="col-lg-3"> 
+                                </div>
+                </div>
+                        </div>
+                        <div id="about" class="tab-pane">   
+						<div class="row">
+                            <div class="col-lg-3"> 
+                                </div>
+                            <div class="col-lg-6"> 
+                                <br/><br/>
+                                <form action="/settings/" method="post" name="bulk-upload">
+                                <table class="table table-striped">
+                                    <tr><td>Member ID</td><td><input class="form-control" style="width : 100%"></td> </tr>
+                                </table>
+                                <button type="submit" class="btn btn-primary" id="button-upload">Submit</button>
+                            </form>
+                            </div>
+                            <div class="col-lg-3"> 
+                                </div>
+                        </div>
+						
+						
+						</div>
+                       
+                    </div>
+                </div>
+            </section>
+
+            </div>
+
+            </div>
+
+
+        </section>
+    </section>
+    <!--main content end-->
+<!--right sidebar end-->
+</section>
+<script type="text/javascript">
+
+function Cancel(id)
+{
+   window.location.href="/users/";
+}
+
+
+
+ function userValidate()
+{
+
+
+//     return false;
+
+// }
+ var a = $("#id_name").val();
+ var b = $("#id_userid").val();
+ // var c = $("#id_password").val();
+ var d = $("#id_residencelocation").val();
+ // var e = $("#id_clubsallowed").val();
+ var f = $("#id_emailid").val();
+ var g = $("#id_role").val();
+ // var h = $("#id_role").val();
+ is_error=false;
+
+
+
+
+if(a == "")
+     {
+       errmsg = "Please Enter Name";
+       is_error = true;  
+       document.getElementById("Err1").style.color="red";
+       $("#Err1").html(errmsg);
+       $("#id_name").focus();
+
+
+
+     }
+
+
+if(b == "")
+     {
+       errmsg = "Please Enter User ID";
+       is_error = true;  
+       document.getElementById("Err2").style.color="red";
+       $("#Err2").html(errmsg);
+       $("#id_userid").focus();
+     }
+
+
+// if(c == "")
+//      {
+//        errmsg = "Please Enter Password";
+//        is_error = true;  
+//        document.getElementById("Err3").style.color="red";
+//        $("#Err3").html(errmsg);
+//        $("#id_password").focus();
+//        alert(is_error);
+//      }
+
+
+
+if(d == "")
+     {
+       errmsg = "Please Enter Residence Location";
+       is_error = true;  
+       document.getElementById("Err4").style.color="red";
+       $("#Err4").html(errmsg);
+       $("#id_residencelocation").focus();
+     }
+
+ 
+
+
+// if(e == "")
+//      {
+//        errmsg = "Please Enter Clubs Allowed";
+//        is_error = true;  
+//        document.getElementById("Err6").style.color="red";
+//        $("#Err6").html(errmsg);
+//        $("#id_clubsallowed").focus();
+//      }
+
+
+
+if(f == "")
+     {
+       errmsg = "Please Enter Email";
+       is_error = true;  
+       document.getElementById("Err5").style.color="red";
+       $("#Err5").html(errmsg);
+       $("#id_emailid").focus();
+     }
+
+
+
+if(g == "")
+     {
+       errmsg = "Please Enter User Role";
+       is_error = true;  
+       document.getElementById("Err7").style.color="red";
+       $("#Err7").html(errmsg);
+       $("#id_role").focus();
+     }
+
+if(is_error)
+    {
+      return false;
+    }
+    else
+    {
+     return true;
+    }
+}
+</script>
+
+<script type="text/javascript">
+  /*<![CDATA[*/
+  jQuery(function() {
+      var form = jQuery("#userform");
+      form.submit(function(e) {
+         $('#button-upload').click(function() {
+        $('#spinner').show();
+    });
+          jQuery("#ajaxwrapper").load(
+              form.attr('action') + ' #ajaxwrapper',
+              form.serializeArray(),
+              function(responseText, responseStatus) {
+                  jQuery("#sbutton").attr('disabled', false)
+                  window.location.href = "/users/";
+              }
+          );
+          e.preventDefault(); 
+      });
+  });
+  /*]]>*/
+  </script>
+
+  <script type="text/javascript">
+$(document).ready(function(){
+    $("#spinner").bind("ajaxSend", function() {
+        $(this).show();
+    }).bind("ajaxStop", function() {
+        $(this).hide();
+    }).bind("ajaxError", function() {
+        $(this).hide();
+    });
+ 
+     });
+</script>
+
+{%endblock content%}
